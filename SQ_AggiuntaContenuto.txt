@@ -1,0 +1,27 @@
+title SQ_AggiuntaContenuto_17
+
+actor Administrator
+activate Administrator
+participant NewContentButton
+Administrator->NewContentButton:pressNewContent()
+activate NewContentButton
+NewContentButton-->*NewContentControl:<<new>>
+activate NewContentControl
+NewContentControl-->*NewContentForm:<<new>>
+deactivate NewContentButton
+deactivate NewContentControl
+Administrator->NewContentForm:fillNewContent()
+activate NewContentForm
+deactivateafter NewContentForm
+Administrator->NewContentForm:submit()
+activate NewContentForm
+NewContentControl<-NewContentForm:submitContent()
+activate NewContentControl
+NewContentControl-->*NewContent:<<new>>
+NewContentControl-->*NewContentConfirmNotice:<<new>>
+NewContentControl->NewContentForm:<<destroy>>
+deactivate NewContentControl
+deactivate NewContentForm
+destroy NewContentForm
+activate NewContentConfirmNotice
+Administrator<-NewContentConfirmNotice:notifyAdministrator()
