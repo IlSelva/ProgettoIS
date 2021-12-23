@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectCodeStyleConfiguration">
+    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+    <code_scheme name="Project" version="173">
+      <editorconfig>
+        <option name="ENABLED" value="false" />
+      </editorconfig>
+      <codeStyleSettings language="JAVA">
+        <indentOptions>
+          <option name="USE_TAB_CHARACTER" value="true" />
+        </indentOptions>
+      </codeStyleSettings>
+    </code_scheme>
+  </component>
+</project>
