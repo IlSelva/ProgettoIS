@@ -1,15 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: silvi
-  Date: 24/12/2021
-  Time: 17:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--<style>< %@include file="css"%></style>-->
 
-<html>
+<html lang="it">
     <head>
         <title>GuardaTV - ${paragram.pageTitle}</title>
         <meta charset="UTF-8">
