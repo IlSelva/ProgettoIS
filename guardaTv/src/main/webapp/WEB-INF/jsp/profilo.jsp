@@ -12,13 +12,16 @@
     <h4> Username: <c:out value="${utente.username}" /> </h4>
     <h4> E-mail: <c:out value="${utente.email}" /> </h4>
 
+    <a href="Liste">
+        <button> Le mie Liste </button>
+    </a>
 
     <a href="Logout">
         <button> Logout </button>
     </a>
 
     <a href="ModificaUtente">
-        <button> Modifica informazioni</button>
+        <button> Modifica dati</button>
     </a>
 
     <a href="ModificaPassword">
@@ -35,3 +38,5 @@
         </a>
     </c:if>
 </section>
+
+<%@include file="footer.html"%>
