@@ -19,10 +19,23 @@
                     </li>
                 </c:forEach>
             </ul>
+            <form name="addList" action="addList" method="post">
+                <select class="selectLista" name="lista">
+                    <option value="" label="" selected> liste </option>
+                    <c:forEach items="${liste}" var="lista">
+                        <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/>. </option>
+                    </c:forEach>
+                </select>
+                <input id="AddList" type="submit" value="Aggiungi ">
+            </form>
+            <span id="messaggioConferma"></span>
         </div>
 
         <div class="recensioni">
-            <h2>Recensioni</h2>
+            <div>
+                <h2>Recensioni</h2>
+                <a href="recensioni"><h3> vedi tutti </h3></a>
+            </div>
             <div class="container">
                 <c:forEach items = "{recensioni}" var = "recensione">
                     <div class="recensione">
@@ -44,4 +57,5 @@
         </div>
 
 </section>
+
 <%@include file="footer.html"%>
