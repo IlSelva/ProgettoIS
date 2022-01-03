@@ -10,11 +10,11 @@
     <h1 class="titolo"> Log-in </h1>
     <form name="Login" action="Login" method="post">
 
-        <label> Email</label>
+        <label for="email"> Email</label>
         <input type="text" name="email" id="email">
         <span id="messaggioemail"></span>
 
-        <label>Password</label>
+        <label for="password">Password</label>
         <input type="password" name="password" id="password">
         <span id="messaggiopassword"></span>
 

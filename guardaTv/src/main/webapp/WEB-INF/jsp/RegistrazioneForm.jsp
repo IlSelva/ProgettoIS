@@ -10,23 +10,25 @@
     <h1 class="titolo"> Registrazione </h1>
     <form name="registrazione" action="Registrazione" method="post">
 
-        <label> Email</label>
-        <input type="text" name="email" id="email" oninput="validaEmail()">
+        <label for="email"> Email</label>
+        <input type="email" name="email" id="email" oninput="validaEmail()">
         <span id="messaggioemail"></span>
 
-        <label>Password</label>
+        <label for="password">Password</label>
         <input type="password" name="password" id="password" oninput="validaPassword()">
         <meter max="4" id="passwordstrength"></meter>
         <p id="messaggiopassword"></p>
-        <input type="password" name="passwordConferma" oninput="validaPassword()">
+
+        <label for="confermapassword">Conferma Password</label>
+        <input type="password" name="passwordConferma" id="confermapassword" oninput="validaPassword()">
         <span id="messaggiopasswordconferma"></span>
 
-        <label>Username</label>
-        <input type="text" name="nome" oninput="validaUsername()">
+        <label for="username">Username</label>
+        <input type="text" name="nome" id="username" oninput="validaUsername()">
         <span id="messaggiousername"></span>
 
-        <label> Data di nascita</label>
-        <input typde="date" id="datanascita" name="datadinascita">
+        <label for="datanascita"> Data di nascita</label>
+        <input typde="date" id="datanascita" name="datadinascita" id="datanascita">
         <!-- data in formato yyyy-mm-dd secondo le specifiche RFC 3339 -->
 
         <input id="confermaregistrazione" type="submit" value="Conferma" disabled><span id="messaggioconferma"></span>
