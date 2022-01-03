@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -269,7 +269,7 @@ public class ContenutoDAO {
 
     public void doDelete(String id) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM Libro WHERE id=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Contenuto WHERE id=?");
             ps.setString(1, id);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
