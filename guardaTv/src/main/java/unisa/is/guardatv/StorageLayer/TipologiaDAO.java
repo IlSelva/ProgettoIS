@@ -1,14 +1,23 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 
-public class ContenutoListaDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TipologiaDAO {
 
 
     ContenutoDAO serviceC = new ContenutoDAO();
-    GenereDAO serviceG = nre GenereDAO();
+    GenereDAO serviceG = new
+
+            GenereDAO();
 
 
-    public List<Contenuto> allContenutiByGenere(String genere){
+    public List<Contenuto> allContenutiByGenere(String genere) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT Contenuto FROM Tipologia WHERE genere = ?");
             ps.setString(1, genere);
@@ -23,7 +32,7 @@ public class ContenutoListaDAO {
         }
     }
 
-    public List<Genere> allGeneriByContenuto(String contenuto){
+    public List<Genere> allGeneriByContenuto(String contenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT Genere FROM Tipologia WHERE contenuto = ?");
             ps.setString(1, contenuto);
@@ -37,5 +46,34 @@ public class ContenutoListaDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void doSave(Tipologia tip) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO Tipologia (Contenuto,Genere) VALUES(?,?)");
+            ps.setString(1, tip.getContenuto());
+            ps.setString(2, tip.getGenere());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void doDelete(String contenuto, String genere) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Tipologia WHERE contenuto=? AND genere=?");
+            ps.setString(1, contenuto);
+            ps.setString(2, genere);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("DELETE error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+}
 
 

@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ public class ContenutoListaDAO {
     ContenutoDAO service = new ContenutoDAO();
 
     /* ti do la lista dei contenuti data la chiave della lista */
-    public List<Contenuto> allContenutiByLista(String lsNome,String lsUtente){
+    public List<Contenuto> allContenutiByLista(String lsNome, String lsUtente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT Contenuto FROM ContenutoLista WHERE lsNome = ? AND lsUtente = ?");
             ps.setString(1, lsNome);
@@ -29,8 +29,7 @@ public class ContenutoListaDAO {
     }
 
 
-
-    public void AddContenuto(String lsNome,String lsUtente,String idContenuto){
+    public void AddContenuto(String lsNome, String lsUtente, String idContenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO ContenutoLista (ListaNome,ListaUtente,Contenuto) VALUES(?,?,?)");
@@ -46,9 +45,7 @@ public class ContenutoListaDAO {
     }
 
 
-
-
-    public Lista RemoveContenuto(String lsNome,String lsUtente,String idContenuto){
+    public Lista RemoveContenuto(String lsNome, String lsUtente, String idContenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM ContenutoLista WHERE lsNome=? AND lsUtente=? AND idContenuto=?");
             ps.setString(1, lsNome);
@@ -60,4 +57,6 @@ public class ContenutoListaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return new Lista();
+    }
 }

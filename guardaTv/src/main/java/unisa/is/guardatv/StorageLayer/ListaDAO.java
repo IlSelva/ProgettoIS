@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ListaDAO {
 
-    public List<Lista> doRetrieveByUtente(String utente, int offset, int limit){
+    public List<Lista> doRetrieveByUtente(String utente, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "SELECT  nome,Utente,descrizione FROM Lista WHERE utente = ? LIMIT ?, ?");
@@ -31,7 +31,7 @@ public class ListaDAO {
         }
     }
 
-    public Lista DoRetrievebyId (String nome,String utente,int offset,int limit){ // idlista = idutente+nomelista
+    public Lista DoRetrievebyId(String nome, String utente, int offset, int limit) { // idlista = idutente+nomelista
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "SELECT  nome,Utente,descrizione FROM Lista WHERE nome = ? AND utente = ? LIMIT ?, ?");
@@ -52,7 +52,7 @@ public class ListaDAO {
         }
     }
 
-    public void DoSave(Lista ls){
+    public void doSave(Lista ls) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO Lista (nome,Utente,descrizione) VALUES(?,?,?)");
@@ -68,11 +68,11 @@ public class ListaDAO {
     }
 
 
-    public void doDelete(String nome, String utente){
+    public void doDelete(String nome, String utente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Lista WHERE nome=? AND utente=?");
             ps.setString(1, nome);
-            ps.setString(2,utente);
+            ps.setString(2, utente);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
             }
@@ -82,7 +82,6 @@ public class ListaDAO {
     }
 
 
-
 }
 
-}
+
