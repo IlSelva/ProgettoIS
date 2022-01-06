@@ -8,8 +8,11 @@ descrizione varchar(255) not null,
 regista varchar(50) not null,
 durata int(10) not null,
 dataDiUscita date not null,   /*rivedere data*/
-immagineDelContenuto varchar(255),
-videoTrailer varchar(255),
+immagineDelContenuto varchar(255) ,
+videoTrailer varchar(255) ,
+film boolean not null default true,
+stagioni int default null,
+puntate int default null,
 primary key (id)
 );
 
@@ -33,6 +36,9 @@ foreign key (Genere) references Genere(nomeGenere)
 Create Table Utente(
     email varchar(256) not null,
     passwordhash char(40) not null,
+    salt varchar(256) not null,
+    dataDiNascita date not null,
+    username varchar(50) not null,
     administrator boolean not null default false,
     primary key(email)
 );
@@ -41,7 +47,7 @@ Create Table Recensione(
 Utente varchar(256) not null,
 Contenuto varchar(26) not null,
 punteggio int not null,
-descrizione varchar(255) not null,
+descrizione varchar(255),
 primary key(Utente,Contenuto),
 foreign key (Utente) references Utente(email),
 foreign key (Contenuto) references Contenuto(id)
@@ -78,3 +84,4 @@ primary key(Listanome,ListaUtente,Contenuto)
 create view Generi as
 select distinct(nomeGenere)
 from Genere;
+
