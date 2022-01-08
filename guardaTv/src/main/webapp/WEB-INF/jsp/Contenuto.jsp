@@ -6,7 +6,7 @@
 </jsp:include>
 <!-- style -->
 
-<section class="section">
+<div class="section">
 
         <div class="contenuto">
             <img src="img/contenuti/${contenuto.id}.jpg" alt=""/>
@@ -56,6 +56,29 @@
             </div>
         </div>
 
-</section>
+    <div>
+        <label for="nuovaRecensione">Nuova Recensione</label>
+        <form id="nuovaRecensione">
+            <div class="rating">
+                <input type="radio" name="star" id="star5">
+                <label for="star5"></label>
+                <input type="radio" name="star" id="star4">
+                <label for="star4"></label>
+                <input type="radio" name="star" id="star3">
+                <label for="star3"></label>
+                <input type="radio" name="star" id="star2">
+                <label for="star2"></label>
+                <input type="radio" name="star" id="star1">
+                <label for="star1"></label>
+            </div>
+            <span class="username"> <c:out value="${utente.username}"></c:out> </span>
+            <textarea name="descrizione" id="descrizione" required> </textarea>
+            <input>
+        </form>
+
+    </div>
+
+
+</div>
 
 <%@include file="footer.html"%>
