@@ -4,9 +4,9 @@
 <jsp:include page="/WEB-INF/jsp/header.jsp">
     <jsp:param name="pageTitle" value="Home"/>
 </jsp:include>
-<!--
-<style><%@include file="css"%></style>
--->
+
+<style><%@include file="../css/generalStyle.css"%></style>
+
 
 <section class="banner">
 
@@ -16,14 +16,14 @@
 
     <h2 class="section-title"> Ultime aggiunte</h2>
     <section class="griglia">
-        <c:forEach items = "{ultimi}" var = "contenuto">
-            <article class="contenuto">
+        <c:forEach items = "${ultimi}" var = "contenuto">
+            <article class="cont">
 
-                <a class="copertina" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
-                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.jpg" alt=""/>">
+                <a class="copertina" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
+                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.png" alt=""/>
                 </a>
                 <h4>
-                    <a class="titolo" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
+                    <a class="titolo" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
                         <c:out value="${contenuto.titolo}"/>
                     </a>
                 </h4>
@@ -34,14 +34,14 @@
 
     <h2 class="section-title"> Esplora la libreria </h2>
     <section class="griglia">
-        <c:forEach items = "{ultimi}" var = "contenuto">
-            <article class="contenuto">
+        <c:forEach items = "${contenuti}" var = "contenuto">
+            <article class="cont">
 
-                <a class="copertina" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
-                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.jpg" alt=""/>">
+                <a class="copertina" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
+                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.jpg" alt=""/>
                 </a>
                 <h4>
-                    <a class="titolo" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
+                    <a class="titolo" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
                         <c:out value="${contenuto.titolo}"/>
                     </a>
                 </h4>
