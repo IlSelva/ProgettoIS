@@ -5,7 +5,7 @@ html, body {
 }
 
 header {
-    background: #131111;
+    background: #082032;
     height: 10vh;
     min-height: 50px;
     display: flex;
@@ -28,8 +28,8 @@ img{
 
 a.logo, a.logo:link, a.logo:visited, a.logo:hover, a.logo:active {
     position: absolute;
-    top: 2vh;
-    left: 5vw;
+    top: 1vh;
+    left: 1vw;
     color: #454f54;
     text-decoration-line: none;
     cursor: pointer;
@@ -37,9 +37,9 @@ a.logo, a.logo:link, a.logo:visited, a.logo:hover, a.logo:active {
     color: white;
 }
 
-img.logo{
+.logo > img{
     width: auto;
-    height: 5vh;
+    height: 8vh;
 }
 
 #ricerca{
@@ -65,9 +65,9 @@ img.logo{
 
 .searchTerm {
     width: auto;
-    border: 3px solid #454f54;
+    border: 5px solid #454f54;
     border-right: none;
-    padding: 5px;
+    padding: 10px;
     outline: none;
     color: #f5d0ab;
 }
@@ -83,7 +83,7 @@ img.logo{
     border: 1px solid #454f54;
     background: #454f54;
     text-align: center;
-    color: #fff;
+    color: #f9fafa;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
 }
@@ -110,6 +110,8 @@ img.logo{
     transition: 0.2s linear all;
     cursor: pointer;
     width: 3vw;
+    border-radius: 5px ;
+    min-width: 20px;
 }
 
 .header-menu > li:hover{
