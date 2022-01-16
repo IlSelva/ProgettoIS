@@ -1,0 +1,170 @@
+
+.container{
+    display: block;
+}
+
+.contenuto{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+}
+
+.contenuto img{
+    height: 50vh;
+    width: auto;
+    float: left;
+    padding-right: 2vw;
+}
+
+.generi{
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.genere{
+    margin-right: 2vw;
+    padding: 2px 5px;
+    background: rgba(75, 108, 219, 0.3);
+    border-radius: 5px;
+}
+
+.listselector{
+    border: 1px solid #364A58;
+    background: #364A58;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.contenuto::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.recensioni{
+    margin-bottom: 4vh;
+}
+
+
+.newreviewform{
+    display: block;
+    width: 75vw;
+    margin: auto auto 4vh;
+}
+
+#nuovaRecensione{
+    display: block;
+    border: 2px solid black;
+    width: inherit;
+}
+
+.nomeutente{
+    text-align: left;
+    margin-left: 1vw;
+}
+
+.rating{
+    align-self: center;
+    position: absolute;
+    right: 15vw;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rating input{
+    display: none;
+}
+
+.rating label
+{
+    display: block;
+    cursor: pointer;
+    width: 3vw;
+    /*background*/
+}
+
+.rating label:before
+{
+    content: '\f006'; /* star-empty */
+    font-family: fontAwesome;
+    display: block;
+    font-size: 3vw;
+    color: #fab700;
+    /* position: relative;*/
+}
+
+.rating label:after
+{
+    content: '\f005'; /* star-full*/
+    font-family: fontAwesome;
+    position: absolute;
+    display: block;
+    font-size: 3vw;
+    color: #fab700;
+    top: 0;
+    opacity: 0;
+    transition: .2s;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after{
+    opacity: 1;
+}
+
+#descrizione{
+    width: inherit;
+    resize: vertical;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+#Revsubmit{
+    display: block;
+    margin: auto;
+}
+
+.titolo{
+    display: flex;
+    flex-flow:row wrap;
+}
+
+.titolo-sezione{
+    text-align: center;
+    width: 85vw;
+}
+
+.fullview-link{
+    text-align: right;
+    align-self: center;
+    width: auto;
+}
+
+.recensione{
+    display: block;
+    border: 2px solid black;
+    width: 75vw;
+    margin: auto auto 4vh;
+}
+
+.riga1{
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.punteggio{
+    position: absolute;
+    right: 15vw;
+}
+
+.punteggio .fa{
+    color: #fab700;
+    font-size: 3vw;
+}
+
+.contenutorecensione{
+    padding-left: 1vw;
+}
