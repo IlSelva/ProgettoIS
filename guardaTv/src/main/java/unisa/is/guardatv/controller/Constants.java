@@ -29,6 +29,8 @@ public class Constants {
     public static final int MAX_DIRECTOR_LENGTH = 50;
     public static final int MIN_NAME_LENGTH = 1;
     public static final int MAX_NAME_LENGTH = 50;
+    public static final int MIN_SEARCH_LENGTH = 1;
+    public static final int MAX_SEARCH_LENGTH = 50;
 
     public static final int INVALID_INT_VALUE = -1;
     public static final Date INVALID_DATE_VALUE = null;

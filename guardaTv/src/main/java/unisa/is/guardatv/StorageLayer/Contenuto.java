@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.util.Date;
 
@@ -12,9 +12,9 @@ public class Contenuto {
     private Date dataDiUscita;
     private String immagineDelContenuto;
     private String videoTrailer;
-    private boolean film=true;
-    private int stagioni=null;
-    private int puntate=null;
+    private boolean film;
+    private int stagioni;
+    private int puntate;
 
     public String getId() {
         return this.id;

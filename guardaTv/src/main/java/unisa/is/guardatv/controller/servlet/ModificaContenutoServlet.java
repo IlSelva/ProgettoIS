@@ -121,6 +121,22 @@ public class ModificaContenutoServlet extends HttpServlet {
             return;
         }
 
+        // Recupero il parametro film
+        boolean film = Boolean.parseBoolean(request.getParameter("puntate"));
+
+        int puntate = Utils.getInstance().getInt(request.getParameter("puntate"));
+        // Controllo che il parametro puntate abbia un valore corretto
+        if (puntate == INVALID_INT_VALUE) {
+            response.getWriter().write(BAD_REQUEST_MESS);
+            return;
+        }
+
+        int stagioni = Utils.getInstance().getInt(request.getParameter("stagioni"));
+        // Controllo che il parametro puntate abbia un valore corretto
+        if (stagioni == INVALID_INT_VALUE) {
+            response.getWriter().write(BAD_REQUEST_MESS);
+            return;
+        }
 
         // Creo il contenuto se non esistente
         ContenutoDAO contenutoDAO = new ContenutoDAO();
@@ -133,6 +149,9 @@ public class ModificaContenutoServlet extends HttpServlet {
         contenuto.setRegista(regista);
         contenuto.setDataDiUscita(dataDiUscita);
         contenuto.setImmagineDelContenuto(pathImmagine);
+        contenuto.setFilm(film);
+        contenuto.setPuntate(puntate);
+        contenuto.setStagioni(stagioni);
 
         if (Utils.getInstance().isValidString(pathTrailer)) {
             contenuto.setVideoTrailer(pathTrailer);
