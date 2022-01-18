@@ -84,4 +84,3 @@ primary key(Listanome,ListaUtente,Contenuto)
 create view Generi as
 select distinct(nomeGenere)
 from Genere;
-
