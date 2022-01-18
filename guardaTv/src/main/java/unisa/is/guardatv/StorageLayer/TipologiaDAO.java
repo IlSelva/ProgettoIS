@@ -1,13 +1,18 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 
-public class ContenutoListaDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TipologiaDAO {
 
 
     ContenutoDAO serviceC = new ContenutoDAO();
-    GenereDAO serviceG = nre
-
-    GenereDAO();
+    GenereDAO serviceG = new GenereDAO();
 
 
     public List<Contenuto> allContenutiByGenere(String genere) {
@@ -45,7 +50,7 @@ public class ContenutoListaDAO {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO Tipologia (Contenuto,Genere) VALUES(?,?)");
             ps.setString(1, tip.getContenuto());
-            ps.setInt(2, tip.getGenere());
+            ps.setString(2, tip.getGenere());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

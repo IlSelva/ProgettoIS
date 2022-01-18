@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -82,7 +82,5 @@ public class ListaDAO {
     }
 
 
-
-}
 
 }

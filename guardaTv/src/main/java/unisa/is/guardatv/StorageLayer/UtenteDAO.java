@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class UtenteDAO {
                 u.setDataDiNascita(rs.getDate(4));
                 u.setUsername(rs.getString(5));
                 u.setAdministrator(rs.getBoolean(6));
-                return u;
+                utenti.add(u);
             }
             return utenti;
         } catch (SQLException e) {
@@ -86,7 +86,7 @@ public class UtenteDAO {
             ps.setString(3,utente.getSalt());
             ps.setDate(4, (Date) utente.getDataDiNascita());
             ps.setString(5,utente.getUsername());
-            ps.setBoolean(6, utente.setAdministrator());
+            ps.setBoolean(6, utente.getAdministrator());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -103,9 +103,8 @@ public class UtenteDAO {
             ps.setString(2, utente.getPasswordhash());
             ps.setDate(4, (Date) utente.getDataDiNascita());
             ps.setString(4,utente.getUsername());
-            ps.setBoolean(5,utente.getAdministrator);
+            ps.setBoolean(5,utente.getAdministrator());
             ps.setString(6, utente.getEmail());
-            ps.set
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("UPDATE error.");
             }

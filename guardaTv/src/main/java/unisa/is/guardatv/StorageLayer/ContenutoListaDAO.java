@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,7 +48,7 @@ public class ContenutoListaDAO {
 
 
 
-    public Lista RemoveContenuto(String lsNome,String lsUtente,String idContenuto){
+    public void RemoveContenuto(String lsNome,String lsUtente,String idContenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM ContenutoLista WHERE lsNome=? AND lsUtente=? AND idContenuto=?");
             ps.setString(1, lsNome);
@@ -60,4 +60,7 @@ public class ContenutoListaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
 }

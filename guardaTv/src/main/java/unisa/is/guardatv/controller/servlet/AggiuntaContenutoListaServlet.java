@@ -1,6 +1,5 @@
 package unisa.is.guardatv.controller.servlet;
 
-import unisa.is.guardatv.StorageLayer.ContenutoLista;
 import unisa.is.guardatv.StorageLayer.ContenutoListaDAO;
 import unisa.is.guardatv.controller.Utils;
 

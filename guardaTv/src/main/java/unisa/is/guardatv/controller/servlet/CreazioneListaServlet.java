@@ -70,7 +70,7 @@ public class CreazioneListaServlet extends HttpServlet {
         lista.setUtente(utente);
 
         try {
-            listaDAO.doSave(lista);
+            listaDAO.DoSave(lista);
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().write(BAD_REQUEST_MESS);

@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 p.setStagioni(rs.getInt(10));
                 p.setPuntate(rs.getInt(11));
                 contenuti.add(p);
@@ -54,7 +54,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 p.setStagioni(rs.getInt(10));
                 p.setPuntate(rs.getInt(11));
                 contenuti.add(p);
@@ -83,7 +83,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 contenuti.add(p);
             }
             return contenuti;
@@ -92,7 +92,7 @@ public class ContenutoDAO {
         }
     }
 
-    public List<Contenuto> doRetrieveAllFilm(int offset, int limit) {
+    public List<Contenuto> doRetrieveAllSeries(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT  id,titolo,descrizione,regista,durata,dataDiUscita,immagineDelContenuto,videoTrailer,film,stagioni,puntate FROM Contenuto WHERE film=false LIMIT ?, ?");
@@ -110,7 +110,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 p.setStagioni(rs.getInt(10));
                 p.setPuntate(rs.getInt(11));
                 contenuti.add(p);
@@ -137,7 +137,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 p.setStagioni(rs.getInt(10));
                 p.setPuntate(rs.getInt(11));
                 return p;
@@ -169,7 +169,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 p.setStagioni(rs.getInt(10));
                 p.setPuntate(rs.getInt(11));
                 contenuti.add(p);
@@ -199,7 +199,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 contenuti.add(p);
             }
             return contenuti;
@@ -208,7 +208,7 @@ public class ContenutoDAO {
         }
     }
 
-    public List<Contenuto> doRetrieveByTitoloFilm(String titolo, int offset, int limit) {
+    public List<Contenuto> doRetrieveByTitoloSerie(String titolo, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "SELECT  id,titolo,descrizione,regista,durata,dataDiUscita,immagineDelContenuto,videoTrailer,film,stagioni,puntate FROM Contenuto WHERE MATCH(titolo) AGAINST(? IN BOOLEAN MODE) AND film=false LIMIT ?, ?");
@@ -227,7 +227,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 contenuti.add(p);
             }
             return contenuti;
@@ -256,7 +256,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 p.setStagioni(rs.getInt(10));
                 p.setPuntate(rs.getInt(11));
                 contenuti.add(p);
@@ -287,7 +287,7 @@ public class ContenutoDAO {
                 p.setDataDiUscita(rs.getDate(6));
                 p.setImmagineDelContenuto(rs.getString(7));
                 p.setVideoTrailer(rs.getString(8));
-                p.isFilm(rs.getBoolean(9));
+                p.setFilm(rs.getBoolean(9));
                 p.setStagioni(rs.getInt(10));
                 p.setPuntate(rs.getInt(11));
                 contenuti.add(p);
@@ -310,7 +310,7 @@ public class ContenutoDAO {
             ps.setDate(6, (Date) contenuto.getDataDiUscita());
             ps.setString(7, contenuto.getImmagineDelContenuto());
             ps.setString(8, contenuto.getVideoTrailer());
-            ps.setBoolean(9,contenuto.getFilm());
+            ps.setBoolean(9,contenuto.isFilm());
             ps.setInt(10,contenuto.getStagioni());
             ps.setInt(11,contenuto.getPuntate());
             if (ps.executeUpdate() != 1) {
@@ -334,7 +334,7 @@ public class ContenutoDAO {
             ps.setDate(6, (Date) contenuto.getDataDiUscita());
             ps.setString(7, contenuto.getImmagineDelContenuto());
             ps.setString(8, contenuto.getVideoTrailer());
-            ps.setBoolean(9,contenuto.getFilm());
+            ps.setBoolean(9,contenuto.isFilm());
             ps.setInt(10,contenuto.getStagioni());
             ps.setInt(11,contenuto.getPuntate());
             if (ps.executeUpdate() != 1) {
