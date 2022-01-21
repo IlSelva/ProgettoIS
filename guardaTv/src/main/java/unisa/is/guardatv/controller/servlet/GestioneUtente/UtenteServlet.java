@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.GestioneUtente;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

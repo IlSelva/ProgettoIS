@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.GestioneContenuto;
 
 import unisa.is.guardatv.StorageLayer.ContenutoDAO;
 

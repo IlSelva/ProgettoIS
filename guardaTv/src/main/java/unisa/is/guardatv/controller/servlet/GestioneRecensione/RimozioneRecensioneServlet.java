@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.GestioneRecensione;
 
 import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.StorageLayer.UtenteDAO;
@@ -8,7 +8,7 @@ import unisa.is.guardatv.StorageLayer.Contenuto;
 import unisa.is.guardatv.StorageLayer.ContenutoDAO;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.ServletException.;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
