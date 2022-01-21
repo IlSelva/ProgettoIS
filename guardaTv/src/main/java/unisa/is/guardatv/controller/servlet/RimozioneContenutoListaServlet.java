@@ -4,6 +4,7 @@ import unisa.is.guardatv.StorageLayer.ContenutoLista;
 import unisa.is.guardatv.StorageLayer.ContenutoListaDAO;
 import unisa.is.guardatv.controller.Utils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,22 +43,19 @@ public class RimozioneContenutoListaServlet extends HttpServlet {
         String nomeLista = request.getParameter("nomeLista");
         // controllo che nomeLista sia una stringa valida
         if (Utils.getInstance().isValidString(nomeLista)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome lista non valido.");
         }
 
         String utente = request.getParameter("utente");
         // controllo che utente sia una stringa valida
         if (Utils.getInstance().isValidString(utente)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non valido.");
         }
 
         String contenuto = request.getParameter("contenuto");
         // controllo che il contenuto sia una stringa valida
         if (Utils.getInstance().isValidString(utente)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Contenuto non valido.");
         }
 
         ContenutoListaDAO contenutoListaDAO = new ContenutoListaDAO();
@@ -66,11 +64,13 @@ public class RimozioneContenutoListaServlet extends HttpServlet {
             contenutoListaDAO.RemoveContenuto(nomeLista, utente, contenuto);
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore rimozione contenuto.");
         }
 
-        response.getWriter().write("ok");
+        request.setAttribute("notifica", "Contenuto rimosso dalla lista con successo");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/lista.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
 

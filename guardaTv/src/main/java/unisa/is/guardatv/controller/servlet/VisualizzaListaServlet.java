@@ -6,6 +6,7 @@ import unisa.is.guardatv.StorageLayer.ContenutoLista;
 import unisa.is.guardatv.StorageLayer.ContenutoListaDAO;
 import unisa.is.guardatv.controller.Utils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,15 +46,13 @@ public class VisualizzaListaServlet extends HttpServlet {
         String nomeLista = request.getParameter("nomeLista");
         // controllo che nomeLista sia una stringa valida
         if (Utils.getInstance().isValidString(nomeLista)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome lista non valido.");
         }
 
         String utente = request.getParameter("utente");
         // controllo che utente sia una stringa valida
         if (Utils.getInstance().isValidString(utente)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non valido.");
         }
 
 
@@ -64,15 +63,12 @@ public class VisualizzaListaServlet extends HttpServlet {
             contenuti = contenutoListaDAO.allContenutiByLista(nomeLista, utente);
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore recupero contenuti by lista.");
         }
-        String json = new Gson().toJson(contenuti);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+        request.setAttribute("contenuti", contenuti);
 
-//        response.getWriter().write("ok");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/lista.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
 

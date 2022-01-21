@@ -3,6 +3,7 @@ package unisa.is.guardatv.controller.servlet;
 import unisa.is.guardatv.StorageLayer.*;
 import unisa.is.guardatv.controller.Utils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,36 +44,31 @@ public class AggiuntaContenutoServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
         // controllo l'id in input che rispetti la regex definita in precedenza
         if (!Pattern.compile(ID_REGEX).matcher(id).find()) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("ID non valido.");
         }
 
         String titolo = request.getParameter("titolo");
         // controllo il titolo in input che rispetti lunghezza prefissata
         if (!Utils.getInstance().checkStringLength(titolo, MIN_TITLE_LENGTH, MAX_TITLE_LENGTH)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Titolo non valido.");
         }
 
 
         String descrizione = request.getParameter("descrizione");
         // controllo il descrizione in input che rispetti lunghezza prefissata
         if (!Utils.getInstance().checkStringLength(descrizione, MIN_DESCRIPTION_LENGTH, MAX_DESCRIPTION_LENGTH)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Descrizione non valida.");
         }
 
 
         String genere = request.getParameter("genere");
         // controllo il genere in input che rispetti lunghezza prefissata
         if (!Utils.getInstance().checkStringLength(genere, MIN_GENRE_LENGTH, MAX_GENRE_LENGTH)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Genere non valido.");
         }
 
         // Divido la stringa genere per la virgola es. azione, commedia -> ["azione", " commedia"]
@@ -87,36 +83,31 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         String regista = request.getParameter("regista");
         // controllo il regista in input che rispetti lunghezza prefissata
         if (!Utils.getInstance().checkStringLength(regista, MIN_DIRECTOR_LENGTH, MAX_DIRECTOR_LENGTH)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Regista non valido.");
         }
 
         int durata = Utils.getInstance().getInt(request.getParameter("durata"));
         // Controllo che la durata abbia un valore corretto
         if (durata == INVALID_INT_VALUE) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Durata non valida.");
         }
 
         Date dataDiUscita = Utils.getInstance().getDate(request.getParameter("dataDiUscita"), DATE_FORMAT);
         // Controllo che la data di uscita si in un formato corretto
         if (dataDiUscita == INVALID_DATE_VALUE) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Data di uscita non valida.");
         }
 
         String pathImmagine = request.getParameter("immagine");
         // Controllo che il path dell'immagine sia valido
         if (!Utils.getInstance().isValidPath(pathImmagine) || !Utils.getInstance().isValidExtension(pathImmagine, IMAGE_EXTENSIONS)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Immagine non valida.");
         }
 
         String pathTrailer = request.getParameter("trailer");
         // Se il path del trailer è presente (!= null) controllo che sia un path valido
         if (Utils.getInstance().isValidString(pathTrailer) && (!Utils.getInstance().isValidPath(pathTrailer) || !Utils.getInstance().isValidExtension(pathImmagine, VIDEO_EXTENSIONS))) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Trailer non valido.");
         }
 
 
@@ -126,15 +117,13 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         int puntate = Utils.getInstance().getInt(request.getParameter("puntate"));
         // Controllo che il parametro puntate abbia un valore corretto
         if (puntate == INVALID_INT_VALUE) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero puntate non valido.");
         }
 
         int stagioni = Utils.getInstance().getInt(request.getParameter("stagioni"));
         // Controllo che il parametro puntate abbia un valore corretto
         if (stagioni == INVALID_INT_VALUE) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero stagioni non valido.");
         }
 
 
@@ -161,8 +150,7 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             contenutoDAO.doSave(contenuto);
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salataggio del contenuto.");
         }
 
         // Creo la tipologia ovvero contenuto -> genere
@@ -188,13 +176,15 @@ public class AggiuntaContenutoServlet extends HttpServlet {
                 tipologiaDAO.doSave(tipologia);
             } catch (Exception e) {
                 e.printStackTrace();
-                response.getWriter().write(BAD_REQUEST_MESS);
-                return;
+                throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salataggio della tipologia.");
             }
         }
 
 
-        response.getWriter().write("ok");
+        request.setAttribute("notifica", "Contenuto aggiuntocon successo");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/Contenuto.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
 

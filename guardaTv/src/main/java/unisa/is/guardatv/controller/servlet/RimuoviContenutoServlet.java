@@ -2,6 +2,7 @@ package unisa.is.guardatv.controller.servlet;
 
 import unisa.is.guardatv.StorageLayer.ContenutoDAO;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,13 +40,11 @@ public class RimuoviContenutoServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
         // controllo l'id in input che rispetti la regex definita in precedenza
         if (!Pattern.compile(ID_REGEX).matcher(id).find()) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("ID non valido.");
         }
 
         ContenutoDAO contenutoDAO = new ContenutoDAO();
@@ -54,12 +53,14 @@ public class RimuoviContenutoServlet extends HttpServlet {
             contenutoDAO.doDelete(id);
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore rimozione conteuto.");
         }
 
 
-        response.getWriter().write("ok");
+        request.setAttribute("notifica", "Contenuto rimosso con successo");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/lista.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
 
