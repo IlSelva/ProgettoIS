@@ -5,6 +5,7 @@ import unisa.is.guardatv.StorageLayer.Lista;
 import unisa.is.guardatv.StorageLayer.ListaDAO;
 import unisa.is.guardatv.controller.Utils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,22 +46,19 @@ public class CreazioneListaServlet extends HttpServlet {
         String nome = request.getParameter("nome");
         // controllo il nome in input che rispetti la lunghezza definita
         if (!Utils.getInstance().checkStringLength(nome, MIN_NAME_LENGTH, MAX_NAME_LENGTH)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome non valido.");
         }
 
         String descrizione = request.getParameter("descrizione");
         // controllo se la descrizione è presente
         if (Utils.getInstance().isValidString(descrizione) && !Utils.getInstance().checkStringLength(descrizione, 0, MAX_DESCRIPTION_LENGTH)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Descrizione non valida.");
         }
 
         String utente = request.getParameter("utente");
         // controllo che l'utente sia una stringa valida
         if (Utils.getInstance().isValidString(utente)) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non valido.");
         }
 
         ListaDAO listaDAO = new ListaDAO();
@@ -73,11 +71,13 @@ public class CreazioneListaServlet extends HttpServlet {
             listaDAO.DoSave(lista);
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore creazione lista.");
         }
 
-        response.getWriter().write("ok");
+        request.setAttribute("notifica", "Lista creata con successo");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/lista.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
 
