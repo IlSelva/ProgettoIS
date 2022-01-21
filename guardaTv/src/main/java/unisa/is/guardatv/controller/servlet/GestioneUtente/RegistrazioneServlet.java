@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.GestioneUtente;
 
 import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.StorageLayer.UtenteDAO;
@@ -30,7 +30,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         if (!(email != null && email.matches("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w+)+$"))) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Email non valida."); // da aggiungere i file per le eccezioni
+            request.setAttribute("notifica", "E-mail non valida");
         }
 
         String password = request.getParameter("password");
@@ -51,22 +51,22 @@ public class RegistrazioneServlet extends HttpServlet {
 
         String passwordConferma = request.getParameter("passwordConferma");
         if (!password.equals(passwordConferma)) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Password e conferma differenti.");
+            request.setAttribute("notifica", "Password e conferma differenti");
         }
 
         String username = request.getParameter("nome");
         if (!(username != null && username.trim().length() > 0 && username.matches("^[ a-zA-Z\u00C0-\u00ff]+$"))) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Username non valido.");
+            request.setAttribute("notifica", "Username non valido");
         }
 
 
         String data = request.getParameter("datadinascita");
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy, dd, MM", Locale.ITALIAN);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy, MM, dd", Locale.ITALIAN);
         LocalDate date = LocalDate.parse(data, formatter);
 
         if (date.getYear() >= 2002) // deve essere maggiorenne
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Non sei maggiorenne.");
+            request.setAttribute("notifica", "Devi essere maggiorenne");
 
         Utente utente = new Utente();
         utente.setSalt(salt);

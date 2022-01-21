@@ -2,8 +2,10 @@ package unisa.is.guardatv.controller.servlet;
 
 import com.google.gson.Gson;
 import unisa.is.guardatv.StorageLayer.Contenuto;
+import unisa.is.guardatv.StorageLayer.ContenutoDAO;
 import unisa.is.guardatv.controller.Utils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,30 +42,29 @@ public class RicercaServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
 
         String ricerca = request.getParameter("ricerca");
         // controllo la stringa della ricerca in input sia valida
-        if (!Utils.getInstance().checkStringLength(ricerca, MIN_SEARCH_LENGTH, MAX_SEARCH_LENGTH) {
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+        if (!Utils.getInstance().checkStringLength(ricerca, MIN_SEARCH_LENGTH, MAX_SEARCH_LENGTH)) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Ricerca non valida.");
         }
 
-        RicercaDAO ricercaDAO = new RicercaDAO();
+        ContenutoDAO contenutoDAO = new ContenutoDAO();
 
         List<Contenuto> contenuti;
         try {
-            contenuti = ricercaDAO.cerca(ricerca);
+            contenuti = contenutoDAO.doRetrieveByTitolo(ricerca, 0, 100);
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write(BAD_REQUEST_MESS);
-            return;
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore recupero contenuti by titolo.");
         }
 
-        String json = new Gson().toJson(contenuti);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+        request.setAttribute("contenuti", contenuti);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/ricerca.jsp");
+        requestDispatcher.forward(request, response);
+
+
     }
 }
 

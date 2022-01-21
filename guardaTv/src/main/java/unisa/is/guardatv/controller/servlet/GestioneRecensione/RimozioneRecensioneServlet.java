@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.GestioneRecensione;
 
 import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.StorageLayer.UtenteDAO;
@@ -8,7 +8,7 @@ import unisa.is.guardatv.StorageLayer.Contenuto;
 import unisa.is.guardatv.StorageLayer.ContenutoDAO;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.ServletException.;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,9 +32,13 @@ public class RimozioneRecensioneServlet extends HttpServlet {
 
 
         // devo prendere il contenuto
-        int id = Integer.parseInt(request.getParameter("id"));
-        Contenuto contenuto = ContenutoDAO.doRetrieveById(id);
-        recensioneDAO.doDelete(utente.getEmail(), id);
+        int idContenuto = Integer.parseInt(request.getParameter("id"));
+        Contenuto contenuto = ContenutoDAO.doRetrieveById(idContenuto);
+        List<Recensione> recensione = new List<Recensione>();
+        recensione = RecensioneDAO.doRetrieveByContenuto(idContenuto, 0, 1); // o devo fare l'add?
+        Recensione recensione1 = recensione.get(0);
+
+        recensioneDAO.doDelete((recensione1.getUtente().getEmail()), idContenuto);
 
         request.setAttribute("notifica", "Recensione rimossa con successo");
 
