@@ -32,9 +32,13 @@ public class RimozioneRecensioneServlet extends HttpServlet {
 
 
         // devo prendere il contenuto
-        int id = Integer.parseInt(request.getParameter("id"));
-        Contenuto contenuto = ContenutoDAO.doRetrieveById(id);
-        recensioneDAO.doDelete(utente.getEmail(), id);
+        int idContenuto = Integer.parseInt(request.getParameter("id"));
+        Contenuto contenuto = ContenutoDAO.doRetrieveById(idContenuto);
+        List<Recensione> recensione = new List<Recensione>();
+        recensione = RecensioneDAO.doRetrieveByContenuto(idContenuto, 0, 1); // o devo fare l'add?
+        Recensione recensione1 = recensione.get(0);
+
+        recensioneDAO.doDelete((recensione1.getUtente().getEmail()), idContenuto);
 
         request.setAttribute("notifica", "Recensione rimossa con successo");
 

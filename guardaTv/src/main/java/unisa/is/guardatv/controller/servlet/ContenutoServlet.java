@@ -28,7 +28,7 @@ public class ContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Contenuto non trovato.");
         }
 
-        List<Recensione> recensioni = RecensioneDAO.doRetrieveByContenuto(id, 0,10);
+        List<Recensione> recensioni = RecensioneDAO.doRetrieveByContenuto(id, 0,100);
 
         request.setAttribute("contenuto", contenuto);
         request.setAttribute("recensioni", recensioni);

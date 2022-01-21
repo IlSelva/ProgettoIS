@@ -27,11 +27,11 @@ public class ElencoListeServlet extends HttpServlet {
         if (utente != null) {
             int id = utente.getId();
             List<Lista> lista = ListaDAO.doRetrieveByUtente(id, 0, 10);
-            request.setAttribute("lista", lista);
+            request.setAttribute("liste", lista);
         }
 
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/profilo.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/liste.jsp");
         requestDispatcher.forward(request, response);
     }
 }
