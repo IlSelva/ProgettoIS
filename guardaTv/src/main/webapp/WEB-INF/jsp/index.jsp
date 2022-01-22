@@ -22,11 +22,11 @@
                 <a class="copertina" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
                     <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.png" alt=""/>
                 </a>
-                <h4>
-                    <a class="titolo" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
+                <h3 class="titolofilm">
+                    <a class="titolofilm" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
                         <c:out value="${contenuto.titolo}"/>
                     </a>
-                </h4>
+                </h3>
 
             </article>
         </c:forEach>
