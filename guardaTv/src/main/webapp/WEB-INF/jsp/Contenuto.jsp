@@ -72,7 +72,7 @@
                         <div class="recensione">
                             <div class="riga1">
                                 <h3 class="nomeutente">
-                                    <c:out value="${recensione.utente.username}"></c:out>
+                                    <c:out value="${recensione.utenteusername}"></c:out>
                                 </h3>
                                 <p class="punteggio">
                                     <c:forEach var="i" begin="1" end="${recensione.punteggio}" step="1">
@@ -83,6 +83,12 @@
                                         <span class="fa fa-star-o"></span>
                                     </c:forEach>
                                 </p>
+                                <c:if test="${utente.admin == true}">
+                                    <form class="eliminarecensione">
+                                        <input type="hidden" name="idutente" value=${recensione.utenteid} />
+                                        <input class="confirmbutton" type="submit" value="f1f8" name="elimina" id="eliminarecensione">
+                                    </form>
+                                </c:if>
                             </div>
                             <h4 class="recensionecontenuto">
                                 <c:out value="${recensione.descrizione}"></c:out>
