@@ -1,0 +1,71 @@
+.containerliste{
+    display: flex;
+}
+
+.titololiste , .listainf{
+    border: 2px solid #364A58;
+    border-radius: 10px;
+    margin: 1vh 1vw;
+    padding-left: 1vw;
+    width: 65vw;
+    height: fit-content;
+}
+
+.creazionelista{
+    float: right;
+    max-width: 25vw;
+    border: 2px solid #364A58;
+    border-radius: 10px;
+    margin: 1vh 1vw;
+    padding: 1vh 1vw;
+}
+
+.containercontenuti{
+    margin-top: 5vh;
+    width: 100%;
+    display: block;
+    position: relative;
+    margin-bottom: 5vh;
+}
+
+.griglialista{
+    display: block;
+    margin-left: 3vw;
+}
+
+.contenutoLista{
+    display: flex;
+    margin-bottom: 5vh;
+    width: 65vw;
+}
+
+.copertinalista{
+    height: auto;
+    width: 16vw;
+    margin-right: 2vw;
+}
+
+.titolo {
+    margin: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.info{
+    margin: 1vh 0;
+}
+
+.generi{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.genere{
+    margin: 2vh 2vw 2vh 0;
+}
+
+.descrizione{
+    margin: 0;
+}
