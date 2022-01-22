@@ -1,10 +1,23 @@
-package unisa.is.guardatv.StorageLayer;
+package StorageLayer;
 
 import java.sql.*;
 import java.util.UUID;
 
+/**
+ * Questa classe comunica con il Database per la gestione e raccolta degli
+ * oggetti "Login" attraverso vari tipi di query.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
 public class LoginDAO {
 
+    /**
+     * Ritorna il Login in base all'identificativo
+     *
+     * @param  id   l'identificativo del Login
+     * @return      il Login in base all'identificativo
+     */
     public Login doRetrieveById(String id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT id, idUtente, token, time FROM login WHERE id=?");
@@ -24,6 +37,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Aggiunge al Database un nuovo Login
+     *
+     * @param  login   il Login da aggiungere al Database
+     */
     public void doSave(Login login) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -42,6 +60,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Modifica nel Database un Login esistente
+     *
+     * @param  login   un Login da modificare nel Database
+     */
     public void doUpdate(Login login) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE login SET idUtente=?, token=?, time=? WHERE id=?");
@@ -57,6 +80,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Elimina dal Database un Login esistente
+     *
+     * @param  id   l'identificativo del Login
+     */
     public void doDelete(String id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM login WHERE id=?");
@@ -69,4 +97,3 @@ public class LoginDAO {
         }
     }
 }
-
