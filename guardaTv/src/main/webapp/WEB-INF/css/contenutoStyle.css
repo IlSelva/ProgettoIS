@@ -168,3 +168,7 @@
 .contenutorecensione{
     padding-left: 1vw;
 }
+
+.eliminarecensione .confirmbutton{
+    font-family: fontAwesome;
+}
