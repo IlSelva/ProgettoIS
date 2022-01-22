@@ -1,9 +1,4 @@
 
-html, body {
-    height: 100vh;
-    margin: 0;
-}
-
 header {
     background: #082032;
     height: 10vh;
@@ -39,7 +34,7 @@ a.logo, a.logo:link, a.logo:visited, a.logo:hover, a.logo:active {
 
 .logo > img{
     width: auto;
-    height: 8vh;
+    height: 6vh;
 }
 
 #ricerca{
