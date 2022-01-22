@@ -12,30 +12,35 @@
     <h4> Username: <c:out value="${utente.username}" /> </h4>
     <h4> E-mail: <c:out value="${utente.email}" /> </h4>
 
-    <a href="Liste">
-        <button> Le mie Liste </button>
-    </a>
+    <div class="bottoni">
+        <a class="confirmbutton" href="Liste">
+            Le mie Liste
+        </a>
 
-    <a href="Logout">
-        <button> Logout </button>
-    </a>
+        <a class="confirmbutton" href="Logout">
+            Logout
+        </a>
 
-    <a href="ModificaUtente">
-        <button> Modifica dati</button>
-    </a>
+        <a class="confirmbutton" href="ModificaUtente">
+            Modifica dati
+        </a>
 
-    <a href="ModificaPassword">
-        <button> Modifica password </button>
-    </a>
+        <a class="confirmbutton" href="ModificaPassword">
+            Modifica password
+        </a>
+    </div>
     <br>
 
     <c:if test="${utente.admin == true}">
-        <a href="UploadContenuto">
-            <button>Inserimento Contenuto</button>
-        </a>
-        <a href="DeleteContenuto">
-            <button>Elimina Contenuto</button>
-        </a>
+        <h3 class="section-title">Sezione amministratore</h3>
+        <div class="bottoni">
+            <a class="confirmbutton" href="UploadContenuto">
+                Inserimento Contenuto
+            </a>
+            <a class="confirmbutton" href="DeleteContenuto">
+                Elimina Contenuto
+            </a>
+        </div>
     </c:if>
 </section>
 
