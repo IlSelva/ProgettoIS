@@ -4,44 +4,50 @@
 <jsp:include page="/WEB-INF/jsp/header.jsp">
     <jsp:param name="pageTitle" value="${contenuto.titolo}"/>
 </jsp:include>
-<!-- style -->
+<style><%@include file="/WEB-INF/css/listeStyle.css"%></style>
 
-<div calss="container1">
+<div class="containerliste">
+    <div calss="container">
 
-    <div class="titolo">
-        <h1>Le mie liste</h1>
+        <div class="titololiste">
+            <h1>La mia lista</h1>
+        </div>
+
+        <div class="listainf">
+            <h2> <c:out value="${lista.titolo}"/> </h2>
+            <h4> <c:out value="${lista.descrizione}"/> </h4>
+        </div>
+
+        <div class="creazionelista">
+            <h2>Crea una nuova lista</h2>
+            <h4>Inserisci i tuoi film e serie preferite</h4>
+            <a href="nuovaLista">
+                <button class="confirmbutton"> crea la tua lista </button>
+            </a>
+        </div>
+
     </div>
-
-    <div class="listainf">
-        <h2> <c:out value="${lista.titolo}"/> </h2>
-    </div>
-
-    <div class="creazione">
-        <h1>Crea una nuova lista</h1>
-        <h3>Inserisci i tuoi film e serie preferite</h3>
-        <a href="nuovaLista">
-            <button> crea la tua lista </button>
-        </a>
-    </div>
-
 </div>
 
-<div class="container2">
-    <section class="griglia">
+<div class="containercontenuti">
+    <section class="griglialista">
         <c:forEach items = "{lista}" var = "contenuto">
-            <article class="contenutoLista">
-                <a class="copertina" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
-                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.jpg" alt=""/>">
+            <article class="contenutolista">
+                <a class="copertinalista" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
+                    <img class="copertinalista" src="img/contenuti/<c:out value="${contenuto.id}"/>.jpg" alt=""/>">
                 </a>
-                <h4 class="titolo">
-                    <a href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
+                <h3 class="titolo">
+                    <a class="titolo" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
                         <c:out value="${contenuto.titolo}"/>
                     </a>
-                </h4>
+                </h3>
                 <h4 class="info">
-                    <c:out value="${conetnuto.durata}"/> |
-                    <c:forEach items = "{contenuto}" var = "genere">
-                        <c:out value="${genere} "/>
+                    <c:out value="${conetnuto.durata}"/> min
+                    <ul class="generi">
+                        <c:forEach items = "{contenuto}" var = "genere">
+                            <li class="genere"> <c:out value="${genere} "/> </li>
+                        </c:forEach>
+                    </ul>
                 </h4>
                 <h5 class="descrizione">
                     <c:out value="${contenuto.descrizione}"/>
