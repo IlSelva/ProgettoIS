@@ -7,22 +7,23 @@
 <!-- style -->
 
 <div class="container">
-    <h1 class="titolo"> Log-in </h1>
-    <form name="Login" action="Login" method="post">
+    <div class="signform">
+        <h1 class="titolo"> Log-in </h1>
+        <form name="Login" action="Login" method="post">
 
-        <label for="email"> Email</label>
-        <input type="text" name="email" id="email">
-        <span id="messaggioemail"></span>
+            <label for="email"> Email</label>
+            <input type="text" name="email" id="email">
+            <span class="returnmessage" id="messaggioemail"></span>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <span id="messaggiopassword"></span>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <span class="returnmessage" id="messaggiopassword"></span>
 
-        <input id="confermalogin" type="submit" value="Login">
-        <span id="messaggioconferma"></span>
+            <input id="confermalogin" type="submit" value="Login">
+            <span class="returnmessage" id="messaggioconferma"></span>
 
-    </form>
-
+        </form>
+    </div>
 </div>
 
 <%@include file="footer.html"%>

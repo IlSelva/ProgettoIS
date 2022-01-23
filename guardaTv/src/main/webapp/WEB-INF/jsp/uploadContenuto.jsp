@@ -8,7 +8,7 @@
 
 <div class="container">
     <h1 class="titolo"> Contenuto </h1>
-    <form>
+    <form name="aggiuntacontenuto" action="aggiunto-contenuto" method="post">
         <label for="categoria"></label>
         <select class="categoria" name="categoria" id="categoria" onchange="categorySelectCheck(this);">
             <option value="film" selected> Film </option>
@@ -24,6 +24,7 @@
         <label for="descrizione"> Descrizione</label>
         <textarea name="descrizione" id="descrizione" required> </textarea> <!-- rows and cols -->
 
+        <!-- aggiungere i generi, nella servlet è una stringa di generi separati da , -->
         <label for="regista"> Regista </label>
         <input type="text" name="regista" id="regista" required>
 
@@ -42,10 +43,9 @@
 
             <label for="puntate"> Numero puntate (totali?)</label>
             <input type="number" name="puntate" id="puntate" required>
-
-            <label for="datafine"> Data ultima puntata</label>
-            <input type="date" name="datafine" id="datafine" required>
         </div>
+
+        <input class="confirmbutton" id="confermaregistrazione" type="submit" value="Conferma" disabled>
 
     </form>
 

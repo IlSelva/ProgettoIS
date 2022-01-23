@@ -1,0 +1,144 @@
+
+header {
+    background: #082032;
+    height: 10vh;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #eee
+}
+
+nav {
+    position: absolute;
+    width: 100%;
+}
+
+img{
+    background-image: url('/img/notfound.png');
+}
+
+.logo{
+    min-height: 25px;
+}
+
+a.logo, a.logo:link, a.logo:visited, a.logo:hover, a.logo:active {
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    color: #454f54;
+    text-decoration-line: none;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+}
+
+.logo > img{
+    width: auto;
+    height: 6vh;
+}
+
+#ricerca{
+    position: absolute;
+    display: flex;
+    top: 2vh;
+    right: 40vw;
+}
+
+.category , .searchTerm, .searchButton{
+    height: 6vh;
+    min-height: 30px;
+}
+
+.category{
+    padding: 5px;
+    border: 1px solid #454f54;
+    background: #454f54;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.searchTerm {
+    width: auto;
+    border: 5px solid #454f54;
+    border-right: none;
+    padding: 10px;
+    outline: none;
+    color: #f5d0ab;
+}
+
+.searchTerm:focus{
+    color: #454f54;
+}
+
+.searchButton {
+    width: 5vw;
+    min-width: 35px;
+    padding: 0;
+    border: 1px solid #454f54;
+    background: #454f54;
+    text-align: center;
+    color: #f9fafa;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.header-menu {
+    position: absolute;
+    top: 2vh;
+    right: .5vw;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-menu > li , .header-menu > li:link , .header-menu > li:visited , .header-menu > li:active {
+    display: inline-block;
+    padding: 1vh 1vw;
+    background-color: #454f54;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 1vw;
+    margin-right: 2vw;
+    transition: 0.2s linear all;
+    cursor: pointer;
+    width: 3vw;
+    border-radius: 5px ;
+    min-width: 20px;
+}
+
+.header-menu > li:hover{
+    color: #454f54;
+    box-shadow: 0 8vh 1vw rgba(0, 0, 0, 0.15) inset;
+}
+
+.header-menu a, .header-menu a:link, .header-menu a:visited, .header-menu a:hover, .header-menu a:active{
+    color: inherit;
+    text-decoration: inherit;
+    height: 6vh;
+    width: 5vw;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

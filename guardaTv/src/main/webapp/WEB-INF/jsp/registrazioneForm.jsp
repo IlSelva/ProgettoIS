@@ -7,34 +7,37 @@
 <!-- style -->
 
 <div class="container">
-    <h1 class="titolo"> Registrazione </h1>
-    <form name="registrazione" action="Registrazione" method="post">
+    <div class="signform">
+        <h1 class="titolo"> Registrazione </h1>
+        <form name="registrazione" action="Registrazione" method="post">
 
-        <label for="email"> Email</label>
-        <input type="email" name="email" id="email" oninput="validaEmail()">
-        <span id="messaggioemail"></span>
+            <label for="email"> Email</label>
+            <input type="email" name="email" id="email" oninput="validaEmail()">
+            <span class="returnmessage" id="messaggioemail"></span>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" oninput="validaPassword()">
-        <meter max="4" id="passwordstrength"></meter>
-        <p id="messaggiopassword"></p>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" oninput="validaPassword()">
+            <!--meter max="4" id="passwordstrength"></meter-->
+            <span class="returnmessage" id="messaggiopassword"></span>
 
-        <label for="confermapassword">Conferma Password</label>
-        <input type="password" name="passwordConferma" id="confermapassword" oninput="validaPassword()">
-        <span id="messaggiopasswordconferma"></span>
+            <label for="confermapassword">Conferma Password</label>
+            <input type="password" name="passwordConferma" id="confermapassword" oninput="validaPassword()">
+            <span class="returnmessage" id="messaggiopasswordconferma"></span>
 
-        <label for="username">Username</label>
-        <input type="text" name="nome" id="username" oninput="validaUsername()">
-        <span id="messaggiousername"></span>
+            <label for="username">Username</label>
+            <input type="text" name="nome" id="username" oninput="validaUsername()">
+            <span class="returnmessage" id="messaggiousername"></span>
 
-        <label for="datanascita"> Data di nascita</label>
-        <input typde="date" id="datanascita" name="datadinascita" id="datanascita">
-        <!-- data in formato yyyy-mm-dd secondo le specifiche RFC 3339 -->
+            <label for="datanascita"> Data di nascita</label>
+            <input type="date" id="datanascita" name="datadinascita" id="datanascita">
+            <!-- data in formato yyyy-mm-dd secondo le specifiche RFC 3339 -->
+            <span class="returnmessage" id="messaggiodatanascita"></span>
 
-        <input id="confermaregistrazione" type="submit" value="Conferma" disabled><span id="messaggioconferma"></span>
+            <input class="confirmbutton" id="confermaregistrazione" type="submit" value="Conferma" disabled>
+            <span class="returnmessage" id="messaggioconferma"></span>
 
-    </form>
-
+        </form>
+    </div>
 </div>
 
 <script>
