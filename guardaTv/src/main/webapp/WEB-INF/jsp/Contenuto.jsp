@@ -15,12 +15,12 @@
             <ul class="generi">
                 <c:forEach items = "{generi}" var = "genere">
                     <li class="genere">
-                        <c:out value="${genre}"/>
+                        <c:out value="${genere.nome}"/>
                     </li>
                 </c:forEach>
             </ul>
-            <form name="addList" action="addList" method="post">
-                <select class="listselector" name="lista">
+            <form name="addList" action="aggiunta-contenuto-lista" method="post">
+                <select class="listselector" name="nomeLista">
                     <option value="" label="" selected> liste </option>
                     <c:forEach items="${liste}" var="lista">
                         <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/>. </option>
@@ -42,7 +42,7 @@
 
                     <form id="nuovaRecensione">
                         <div class="riga1">
-                            <h3 class="nomeutente"> <:out value="${utente.username}"/> </h3>
+                            <h3 class="nomeutente"> <:out value="${utente.email}"/> </h3>
                             <div class="rating">
                                 <input type="radio" name="star" id="star5">
                                 <label for="star5"></label>
@@ -71,8 +71,8 @@
                     <c:forEach items = "{recensioni}" var = "recensione">
                         <div class="recensione">
                             <div class="riga1">
-                                <h3 class="nomeutente">
-                                    <c:out value="${recensione.utenteusername}"></c:out>
+                                <h3 class="nomeutente"> <!-- email -->
+                                    <c:out value="${recensione.utente}"></c:out>
                                 </h3>
                                 <p class="punteggio">
                                     <c:forEach var="i" begin="1" end="${recensione.punteggio}" step="1">
@@ -83,10 +83,10 @@
                                         <span class="fa fa-star-o"></span>
                                     </c:forEach>
                                 </p>
-                                <c:if test="${utente.admin == true}">
+                                <c:if test="${utente.administrator == true}">
                                     <form class="eliminarecensione">
-                                        <input type="hidden" name="idutente" value=${recensione.utenteid} />
-                                        <input class="confirmbutton" type="submit" value="f1f8" name="elimina" id="eliminarecensione">
+                                        <input type="hidden" name="idutente" value=${recensione.utente} />
+                                        <input class="confirmbutton" type="submit" value="f1f8" name="rimozioneRecensione" id="eliminarecensione">
                                     </form>
                                 </c:if>
                             </div>
