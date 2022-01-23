@@ -21,13 +21,14 @@
 
                 <label for="ricerca"></label>
                 <form id="ricerca" action="Ricerca" method="get">
-                    <select class="category" name="category">
+                    <select class="category" name="genere">
                         <option value="" label="" selected> generi </option>
                             <c:forEach items="${generi}" var="genere">
                                 <option value ="<c:out value="${genere.nome}"/>"> <c:out value="${genere.nome}"/> </option>
                             </c:forEach>
                     </select>
-                    <input class="searchTerm" type="text" name="q" autocomplete="off" list="ricerca-datalist" placeholder="Ricerca" onkeyup="ricerca(this.value)" value="<c:out value="${param.q}" />">
+                    <!-- togliere ajax -->
+                    <input class="searchTerm" type="text" name="ricerca" autocomplete="off" list="ricerca-datalist" placeholder="Ricerca" onkeyup="ricerca(this.value)" value="<c:out value="${param.q}" />">
                     <datalist id="ricerca-datalist"></datalist>
                     <button class="searchButton" type="submit">
                         <span class="fa fa-search" aria-hidden="true"></span>
