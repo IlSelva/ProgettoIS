@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  */
 public class Login {
     private String id;
-    private int idUtente;
+    private String idUtente;
     private String token;
     private Timestamp time;
 
@@ -37,7 +37,7 @@ public class Login {
      *
      * @return      l'identificativo dell'Utente
      */
-    public int getIdUtente() {
+    public String getIdUtente() {
         return idUtente;
     }
 
@@ -46,7 +46,7 @@ public class Login {
      *
      * @param  idutente  l'identificativo dell'Utente da settare
      */
-    public void setIdUtente(int idutente) {
+    public void setIdUtente(String idutente) {
         this.idUtente = idutente;
     }
 
