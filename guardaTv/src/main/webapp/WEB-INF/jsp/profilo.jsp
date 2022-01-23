@@ -31,7 +31,7 @@
     </div>
     <br>
 
-    <c:if test="${utente.admin == true}">
+    <c:if test="${utente.administrator == true}">
         <h3 class="section-title">Sezione amministratore</h3>
         <div class="bottoni">
             <a class="confirmbutton" href="UploadContenuto">
