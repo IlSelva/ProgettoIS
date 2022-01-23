@@ -10,11 +10,13 @@
 <section class="formModifica">
     <h1 class="section-title">Cambiare Password</h1>
     <form action="ModificaPassword" method="post">
-        <input type="hidden" name="id" value="${utente.id}">
+        <!--input type="hidden" name="id" value="$ {utente.id}"-->
         <label>Vecchia password</label>
         <input type="password" name="password" required>
         <label>Nuova password</label>
-        <input type="password" name="nuovapassword" required>
+        <input type="password" name="nuovaPassword" required>
+        <label>conferma nuova password</label>
+        <input type="password" name="confermaPassword" required>
 
         <c:if test="${utente != null}">
             <input class="confirmbutton" type="submit" name="modifica" value="Modifica">
