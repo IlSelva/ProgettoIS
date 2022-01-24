@@ -26,7 +26,7 @@ public class ElencoListeServlet extends HttpServlet {
         Utente utente = (Utente) request.getSession().getAttribute("utente");
         if (utente != null) {
             String id = utente.getEmail();
-            ArrayList<Lista> lista = (ArrayList<Lista>) listaDAO.doRetrieveByUtente(id, 0, 10);
+            List<Lista> lista = listaDAO.doRetrieveByUtente(id, 0, 10);
             request.setAttribute("liste", lista);
         }
 
