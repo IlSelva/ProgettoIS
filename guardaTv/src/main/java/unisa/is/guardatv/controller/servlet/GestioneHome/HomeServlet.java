@@ -1,10 +1,7 @@
 package unisa.is.guardatv.controller.servlet.GestioneHome;
 
 
-import unisa.is.guardatv.StorageLayer.Contenuto;
-import unisa.is.guardatv.StorageLayer.ContenutoDAO;
-import unisa.is.guardatv.StorageLayer.Lista;
-import unisa.is.guardatv.StorageLayer.ListaDAO;
+import unisa.is.guardatv.StorageLayer.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
+
 
 @WebServlet(name = "HomeServlet", urlPatterns="", loadOnStartup=1)
 public class HomeServlet extends HttpServlet {
@@ -42,6 +41,6 @@ public class HomeServlet extends HttpServlet {
 	}
 
 
-
+	ContenutoDAO serviceCont = new ContenutoDAO();
 	
 }
