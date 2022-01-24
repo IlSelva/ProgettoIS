@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 /**
  * Questa classe modella il concetto "ContenutoLista" di Contenuti appartenenti alla lista di uno specifico utente all'interno del sistema.
