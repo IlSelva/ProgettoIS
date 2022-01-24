@@ -19,12 +19,20 @@ import java.util.List;
 public class HomeServlet extends HttpServlet {
 	private final ContenutoDAO contenutoDAO = new ContenutoDAO();
 
+	@Override
+	public void init() throws ServletException {
+		GenereDAO serviceGen = new GenereDAO();
+		List<Genere> generi = serviceGen.doRetrieveAll();
+		getServletContext().setAttribute("generi", generi);
+		super.init();
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		List<Contenuto> contenuti = serviceCont.doRetrieveAll(0, 10);
 		List<Contenuto> ultimi = serviceCont.doRetrieveLast(0,10);
 		request.setAttribute("contenuti", contenuti);

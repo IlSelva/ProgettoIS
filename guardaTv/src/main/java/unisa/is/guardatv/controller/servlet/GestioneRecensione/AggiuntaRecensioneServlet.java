@@ -26,7 +26,7 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Recensione recensione;
         // devo prendere il contenuto
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Contenuto contenuto = ContenutoDAO.doRetrieveById(id);
 
         // prendo i dati della recensione

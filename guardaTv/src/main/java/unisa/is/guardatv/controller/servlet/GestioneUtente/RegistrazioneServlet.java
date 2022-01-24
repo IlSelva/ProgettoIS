@@ -30,7 +30,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         if (!(email != null && email.matches("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w+)+$"))) {
-            request.setAttribute("notifica", "E-mail non valida");
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("E-mail non valida");
         }
 
         String password = request.getParameter("password");
@@ -51,12 +51,12 @@ public class RegistrazioneServlet extends HttpServlet {
 
         String passwordConferma = request.getParameter("passwordConferma");
         if (!password.equals(passwordConferma)) {
-            request.setAttribute("notifica", "Password e conferma differenti");
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Password e conferma differenti");
         }
 
         String username = request.getParameter("nome");
         if (!(username != null && username.trim().length() > 0 && username.matches("^[ a-zA-Z\u00C0-\u00ff]+$"))) {
-            request.setAttribute("notifica", "Username non valido");
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Username non valido");
         }
 
 
@@ -66,7 +66,7 @@ public class RegistrazioneServlet extends HttpServlet {
         LocalDate date = LocalDate.parse(data, formatter);
 
         if (date.getYear() >= 2002) // deve essere maggiorenne
-            request.setAttribute("notifica", "Devi essere maggiorenne");
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Devi essere maggiorenne");
 
         Utente utente = new Utente();
         utente.setSalt(salt);

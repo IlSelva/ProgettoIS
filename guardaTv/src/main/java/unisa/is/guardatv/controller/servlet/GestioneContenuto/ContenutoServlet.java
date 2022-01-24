@@ -21,7 +21,7 @@ public class ContenutoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Contenuto contenuto = contenutoDAO.doRetrieveById(id);
 
         if (contenuto == null) {
