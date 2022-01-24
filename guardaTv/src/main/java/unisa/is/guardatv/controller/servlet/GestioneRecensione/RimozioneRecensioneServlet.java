@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/RimozioneRecensione")
@@ -31,11 +29,11 @@ public class RimozioneRecensioneServlet extends HttpServlet {
 
         // devo prendere il contenuto
         String idContenuto = request.getParameter("id");
-        Contenuto contenuto = contenutoDAO.doRetrieveById(idContenuto);
-        ArrayList<Recensione> recensione = new ArrayList<>();
-        recensione = (ArrayList<Recensione>) recensioneDAO.doRetrieveByContenuto(idContenuto, 0, 1); // o devo fare l'add?
+
+        List<Recensione> recensione = recensioneDAO.doRetrieveByContenuto(idContenuto, 0, 1);
+
         Recensione recensione1 = recensione.get(0);
-       String idUtente = recensione1.getUtente();
+        String idUtente = recensione1.getUtente();
         recensioneDAO.doDelete(idUtente, idContenuto);
 
         request.setAttribute("notifica", "Recensione rimossa con successo");
