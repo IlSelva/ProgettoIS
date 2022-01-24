@@ -33,7 +33,7 @@ public class RimozioneRecensioneServlet extends HttpServlet {
         String idContenuto = request.getParameter("id");
         Contenuto contenuto = contenutoDAO.doRetrieveById(idContenuto);
         ArrayList<Recensione> recensione = new ArrayList<>();
-        recensione = (ArrayList<Recensione>) RecensioneDAO.doRetrieveByContenuto(idContenuto, 0, 1); // o devo fare l'add?
+        recensione = (ArrayList<Recensione>) recensioneDAO.doRetrieveByContenuto(idContenuto, 0, 1); // o devo fare l'add?
         Recensione recensione1 = recensione.get(0);
        String idUtente = recensione1.getUtente();
         recensioneDAO.doDelete(idUtente, idContenuto);
