@@ -1,10 +1,6 @@
 package unisa.is.guardatv.controller.servlet.GestioneRecensione;
 
-import unisa.is.guardatv.StorageLayer.Utente;
-import unisa.is.guardatv.StorageLayer.UtenteDAO;
-import unisa.is.guardatv.StorageLayer.ContenutoDAO;
-import unisa.is.guardatv.StorageLayer.Lista;
-import unisa.is.guardatv.StorageLayer.ListaDAO;
+import unisa.is.guardatv.StorageLayer.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +14,7 @@ import java.util.List;
 
 @WebServlet("/AggiuntaRecensione")
 public class AggiuntaRecensioneServlet extends HttpServlet {
-
+    private final ContenutoDAO contenutoDAO = new ContenutoDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -27,21 +23,21 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
         Recensione recensione;
         // devo prendere il contenuto
         String id = request.getParameter("id");
-        Contenuto contenuto = ContenutoDAO.doRetrieveById(id);
+        Contenuto contenuto = contenutoDAO.doRetrieveById(id);
 
         // prendo i dati della recensione
         int punteggio = Integer.parseInt(request.getParameter("punteggio"));
-        String testo = request.getParameter("descrizione"); // il testo è opzionale
+        String descrizione = request.getParameter("descrizione"); // il testo è opzionale
 
         if (punteggio > 0 && punteggio <= 5) {
             recensione = new Recensione();
             recensione.setPunteggio(punteggio);
             if (descrizione != null)
-                recensione.setTesto(testo);
+                recensione.setDescrizione(descrizione);
 
             recensioneDAO.doSave(recensione);
-            contenuto.setRecensione(Recensione);
-            ContenutoDAO.doUpdate(contenuto);
+            recensione.setContenuto(contenuto.getId());
+            contenutoDAO.doUpdate(contenuto);
         }
         request.setAttribute("notifica", "Recensione salvata con successo");
 
