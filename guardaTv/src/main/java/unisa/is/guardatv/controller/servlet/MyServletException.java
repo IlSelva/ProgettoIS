@@ -27,7 +27,7 @@ public class MyServletException extends ServletException {
 
     public static void checkAdmin(HttpServletRequest request) throws MyServletException {
         Utente utente = (Utente) request.getSession().getAttribute("utente");
-        if (utente == null || !utente.isAdmin()) {
+        if (utente == null || !utente.getAdministrator()) {
             throw new MyServletException("Utente non autorizzato");
         }
     }
