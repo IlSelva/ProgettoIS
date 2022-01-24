@@ -16,7 +16,8 @@ import java.util.List;
 public class ContenutoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final ContenutoDAO contenutoDAO = new ContenutoDAO();
-
+    private final RecensioneDAO recensioneDAO = new RecensioneDAO()
+            ;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -29,7 +30,7 @@ public class ContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Contenuto non trovato.");
         }
 
-        List<Recensione> recensioni = RecensioneDAO.doRetrieveByContenuto(id, 0,100);
+        List<Recensione> recensioni = recensioneDAO.doRetrieveByContenuto(id, 0,100);
 
         request.setAttribute("contenuto", contenuto);
         request.setAttribute("recensioni", recensioni);
