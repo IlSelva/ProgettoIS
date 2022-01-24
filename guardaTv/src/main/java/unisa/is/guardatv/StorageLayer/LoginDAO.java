@@ -3,8 +3,21 @@ package unisa.is.guardatv.StorageLayer;
 import java.sql.*;
 import java.util.UUID;
 
+/**
+ * Questa classe comunica con il Database per la gestione e raccolta degli
+ * oggetti "Login" attraverso vari tipi di query.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
 public class LoginDAO {
 
+    /**
+     * Ritorna il Login in base all'identificativo
+     *
+     * @param  id   l'identificativo del Login
+     * @return      il Login in base all'identificativo
+     */
     public Login doRetrieveById(String id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT id, idUtente, token, time FROM login WHERE id=?");
@@ -13,7 +26,7 @@ public class LoginDAO {
             if (rs.next()) {
                 Login l = new Login();
                 l.setId(rs.getString(1));
-                l.setIdUtente(rs.getInt(2));
+                l.setIdUtente(rs.getString(2));
                 l.setToken(rs.getString(3));
                 l.setTime(rs.getTimestamp(4));
                 return l;
@@ -24,13 +37,18 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Aggiunge al Database un nuovo Login
+     *
+     * @param  login   il Login da aggiungere al Database
+     */
     public void doSave(Login login) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO login (id, idUtente, token, time) VALUES(?, ?,?,?)", Statement.RETURN_GENERATED_KEYS);
             String id = UUID.randomUUID().toString();
             ps.setString(1, id);
-            ps.setInt(2, login.getIdUtente());
+            ps.setString(2, login.getIdUtente());
             ps.setString(3, login.getToken());
             ps.setTimestamp(4, login.getTime());
             if (ps.executeUpdate() != 1) {
@@ -42,10 +60,15 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Modifica nel Database un Login esistente
+     *
+     * @param  login   un Login da modificare nel Database
+     */
     public void doUpdate(Login login) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE login SET idUtente=?, token=?, time=? WHERE id=?");
-            ps.setInt(1, login.getIdUtente());
+            ps.setString(1, login.getIdUtente());
             ps.setString(2, login.getToken());
             ps.setTimestamp(3, login.getTime());
             ps.setString(4, login.getId());
@@ -57,6 +80,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Elimina dal Database un Login esistente
+     *
+     * @param  id   l'identificativo del Login
+     */
     public void doDelete(String id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM login WHERE id=?");
@@ -69,4 +97,3 @@ public class LoginDAO {
         }
     }
 }
-

@@ -4,8 +4,22 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe comunica con il Database per la gestione e raccolta degli
+ * oggetti "Utente" attraverso vari tipi di query.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
 public class UtenteDAO {
 
+    /**
+     * Ritorna la lista di tutti gli Utenti
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @return      la lista di tutti gli Utenti
+     */
     public List<Utente> doRetrieveAll(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -30,6 +44,12 @@ public class UtenteDAO {
         }
     }
 
+    /**
+     * Ritorna la lista di tutti gli Utenti in base all'email identificativa dell'Utente
+     *
+     * @param  email   l'email identificativa dell'Utente
+     * @return      la lista di tutti gli Utenti in base all'email identificativa dell'Utente
+     */
     public Utente doRetrieveByEmail(String email) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -52,6 +72,13 @@ public class UtenteDAO {
         }
     }
 
+    /**
+     * Ritorna la lista di tutti gli Utenti in base all'email identificativa e la password dell'Utente
+     *
+     * @param  email   l'email identificativa dell'Utente
+     * @param  password   la password dell'Utente
+     * @return      la lista di tutti gli Utenti in base all'email identificativa e la password dell'Utente
+     */
     public Utente doRetrieveByEmailPassword(String email, String password) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -75,7 +102,11 @@ public class UtenteDAO {
         }
     }
 
-
+    /**
+     * Aggiunge al Database un nuovo Utente
+     *
+     * @param  utente   l'Utente da aggiungere al Database
+     */
     public void doSave(Utente utente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -95,6 +126,11 @@ public class UtenteDAO {
         }
     }
 
+    /**
+     * Modifica nel Database un Utente esistente
+     *
+     * @param  utente   l'Utente da modificare nel Database
+     */
     public void doUpdate(Utente utente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -113,6 +149,11 @@ public class UtenteDAO {
         }
     }
 
+    /**
+     * Elimina dal Database un Utente esistente
+     *
+     * @param  email  l'email identificativo dell'Utente da eliminare
+     */
     public static void doDelete(String email) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Utente WHERE email=?");

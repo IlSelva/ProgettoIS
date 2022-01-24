@@ -2,87 +2,88 @@ package unisa.is.guardatv.StorageLayer;
 
 import java.sql.Timestamp;
 
+/**
+ * Questa classe modella il concetto di "Login" all'interno del sistema.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
 public class Login {
     private String id;
-    private int idUtente;
+    private String idUtente;
     private String token;
     private Timestamp time;
 
+    /**
+     * Ritorna l'identificativo del Login
+     *
+     * @return      l'identificativo del Login
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Setta l'identificativo del Login
+     *
+     * @param  id  l'identificativo del Login da settare
+     */
     public void setId(String id) {
         this.id = id;
     }
 
-    public int getIdUtente() {
+    /**
+     * Ritorna l'identificativo dell'Utente
+     *
+     * @return      l'identificativo dell'Utente
+     */
+    public String getIdUtente() {
         return idUtente;
     }
 
-    public void setIdUtente(int idutente) {
+    /**
+     * Setta l'identificativo dell'Utente
+     *
+     * @param  idutente  l'identificativo dell'Utente da settare
+     */
+    public void setIdUtente(String idutente) {
         this.idUtente = idutente;
     }
 
+    /**
+     * Ritorna un Token identificativo dell'Utente
+     *
+     * @return      un Token identificativo dell'Utente
+     */
     public String getToken() {
         return token;
     }
 
+    /**
+     * Setta un Token identificativo dell'Utente
+     *
+     * @param  token  un Token identificativo da settare
+     */
     public void setToken(String token) {
         this.token = token;
     }
 
+    /**
+     * Ritorna il momento in cui il Login è stato svolto
+     *
+     * @return      il momento in cui il Login è stato svolto
+     */
     public Timestamp getTime() {
         return time;
     }
 
+    /**
+     * Setta il momento in cui il Login è stato svolto
+     *
+     * @param  time  il momento in cui il Login è stato svolto da settare
+     */
     public void setTime(Timestamp time) {
         this.time = time;
-    }
-
-    @Override
-    public String toString() {
-        return "Login [id=" + id + ", idUtente=" + idUtente + ", token=" + token + ", time=" + time + "]";
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + idUtente;
-        result = prime * result + ((time == null) ? 0 : time.hashCode());
-        result = prime * result + ((token == null) ? 0 : token.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Login other = (Login) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (idUtente != other.idUtente)
-            return false;
-        if (time == null) {
-            if (other.time != null)
-                return false;
-        } else if (!time.equals(other.time))
-            return false;
-        if (token == null) {
-            if (other.token != null)
-                return false;
-        } else if (!token.equals(other.token))
-            return false;
-        return true;
     }
 
 }

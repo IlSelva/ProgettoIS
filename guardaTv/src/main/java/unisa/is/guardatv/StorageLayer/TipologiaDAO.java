@@ -8,13 +8,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe comunica con il Database per la gestione e raccolta degli
+ * oggetti "Tipologia",contenenti le liste di generi dei specifici Contenuti, attraverso vari tipi di query.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
 public class TipologiaDAO {
 
 
     ContenutoDAO serviceC = new ContenutoDAO();
     GenereDAO serviceG = new GenereDAO();
 
-
+    /**
+     * Ritorna la lista di tutti i Contenuti in base al Genere
+     *
+     * @param  genere   il nome del Genere
+     * @return      la lista di tutti i Contenuti in base al Genere
+     */
     public List<Contenuto> allContenutiByGenere(String genere) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT Contenuto FROM Tipologia WHERE genere = ?");
@@ -29,7 +41,12 @@ public class TipologiaDAO {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Ritorna la lista di tutti i Generi in base all'identificativo ufficiale ISAN del Contenuto
+     *
+     * @param  contenuto   l'identificativo ufficiale ISAN del Contenuto
+     * @return      la lista di tutti i Contenuti in base al Genere
+     */
     public List<Genere> allGeneriByContenuto(String contenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT Genere FROM Tipologia WHERE contenuto = ?");
@@ -45,6 +62,11 @@ public class TipologiaDAO {
         }
     }
 
+    /**
+     * Aggiunge al Database una nuova Tipologia
+     *
+     * @param  tip   la Tipologia da aggiungere al Database
+     */
     public void doSave(Tipologia tip) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -59,6 +81,12 @@ public class TipologiaDAO {
         }
     }
 
+    /**
+     * Elimina dal Database una Tipologia esistente
+     *
+     * @param  contenuto   l'identificativo ufficiale ISAN del Contenuto
+     * @param  genere      il nome del genere
+     */
     public void doDelete(String contenuto, String genere) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Tipologia WHERE contenuto=? AND genere=?");
@@ -73,5 +101,4 @@ public class TipologiaDAO {
     }
 
 }
-
 

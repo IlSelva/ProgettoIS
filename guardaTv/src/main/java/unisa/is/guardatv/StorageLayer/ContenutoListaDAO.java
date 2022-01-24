@@ -7,11 +7,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe comunica con il Database per la gestione e raccolta degli
+ * oggetti "ContenutoLista" attraverso vari tipi di query.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
+
 public class ContenutoListaDAO {
 
     ContenutoDAO service = new ContenutoDAO();
 
-    /* ti do la lista dei contenuti data la chiave della lista */
+    /**
+     * Ritorna la lista dei Contenuti appartenenti ad una specifica Lista
+     *
+     * @param  lsNome   il nome della Lista
+     * @param  lsUtente   l'identificativo dell'Utente propietario della Lista
+     * @return      la lista dei Contenuti appartenenti ad una specifica Lista
+     */
     public List<Contenuto> allContenutiByLista(String lsNome,String lsUtente){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT Contenuto FROM ContenutoLista WHERE lsNome = ? AND lsUtente = ?");
@@ -29,7 +43,13 @@ public class ContenutoListaDAO {
     }
 
 
-
+    /**
+     * Aggiunge un Contenuto ad una Lista nel Database
+     *
+     * @param  lsNome   il nome della Lista
+     * @param  lsUtente   l'identificativo dell'Utente propietario della Lista
+     * @param  idContenuto   l'identificativo ufficiale ISAN del Contenuto
+     */
     public void AddContenuto(String lsNome,String lsUtente,String idContenuto){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -47,7 +67,13 @@ public class ContenutoListaDAO {
 
 
 
-
+    /**
+     * Rimuove un Contenuto da una Lista nel Database
+     *
+     * @param  lsNome   il nome della Lista
+     * @param  lsUtente   l'identificativo dell'Utente propietario della Lista
+     * @param  idContenuto   l'identificativo ufficiale ISAN del Contenuto
+     */
     public void RemoveContenuto(String lsNome,String lsUtente,String idContenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM ContenutoLista WHERE lsNome=? AND lsUtente=? AND idContenuto=?");

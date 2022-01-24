@@ -1,0 +1,162 @@
+html{
+    height: 100vh;
+    position: relative;
+    font-family: "Trebuchet MS";  /* font Trebuchet sans serif, consigliato da british dyslexia association */
+}
+
+body{
+    margin: 0 0 max(4vh,20px) 0; /*bottom space for footer*/
+}
+
+.home-container{
+    display: block;
+    width: 100%;
+    align-items: center;
+}
+
+.container{
+    margin-top: 5vh;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+
+.section-title{
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.griglia{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    max-width: 80vw;
+    height: auto;
+}
+
+.cont{
+    display: block;
+    text-align: center;
+    margin-left: 2vw;
+    margin-right: 1vw;
+    white-space: nowrap;
+}
+
+.cont img{
+    height: 40vh;
+    width: auto;
+    background-image: url('/img/notfound.png')
+}
+
+.titolofilm, titolofilm:visited{
+    white-space: normal;
+    word-wrap: break-word;
+    width: 20vw;
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+footer{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    background: #082032;
+    height: 5vh;
+    min-height: 20px;
+    width: 100%;
+    padding-top: 1vh;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 1vh;
+}
+
+
+/* login e register page*/
+.signform{
+    border: 2px solid #454f54;
+    width: 70vw;
+    margin: 1vh 1vw;
+    padding-left: 2vw;
+    border-radius: 10px;
+}
+
+
+.returnmessage{
+    display: block;
+    height: fit-content;
+    margin-left: 5px;
+    margin-bottom: 2vh;
+}
+
+.signform input{
+    border: 2px solid #364A58;
+    border-radius: 5px;
+    margin-bottom: 1vh;
+    margin-right: .5vh;
+}
+
+.confirmbutton{
+    background: #364A58;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid #364A58;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/*
+.confirmbutton:hover{
+    shadow
+}
+ */
+
+.infoutente{
+    border: 2px solid #454f54;
+    border-radius: 10px;
+    padding: 2vh 2vw;
+    margin: 0 5vw;
+}
+
+.infoutente h4{
+    margin-left: 5vw;
+}
+
+.bottoni{
+    margin: 4vh 2vw;
+}
+
+.infoutente a{
+    width: fit-content;
+    height: fit-content;
+}
+
+.infoutente a{
+    margin: 2vh 2vw;
+}
+.infoutente .section-title{
+    margin: 3vh 2vw;
+}
+
+.formModifica{
+    display: block;
+    border: 2px solid #364A58;
+    border-radius: 10px;
+    margin-top: 5vh;
+    margin-left: 5vw;
+    padding-left: 2vw;
+    width: 75vw;
+}
+
+.formModifica input{
+    display: block;
+    margin-bottom: 3vh;
+    border: 2px solid #364A58;
+    border-radius: 5px;
+}

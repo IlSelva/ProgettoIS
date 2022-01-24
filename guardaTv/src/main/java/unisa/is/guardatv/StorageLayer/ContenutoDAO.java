@@ -4,8 +4,23 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe comunica con il Database per la gestione e raccolta degli
+ * oggetti "Contenuto" attraverso vari tipi di query.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
+
 public class ContenutoDAO {
 
+    /**
+     * Ritorna la lista di tutti i Contenuti
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @return      la lista di tutti i Contenuti
+     */
     public List<Contenuto> doRetrieveAll(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -35,7 +50,13 @@ public class ContenutoDAO {
         }
     }
 
-    /* contenuti ordinati in base al titolo  */
+    /**
+     * Ritorna la lista di tutti i Contenuti ordinati in base al titolo
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @return      la lista di tutti i Contenuti ordinati in base al titolo
+     */
     public List<Contenuto> doRetrieveLast(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -65,6 +86,13 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Ritorna la lista di tutti i Contenuti che sono Film
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @return      la lista di tutti i Contenuti che sono Film
+     */
     public List<Contenuto> doRetrieveAllFilm(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -92,6 +120,13 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Ritorna la lista di tutti i Contenuti che sono Serie
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @return      la lista di tutti i Contenuti che sono Serie
+     */
     public List<Contenuto> doRetrieveAllSeries(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -121,6 +156,12 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Ritorna la lista di tutti i Contenuti in base all'identificativo ufficiale ISAN
+     *
+     * @param  id   l'identificativo ufficiale ISAN
+     * @return      la lista di tutti i Contenuti in base all'identificativo ufficiale ISAN
+     */
     public Contenuto doRetrieveById(String id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -149,7 +190,14 @@ public class ContenutoDAO {
     }
 
 
-
+    /**
+     * Ritorna la lista di tutti i Contenuti in base al titolo
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @param  titolo   il titolo del Contenuto
+     * @return      la lista di tutti i Contenuti in base al titolo
+     */
     public List<Contenuto> doRetrieveByTitolo(String titolo, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -179,7 +227,14 @@ public class ContenutoDAO {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Ritorna la lista di tutti i Contenuti,che sono Film, in base al titolo
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @param  titolo   il titolo del Film
+     * @return      la lista di tutti i Contenuti,che sono Film, in base al titolo
+     */
     public List<Contenuto> doRetrieveByTitoloFilm(String titolo, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -208,6 +263,14 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Ritorna la lista di tutti i Contenuti,che sono Serie, in base al titolo
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @param  titolo   il titolo della Serie
+     * @return      la lista di tutti i Contenuti,che sono Serie, in base al titolo
+     */
     public List<Contenuto> doRetrieveByTitoloSerie(String titolo, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -236,6 +299,15 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Ritorna la lista di tutti i Contenuti in base al titolo o alla descrizione
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @param  descrizione   la descrizione del Contenuto
+     * @param  titolo   il titolo del Contenuto
+     * @return      la lista di tutti i Contenuti in base al titolo o alla descrizione
+     */
     public List<Contenuto> doRetrieveByTitoloOrDescrizione(String titolo, String descrizione, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -267,7 +339,14 @@ public class ContenutoDAO {
         }
     }
 
-
+    /**
+     * Ritorna la lista di tutti i Contenuti in base al regista
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @param  regista   il regista del Contenuto
+     * @return      la lista di tutti i Contenuti in base al regista
+     */
     public List<Contenuto> doRetrieveByRegista(String regista, int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -298,6 +377,11 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Aggiunge al Database un nuovo Contenuto
+     *
+     * @param  contenuto   il Contenuto da aggiungere al Database
+     */
     public void doSave(Contenuto contenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -322,6 +406,11 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Modifica nel Database un Contenuto esistente
+     *
+     * @param  contenuto   il Contenuto da modificare nel Database
+     */
     public void doUpdate(Contenuto contenuto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
@@ -345,6 +434,11 @@ public class ContenutoDAO {
         }
     }
 
+    /**
+     * Elimina dal Database un Contenuto esistente
+     *
+     * @param  id   l'identificativo ufficiale ISAN
+     */
     public void doDelete(String id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Libro WHERE id=?");

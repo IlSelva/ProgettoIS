@@ -7,8 +7,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe comunica con il Database per la gestione e raccolta degli
+ * oggetti "Lista" attraverso vari tipi di query.
+ *
+ * @author Niccolo' Cacace
+ * @version 0.1
+ */
 public class ListaDAO {
 
+    /**
+     * Ritorna la lista di tutte le Liste dello specifico utente
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @param  utente   l'identificativo dell'utente
+     * @return      la lista di tutte le Liste dello specifico utente
+     */
     public List<Lista> doRetrieveByUtente(String utente, int offset, int limit){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -31,6 +46,15 @@ public class ListaDAO {
         }
     }
 
+    /**
+     * Ritorna la specifica Lista appartenente allo specifico utente
+     *
+     * @param  offset  il limite inferiore impostato nella query al database
+     * @param  limit   il limite superiore impostato nella query al database
+     * @param  utente   l'identificativo dell'utente
+     * @param  nome    il nome della lista
+     * @return      la specifica Lista appartenente allo specifico utente
+     */
     public Lista DoRetrievebyId (String nome,String utente,int offset,int limit){ // idlista = idutente+nomelista
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -52,6 +76,11 @@ public class ListaDAO {
         }
     }
 
+    /**
+     * Aggiunge al Database una nuova Lista
+     *
+     * @param  ls   la nuova Lista da aggiungere al Database
+     */
     public void DoSave(Lista ls){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -68,6 +97,12 @@ public class ListaDAO {
     }
 
 
+    /**
+     * Elimina dal Database una Lista esistente
+     *
+     * @param  nome     il nome della Lista
+     * @param  utente   l'identificativo dell'utente
+     */
     public void doDelete(String nome, String utente){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Lista WHERE nome=? AND utente=?");
