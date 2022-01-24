@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         Login login = new Login();
-        login.setIdUtente(utente.getId());
+        login.setIdUtente(utente.getEmail());
         login.setToken(UUID.randomUUID().toString());
         login.setTime(Timestamp.from(Instant.now()));
 

@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
@@ -64,16 +65,16 @@ public class RegistrazioneServlet extends HttpServlet {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy, MM, dd", Locale.ITALIAN);
         LocalDate date = LocalDate.parse(data, formatter);
-
+        Date dataDiNascita = Date.from(Instant.from(date));
         if (date.getYear() >= 2002) // deve essere maggiorenne
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Devi essere maggiorenne");
 
         Utente utente = new Utente();
         utente.setSalt(salt);
-        utente.setPassword(saltedPassword);
+        utente.setPasswordhash(saltedPassword);
         utente.setUsername(username);
         utente.setEmail(email);
-        utente.setDataDiNascita(date);
+        utente.setDataDiNascita(dataDiNascita);
 
         utenteDAO.doSave(utente);
         request.getSession().setAttribute("utente", utente);

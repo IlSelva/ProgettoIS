@@ -48,7 +48,7 @@ public class ModificaPasswordServlet extends HttpServlet {
 
             if (nuovaPassword != null) {
                 utente.setSalt(salt);
-                utente.setPassword(saltedPassword);
+                utente.setPasswordhash(saltedPassword);
                 utenteDAO.doUpdate(utente);
             }
         }
