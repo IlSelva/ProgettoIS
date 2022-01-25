@@ -2,7 +2,7 @@ CREATE DATABASE GuardaTV;
 use GuardaTv;
 
 Create Table Contenuto(
-id varchar(26) not null,
+id varchar(33) not null,
 titolo varchar(50) not null,
 descrizione varchar(255) not null,
 regista varchar(50) not null,
