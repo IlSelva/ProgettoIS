@@ -55,7 +55,7 @@ foreign key (Contenuto) references Contenuto(id)
 
 Create Table Login (
   id char(36) NOT NULL,
-  emailUtente char(256) NOT NULL,
+  emailUtente varchar(256) NOT NULL,
   token char(36) NOT NULL,
   time timestamp NOT NULL,
   PRIMARY KEY (id),
