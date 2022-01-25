@@ -2,9 +2,10 @@
          pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/WEB-INF/jsp/header.jsp">
-    <jsp:param name="pageTitle" value="${contenuto.titolo}"/>
+    <jsp:param name="pageTitle" value="Registrazione utente"/>
 </jsp:include>
-<!-- style -->
+
+<style><%@include file="../css/generalStyle.css"%></style>
 
 <div class="container">
     <div class="signform">
@@ -30,13 +31,16 @@
 
             <label for="datanascita"> Data di nascita</label>
             <input type="date" id="datanascita" name="datadinascita" id="datanascita">
-            <!-- data in formato yyyy-mm-dd secondo le specifiche RFC 3339 -->
+            <!-- data in formato yyyy-MM-dd secondo le specifiche RFC 3339 -->
             <span class="returnmessage" id="messaggiodatanascita"></span>
 
             <input class="confirmbutton" id="confermaregistrazione" type="submit" value="Conferma" disabled>
-            <span class="returnmessage" id="messaggioconferma"></span>
+            <span class="returnmessage" id="registramessaggio"></span>
 
         </form>
+        <h4>
+            <a href="LoginForm"> sei già registrato? clicca qui.</a>
+        </h4>
     </div>
 </div>
 
@@ -83,13 +87,13 @@
             && input.value.match(/^[ a-zA-Z\u00C0-\u00ff]+$/)) {
             input.style.border = borderOk;
             nomeOk = true;
-            document.getElementById('messaggiousername').innerHTML = 'messaggio di errore';
-            document.getElementById('messaggiousername').style.color="#f00";
+            document.getElementById('messaggiousername').innerHTML = '&check;';
+            document.getElementById('messaggiousername').style.color="#080";
         } else {
             input.style.border = borderNo;
             nomeOk = false;
-            document.getElementById('messaggiousername').innerHTML = '&check;';
-            document.getElementById('messaggiousername').style.color="#080";
+            document.getElementById('messaggiousername').innerHTML = 'messaggio di errore';
+            document.getElementById('messaggiousername').style.color="#f00";
         }
         cambiaStatoRegistrami();
     }
@@ -112,11 +116,11 @@
 
     function cambiaStatoRegistrami() {
         if (passwordOk && nomeOk && emailOk) {
-            document.getElementById('registrami').disabled = false;
+            document.getElementById('confermaregistrazione').disabled = false;
             document.getElementById('registramimessaggio').innerHTML = '';
         } else {
-            document.getElementById('registrami').disabled = true;
-            document.getElementById('registramimessaggio').innerHTML = 'Verifica che tutti i campi siano in verde.';
+            document.getElementById('confermaregistrazione').disabled = true;
+            document.getElementById('registramessaggio').innerHTML = 'Verifica che tutti i campi siano validi.';
         }
     }
 </script>
