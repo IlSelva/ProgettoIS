@@ -4,7 +4,7 @@ use GuardaTv;
 Create Table Contenuto(
 id varchar(33) not null,
 titolo varchar(50) not null,
-descrizione varchar(400) not null,
+descrizione varchar(500) not null,
 regista varchar(50) not null,
 durata int(10) not null,
 dataDiUscita date not null,   /*rivedere data*/
