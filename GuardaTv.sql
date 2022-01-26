@@ -25,7 +25,7 @@ primary key(nomeGenere)
 
 
 Create Table Tipologia(  /*relazione tra Contenuto(1,n) e Genere(0,n) */
-Contenuto varchar(26) not null,
+Contenuto varchar(33) not null,
 Genere varchar(30) not null,
 primary key(Contenuto,Genere),
 foreign key(Contenuto) references Contenuto(id),
@@ -45,7 +45,7 @@ Create Table Utente(
 
 Create Table Recensione(
 Utente varchar(256) not null,
-Contenuto varchar(26) not null,
+Contenuto varchar(33) not null,
 punteggio int not null,
 descrizione varchar(500),
 primary key(Utente,Contenuto),
@@ -74,7 +74,7 @@ foreign key (Utente) references Utente(email)
 Create Table ContenutoLista (
 ListaNome varchar(50) not null, 
 ListaUtente varchar(256) not null,
-Contenuto varchar(26) not null,
+Contenuto varchar(33) not null,
 foreign key(Contenuto) references Contenuto(id),
 foreign key(ListaNome) references Lista(nome),
 foreign key(ListaUtente) references Lista(Utente),
