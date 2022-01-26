@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
         cookie.setMaxAge(30 * 24 * 60 * 60); // 30 giorni
         response.addCookie(cookie);
 
-        request.getSession().setAttribute("utente", utenteDaLoggare);
+        request.getSession().setAttribute("utente", utente);
 
         String dest = request.getHeader("referer");
         if ( (dest == null || dest.contains("/Login") || dest.contains("/Registrazione") || dest.trim().isEmpty()) ) {
