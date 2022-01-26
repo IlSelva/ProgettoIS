@@ -47,7 +47,7 @@ Create Table Recensione(
 Utente varchar(256) not null,
 Contenuto varchar(26) not null,
 punteggio int not null,
-descrizione varchar(255),
+descrizione varchar(500),
 primary key(Utente,Contenuto),
 foreign key (Utente) references Utente(email),
 foreign key (Contenuto) references Contenuto(id)
