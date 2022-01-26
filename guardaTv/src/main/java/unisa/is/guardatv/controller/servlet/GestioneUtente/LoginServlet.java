@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
         if (email != null && password != null) {
             utente = utenteDAO.doRetrieveByEmail(email);
             String salt = utente.getSalt();
-            String passwordSalt = salt + password;
+            String passwordSalt = password + salt;
             if (passwordSalt.equalsIgnoreCase(utente.getPasswordhash()))
                 utenteDaLoggare = utenteDAO.doRetrieveByEmailPassword(email, passwordSalt);
         }
