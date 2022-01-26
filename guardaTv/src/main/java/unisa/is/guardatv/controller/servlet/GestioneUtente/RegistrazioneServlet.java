@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.*;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Locale;
 import java.util.Random;
 
@@ -63,9 +62,9 @@ public class RegistrazioneServlet extends HttpServlet {
 
         String data = request.getParameter("datadinascita");
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy, MM, dd", Locale.ITALIAN);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ITALIAN);
         LocalDate date = LocalDate.parse(data, formatter);
-        Date dataDiNascita = Date.from(Instant.from(date));
+        Date dataDiNascita = Date.valueOf(date);
         if (date.getYear() >= 2002) // deve essere maggiorenne
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Devi essere maggiorenne");
 
