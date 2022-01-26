@@ -22,24 +22,30 @@ public class LoginServlet extends HttpServlet {
     private final UtenteDAO utenteDAO = new UtenteDAO();
     private final LoginDAO loginDAO = new LoginDAO();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         Utente utente = null;
+        Utente utenteDaLoggare = null;
         if (email != null && password != null) {
-            utente = utenteDAO.doRetrieveByEmailPassword(email, password);
+            utente = utenteDAO.doRetrieveByEmail(email);
+            String salt = utente.getSalt();
+            String passwordSalt = salt + password;
+            if (passwordSalt.equalsIgnoreCase(utente.getPasswordhash()))
+                utenteDaLoggare = utenteDAO.doRetrieveByEmailPassword(email, passwordSalt);
         }
 
-        if (utente == null) {
+        if (utenteDaLoggare == null) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("email e/o password non validi.");
         }
 
         Login login = new Login();
-        login.setIdUtente(utente.getEmail());
+        login.setIdUtente(utenteDaLoggare.getEmail());
         login.setToken(UUID.randomUUID().toString());
         login.setTime(Timestamp.from(Instant.now()));
 
@@ -49,7 +55,7 @@ public class LoginServlet extends HttpServlet {
         cookie.setMaxAge(30 * 24 * 60 * 60); // 30 giorni
         response.addCookie(cookie);
 
-        request.getSession().setAttribute("utente", utente);
+        request.getSession().setAttribute("utente", utenteDaLoggare);
 
         String dest = request.getHeader("referer");
         if ( (dest == null || dest.contains("/Login") || dest.contains("/Registrazione") || dest.trim().isEmpty()) ) {
