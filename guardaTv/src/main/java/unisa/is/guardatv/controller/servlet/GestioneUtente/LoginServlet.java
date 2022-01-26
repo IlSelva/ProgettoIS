@@ -31,21 +31,24 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         Utente utente = null;
+        Utente utente1 = null;
         Utente utenteDaLoggare = null;
         if (email != null && password != null) {
             utente = utenteDAO.doRetrieveByEmail(email);
-            String salt = utente.getSalt();
-            String passwordSalt = password + salt;
-            if (passwordSalt.equalsIgnoreCase(utente.getPasswordhash()))
-                utenteDaLoggare = utenteDAO.doRetrieveByEmailPassword(email, passwordSalt);
+            utente1 = utenteDAO.doRetrieveByEmail(email);
+            String salt = utente.getSalt(); // prendo il salt della pw
+            String passwordSalt = password + salt; // concateno pw e salt
+            utente1.setPasswordhash(passwordSalt); // faccio l'hash della pw
+            if (utente1.getPasswordhash().equalsIgnoreCase(utente.getPasswordhash()))
+                utente = utenteDAO.doRetrieveByEmailPassword(email, passwordSalt);
         }
 
-        if (utenteDaLoggare == null) {
+        if (utente == null) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("email e/o password non validi.");
         }
 
         Login login = new Login();
-        login.setIdUtente(utenteDaLoggare.getEmail());
+        login.setIdUtente(utente.getEmail());
         login.setToken(UUID.randomUUID().toString());
         login.setTime(Timestamp.from(Instant.now()));
 
