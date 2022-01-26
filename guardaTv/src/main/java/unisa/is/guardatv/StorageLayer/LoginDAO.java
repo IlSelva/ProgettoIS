@@ -20,7 +20,7 @@ public class LoginDAO {
      */
     public Login doRetrieveById(String id) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT id, idUtente, token, time FROM login WHERE id=?");
+            PreparedStatement ps = con.prepareStatement("SELECT id, emailUtente, token, time FROM login WHERE id=?");
             ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -45,7 +45,7 @@ public class LoginDAO {
     public void doSave(Login login) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO login (id, idUtente, token, time) VALUES(?, ?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO login (id, emailUtente, token, time) VALUES(?, ?,?,?)", Statement.RETURN_GENERATED_KEYS);
             String id = UUID.randomUUID().toString();
             ps.setString(1, id);
             ps.setString(2, login.getIdUtente());
@@ -67,7 +67,7 @@ public class LoginDAO {
      */
     public void doUpdate(Login login) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("UPDATE login SET idUtente=?, token=?, time=? WHERE id=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE login SET emailUtente=?, token=?, time=? WHERE id=?");
             ps.setString(1, login.getIdUtente());
             ps.setString(2, login.getToken());
             ps.setTimestamp(3, login.getTime());
