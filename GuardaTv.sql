@@ -1,3 +1,4 @@
+DROP Database if exists GuardaTv;
 CREATE DATABASE GuardaTV;
 use GuardaTv;
 
@@ -7,7 +8,7 @@ titolo varchar(50) not null,
 descrizione varchar(500) not null,
 regista varchar(50) not null,
 durata int(10) not null,
-dataDiUscita date not null,   /*rivedere data*/
+dataDiUscita date not null,   
 immagineDelContenuto varchar(255) ,
 videoTrailer varchar(255) ,
 film boolean not null default true,
@@ -84,3 +85,84 @@ primary key(Listanome,ListaUtente,Contenuto)
 create view Generi as
 select distinct(nomeGenere)
 from Genere;
+
+
+insert into Contenuto(id,titolo,descrizione,regista,durata,dataDiUscita,immagineDelContenuto,videoTrailer,
+film,stagioni,puntate) values 
+("0000-0002-6509-0000-0-0000-0008-O","Shutter Island","Rachel Salado, paziente del manicomio criminale sull'isola di Shutter, scompare all'improvviso. L'agente federale Teddy Daniels, affiancato dall'ufficiale Chuck Aule, deve indagare per risolvere il mistero",
+"Martin Scorsese",138,"2010-03-05","Copertina Shutter Island.jpg","https://www.youtube.com/watch?v=mzkVNB3FpSQ",true,null,null),
+("0000-0006-13A9-001F-3-0000-0000-S","Breaking Bad","Walter White, sottopagato insegnante di chimica alla soglia dei cinquanta anni, scopre di avere un cancro terminale ai polmoni. Incapace di accettare questa terribile realtà decide di tirare fuori la rabbia e sfruttare le sue conoscenze di chimica per produrre metamfetamina",
+"Vince Gilligan",60,"2008-01-20","Copertina Breaking Bad.jpg","https://www.youtube.com/watch?v=HhesaQXLuRY",false,5,62),
+("0000-0000-D5F8-0012-M-0000-0000-8","Due uomini e mezzo","Alan e suo figlio Jake si trasferiscono nella casa sulla spiaggia di Charlie in seguito alla separazione del primo dalla moglie, che ha scoperto di essere lesbica. Crescere il figlio in casa del fratello, un irrefrenabile Don Giovanni, si rivela tuttavia un'impresa ardua",
+"Lee Aronsohn",20,"2003-07-22","Copertina Due uomini e mezzo.jpg","https://www.youtube.com/watch?v=yfNv98nxjsY",false,12,262),
+("0000-0004-0137-011E-4-0000-0000-P","A cena con un cretino","Tim sta per ottenere tutto quello che ha sempre desiderato. L'unico ostacolo che deve superare per poter raggiungere il pieno successo sul lavoro è trovare l'ospite perfetto da portare alla cena annuale dedicata alle Persone Straordinarie",
+"Jay Roach",114,"2010-05-12","Copertina Due uomini e mezzo.jpg","https://www.youtube.com/watch?v=rInrjMki198",true,null,null),
+("0000-0002-1641-0012-T-0000-0000-O","Eternals","Dopo gli eventi accaduti in Avengers: Endgame, una tragedia inaspettata obbliga gli Eterni a uscire dall'ombra e riunire le forze contro il più antico dei nemici dell'umanità, i Devianti.",
+"Dane Whitman",147,"2021-11-03","Copertina Eternals.jpg","https://www.youtube.com/watch?v=dKyIbkZlV40",true,null,null),
+("0000-0004-5D0D-0000-S-0000-R","Game of Thrones","La lotta per il potere tra sette casate nobiliari provoca massacri e disastri, lasciando la popolazione nella povertà e nel degrado, mentre il mondo è minacciato dall'avvento di un'era glaciale che risveglia forze oscure e creature leggendarie.",
+"Alan Taylor",80,"2011-05-17","Copertina Il trono di spade.jpg","https://www.youtube.com/watch?v=Go63zt4yx4U",false,8,73);
+
+insert into Genere(nomeGenere) values
+("Azione"),
+("Thriller"),
+("Drammatico"),
+("Avventura"),
+("Fantasy"),
+("Commedia"),
+("Tragedia"),
+("Horror");
+
+insert into Tipologia(Contenuto,Genere) values 
+("0000-0004-5D0D-0000-S-0000-R","Azione"),
+("0000-0004-5D0D-0000-S-0000-R","Thriller"),
+("0000-0004-5D0D-0000-S-0000-R","Drammatico"),
+("0000-0004-5D0D-0000-S-0000-R","Avventura"),
+("0000-0004-5D0D-0000-S-0000-R","Fantasy"),
+("0000-0002-1641-0012-T-0000-0000-O","Azione"),
+("0000-0002-1641-0012-T-0000-0000-O","Drammatico"),
+("0000-0002-1641-0012-T-0000-0000-O","Avventura"),
+("0000-0002-1641-0012-T-0000-0000-O","Fantasy"),
+("0000-0004-0137-011E-4-0000-0000-P","Commedia"),
+("0000-0004-0137-011E-4-0000-0000-P","Avventura"),
+("0000-0000-D5F8-0012-M-0000-0000-8","Commedia"),
+("0000-0000-D5F8-0012-M-0000-0000-8","Azione"),
+("0000-0006-13A9-001F-3-0000-0000-S","Drammatico"),
+("0000-0006-13A9-001F-3-0000-0000-S","Thriller"),
+("0000-0006-13A9-001F-3-0000-0000-S","Tragedia"),
+("0000-0002-6509-0000-0-0000-0008-O","Drammatico"),
+("0000-0002-6509-0000-0-0000-0008-O","Thriller"),
+("0000-0002-6509-0000-0-0000-0008-O","Horror");
+
+insert into Utente(email,passwordhash,salt,dataDiNascita,username,administrator) values
+("niccolocacace@gmail.com",SHA1("NiccoloCacace1"),"E1F53135E559C553","1999-12-24","Niccolò",1),
+("spastore@gmail.com",SHA1("SilvioPastore2"),"E1F53135E559C253","1999-04-23","Silvio",1),
+("achilleprezioso@gmail.com",SHA1("AchillePrezioso3"),"S1F13135E509C523","1999-03-04","Achille",0),
+("alessandroricchetti@gmail.com",SHA1("AlessandroRicchetti4"),"W1F43135F559C553","1999-12-12","Alessandro",0);
+
+insert into Recensione(Utente,Contenuto,punteggio,descrizione) values
+("spastore@gmail.com","0000-0006-13A9-001F-3-0000-0000-S",4,"Difficilmente ho visto serie televisive così ben fatte sotto ogni punto di vista. Regia, sceneggiatura, montaggio, sonoro e recitazione toccano l'apice. Per non parlare della storia.
+In genere può capitare che le serie televisive abbiano un ben preciso difetto fondamentale: vengono prolungate forzatamente e di conseguenza la storia ne risente. Breaking Bad no"),
+("niccolocacace@gmail.com","0000-0002-6509-0000-0-0000-0008-O",5,"Tornare alla quiete vita di ogni giorno dopo questo tuffo noir nei meandri della mente risulta davevro frustrante ma al tempop stesso un sollievo.
+Ecco la sensazione che mi ha lasciato questo ultimo grandessimo capolavoro di Scorsese, che nella sua ormai pluriennale pellicola con il camaleontico Di caprio riesce ancora a convincerci che gli Italoamericani hanno una marcia in più."),
+("achilleprezioso@gmail.com","0000-0000-D5F8-0012-M-0000-0000-8",3,"Ogni puntata é una storia a se. Io la guardo se proprio non ho lavori da fare in giardino e non devo vedere gli amici e non ci sono bei film, si passa un po' di tempo con qualcosa di divertente."),
+("alessandroricchetti@gmail.com","0000-0002-1641-0012-T-0000-0000-O",1,"Sinceramente mi aspettavo tanto da questo film. Sono rimasto alquanto deluso da effetti speciali e in particolar modo dalla storia che non mi ha affatto stupito.La Marvel mi ha deluso un pò
+in questo caso.....si poteva fare di meglio."),
+("niccolocacace@gmail.com","0000-0004-5D0D-0000-S-0000-R",4,"Bellissima serie coninvolgente con bravissimi attori ed effetti speciali pazzeschi. Sono rimasto un poco deluso dalla quarta stagione ma nel complesso veramente un bel lavoro.");
+
+insert into Lista(nome,Utente,descrizione) values
+("Miei Thriller","niccolocacace@gmail.com","Una lista con tutti i miei film genere Thriller preferiti."),
+("Film da vedere","spastore@gmail.com","La lista di tutti i film che mi voglio vedere quando avrò tempo."),
+("Divertenti","achilleprezioso@gmail.com","La lista dei film per quando mi voglio dare due risate."),
+("Film di fantasia","alessandroricchetti@gmail.com","La lista dei miei film fantasy preferiti");
+
+
+insert into ContenutoLista(ListaNome,ListaUtente, Contenuto) values 
+("Miei Thriller","niccolocacace@gmail.com","0000-0002-6509-0000-0-0000-0008-O"),
+("Miei Thriller","niccolocacace@gmail.com","0000-0006-13A9-001F-3-0000-0000-S"),
+("Film da vedere","spastore@gmail.com","0000-0002-6509-0000-0-0000-0008-O"),
+("Film da vedere","spastore@gmail.com","0000-0002-1641-0012-T-0000-0000-O"),
+("Divertenti","achilleprezioso@gmail.com","0000-0000-D5F8-0012-M-0000-0000-8"),
+("Divertenti","achilleprezioso@gmail.com","0000-0004-0137-011E-4-0000-0000-P"),
+("Film di fantasia","alessandroricchetti@gmail.com","0000-0004-5D0D-0000-S-0000-R"),
+("Film di fantasia","alessandroricchetti@gmail.com","0000-0002-1641-0012-T-0000-0000-O");
+
