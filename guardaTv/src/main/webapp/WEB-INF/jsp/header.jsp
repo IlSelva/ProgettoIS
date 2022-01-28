@@ -7,7 +7,7 @@
         <title>GuardaTV - ${paragram.pageTitle}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link href="../css/generalStyle.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/WEB-INF/css/generalStyle.css">
         <script src="https://use.fontawesome.com/ca2b672bf9.js"></script>
     </head>
 
@@ -15,12 +15,12 @@
         <header>
             <nav>
                 <a class="logo" href=".">
-                    <img src="img/logo2.png" alt="logo"/>
+                    <img src="img/logo_inverso.png" alt="logo"/>
                 </a>
 
 
                 <label for="ricerca"></label>
-                <form id="ricerca" action="Ricerca" method="get">
+                <form id="ricerca" action="ricerca" method="get">
                     <select class="category" name="genere">
                         <option value="" label="" selected> generi </option>
                             <c:forEach items="${generi}" var="genere">
@@ -39,7 +39,7 @@
                     <li>
                         <c:choose>
                             <c:when test="${utente == null}">
-                                <a id="login" href="Registrazione"><span class="fa fa-user" aria-hidden="true"></span></a>
+                                <a id="login" href="RegistrazioneForm"><span class="fa fa-user" aria-hidden="true"></span></a>
                             </c:when>
                             <c:otherwise>
                                 <a id="profile" href="Utente"> <span class="fa fa-user" aria-hidden="true"> </span></a>
