@@ -1,11 +1,12 @@
 html{
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     font-family: "Trebuchet MS";  /* font Trebuchet sans serif, consigliato da british dyslexia association */
 }
 
 body{
-    margin: 0 0 max(4vh,20px) 0; /*bottom space for footer*/
+    margin: 0; /*bottom space for footer*/
+    margin-bottom: max(4vh,20px);
 }
 
 .home-container{
@@ -18,7 +19,7 @@ body{
     margin-top: 5vh;
     width: 100%;
     display: block;
-    position: relative;
+    margin-bottom: 5vh;
 }
 
 
@@ -49,7 +50,7 @@ body{
 .cont img{
     height: 40vh;
     width: auto;
-    background-image: url('/img/notfound.png')
+  /*  background-image: url('/img/notfound.png')*/
 }
 
 .titolofilm, titolofilm:visited{
@@ -61,21 +62,6 @@ body{
     text-align: center;
     margin-top: 1vh;
 }
-
-footer{
-    position: absolute;
-    bottom: 0px;
-    color: white;
-    background: #082032;
-    height: 5vh;
-    min-height: 20px;
-    width: 100%;
-    padding-top: 1vh;
-    text-align: center;
-    margin-bottom: 0;
-    margin-top: 1vh;
-}
-
 
 /* login e register page*/
 .signform{
@@ -159,4 +145,18 @@ footer{
     margin-bottom: 3vh;
     border: 2px solid #364A58;
     border-radius: 5px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background: #082032;
+    height: 5vh;
+    min-height: 20px;
+    width: 100%;
+    padding-top: 1vh;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 1vh;
 }
