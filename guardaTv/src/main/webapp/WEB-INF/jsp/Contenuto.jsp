@@ -4,71 +4,84 @@
 <jsp:include page="/WEB-INF/jsp/header.jsp">
     <jsp:param name="pageTitle" value="${contenuto.titolo}"/>
 </jsp:include>
-<!-- style -->
+
+<style><%@include file="../css/generalStyle.css"%></style>
+<style><%@include file="../css/contenutoStyle.css"%></style>
 
 <div class="container">
-
         <div class="contenuto">
-            <img src="img/contenuti/${contenuto.id}.jpg" alt=""/>
+            <img src="img/contenuti/${contenuto.immagineDelContenuto}" alt=""/>
             <h2>${contenuto.titolo}</h2>
             <p>${contenuto.descrizione}</p>
             <ul class="generi">
-                <c:forEach items = "{generi}" var = "genere">
+                <c:forEach items = "${generi}" var = "genere">
                     <li class="genere">
                         <c:out value="${genere.nome}"/>
                     </li>
                 </c:forEach>
             </ul>
-            <form name="addList" action="aggiunta-contenuto-lista" method="post">
-                <select class="listselector" name="nomeLista">
-                    <option value="" label="" selected> liste </option>
-                    <c:forEach items="${liste}" var="lista">
-                        <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/>. </option>
-                    </c:forEach>
-                </select>
-                <input class="listselector" id="addList" type="submit" value="Aggiungi ">
-            </form>
-            <span id="messaggioConferma"></span>
+        <c:choose>
+            <c:when test="${utente != null}">
+                <form name="addList" action="aggiunta-contenuto-lista" method="post">
+                    <input type="text" name="contenuto" value="<c:out value="${contenuto.id}"/>" hidden>
+                    <label for="selectList"></label>
+                    <select class="listselector" name="nomeLista" id="selectList">
+                        <option value="" label="" selected> liste </option>
+                        <c:forEach items="${liste}" var="lista">
+                            <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/>. </option>
+                        </c:forEach>
+                    </select>
+                    <input class="listselector" id="addList" type="submit" value="Aggiungi ">
+                </form>
+                <span id="messaggioConferma"></span>
+            </c:when>
+        </c:choose>
         </div>
 
 
         <div class="recensioni">
 
             <div class="container">
-                <div class="newreviewform">
-                    <label class="sottotitolo" for="nuovaRecensione">
-                        <h3>aggiungi una nuova recensione</h3>
-                    </label>
-
-                    <form id="nuovaRecensione">
-                        <div class="riga1">
-                            <h3 class="nomeutente"> <:out value="${utente.email}"/> </h3>
-                            <div class="rating">
-                                <input type="radio" name="star" id="star5">
-                                <label for="star5"></label>
-                                <input type="radio" name="star" id="star4">
-                                <label for="star4"></label>
-                                <input type="radio" name="star" id="star3">
-                                <label for="star3"></label>
-                                <input type="radio" name="star" id="star2">
-                                <label for="star2"></label>
-                                <input type="radio" name="star" id="star1">
-                                <label for="star1"></label>
-                            </div>
+                <c:choose>
+                    <c:when test="${utente != null}">
+                        <div class="newreviewform">
+                            <h3>
+                                <label class="sottotitolo" for="nuovaRecensione">
+                                    aggiungi una nuova recensione
+                                </label>
+                            </h3>
+                            <form name="recensione" id="nuovaRecensione" action="/AggiuntaRecensione" method="post">
+                                <input type="text" name="contenuto" value="<c:out value="${contenuto.id}"/>" hidden>
+                                <div class="riga1">
+                                    <h3 class="nomeutente"> <c:out value="${utente.email}"/> </h3>
+                                    <div class="rating">
+                                        <input type="radio" name="punteggio" id="star5" value="5">
+                                        <label for="star5"></label>
+                                        <input type="radio" name="punteggio" id="star4" value="4">
+                                        <label for="star4"></label>
+                                        <input type="radio" name="punteggio" id="star3" value="3">
+                                        <label for="star3"></label>
+                                        <input type="radio" name="punteggio" id="star2" value="2">
+                                        <label for="star2"></label>
+                                        <input type="radio" name="punteggio" id="star1" value="1">
+                                        <label for="star1"></label>
+                                    </div>
+                                </div>
+                                <label for="descrizione"></label>
+                                <textarea name="descrizione" id="descrizione" placeholder="Scrivi la tua recensione" required></textarea>
+                                <input class="confirmbutton inviarecensione" id="inviaRecensione" type="submit" value="invia">
+                            </form>
                         </div>
-                        <textarea name="descrizione" id="descrizione" placeholder="Scrivi la tua recensione" required></textarea>
-                        <input class="inviarecensione" id="inviaRecensione" type="submit" value="invia">
-                    </form>
-                </div>
-
+                    </c:when>
+                </c:choose>
                 <div class="titolo">
                     <h2 class="titolo-sezione">Recensioni</h2>
-                    <a class="fullview-link" href="recensioni">
+                    <!--a class="fullview-link" href="re">
                         <h3>vedi tutti</h3>
-                    </a>
+                    </a-->
                 </div>
                 <div class="container">
-                    <c:forEach items = "{recensioni}" var = "recensione">
+                    <c:forEach items = "${recensioni}" var = "recensione">
                         <div class="recensione">
                             <div class="riga1">
                                 <h3 class="nomeutente"> <!-- email -->
@@ -79,7 +92,7 @@
                                         <span class="fa fa-star"></span>
                                     </c:forEach>
 
-                                    <c:forEach var="i" begin="${recensione.punteggio}+1" end="5" step="1">
+                                    <c:forEach var="i" begin="${recensione.punteggio}" end="4" step="1">
                                         <span class="fa fa-star-o"></span>
                                     </c:forEach>
                                 </p>
@@ -90,7 +103,7 @@
                                     </form>
                                 </c:if>
                             </div>
-                            <h4 class="recensionecontenuto">
+                            <h4 class="contenutorecensione">
                                 <c:out value="${recensione.descrizione}"></c:out>
                             </h4>
                         </div>
@@ -100,4 +113,5 @@
 
     </div>
 </div>
+
 <%@include file="footer.html"%>
