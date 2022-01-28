@@ -16,16 +16,30 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.UUID;
 
+
+/**
+ * Questa classe è una Servlet che gestisce il login di un utente
+ */
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 422938517959400504L;
     private final UtenteDAO utenteDAO = new UtenteDAO();
     private final LoginDAO loginDAO = new LoginDAO();
-
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta POST non può essere gestita
+     * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String email = request.getParameter("email");

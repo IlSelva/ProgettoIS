@@ -11,13 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Random;
-
+/**
+ * Questa classe è una Servlet che gestisce la modifica della password di un utente
+ */
 @WebServlet("/ModificaPassword")
 public class ModificaPasswordServlet extends HttpServlet {
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta POST non può essere gestita
+     * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
     private final UtenteDAO utenteDAO = new UtenteDAO();
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getSession().getAttribute("utente"); // prendo l'utente dalla sessione
 

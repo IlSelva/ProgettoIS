@@ -16,16 +16,28 @@ import java.time.format.DateTimeFormatter;
 import java.sql.Date;
 import java.util.Locale;
 import java.util.Random;
-
+/**
+ * Questa classe è una Servlet che gestisce la registrazione di un nuovo utente
+ */
 @WebServlet("/Registrazione")
 public class RegistrazioneServlet extends HttpServlet {
     private static final long serialVersionUID = -3025497960801432201L;
     private UtenteDAO utenteDAO = new UtenteDAO();
-
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta POST non può essere gestita
+     * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String email = request.getParameter("email");
