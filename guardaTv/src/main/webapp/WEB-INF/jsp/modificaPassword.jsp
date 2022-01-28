@@ -9,10 +9,7 @@
 
 <section class="formModifica">
     <h1 class="section-title">Cambiare Password</h1>
-    <form action="ModificaPassword" method="post">
-        <!--input type="hidden" name="id" value="$ {utente.id}"-->
-        <label>Vecchia password</label>
-        <input type="password" name="password" required>
+    <form name="modificaPassword" action="ModificaPassword" method="post">
         <label>Nuova password</label>
         <input type="password" name="nuovaPassword" required>
         <label>conferma nuova password</label>
