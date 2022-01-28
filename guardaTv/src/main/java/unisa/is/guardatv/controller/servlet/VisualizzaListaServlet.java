@@ -1,9 +1,6 @@
 package unisa.is.guardatv.controller.servlet;
 
-import com.google.gson.Gson;
-import unisa.is.guardatv.StorageLayer.Contenuto;
-import unisa.is.guardatv.StorageLayer.ContenutoLista;
-import unisa.is.guardatv.StorageLayer.ContenutoListaDAO;
+import unisa.is.guardatv.StorageLayer.*;
 import unisa.is.guardatv.controller.Utils;
 
 import javax.servlet.RequestDispatcher;
@@ -14,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-
-import static unisa.is.guardatv.controller.Constants.BAD_REQUEST_MESS;
 
 
 /**
@@ -42,29 +37,38 @@ public class VisualizzaListaServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    Utente utente = (Utente) request.getSession().getAttribute("utente"); // prendo l'utente dalla sessione
+	    if (utente == null) {
+		    throw new MyServletException(); //utente non loggato
+	    }
 
-        String nomeLista = request.getParameter("nomeLista");
+	    String nomeLista = request.getParameter("nomeLista");
         // controllo che nomeLista sia una stringa valida
         if (Utils.getInstance().isValidString(nomeLista)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome lista non valido.");
         }
 
-        String utente = request.getParameter("utente");
+        String utenteId = utente.getEmail();
         // controllo che utente sia una stringa valida
-        if (Utils.getInstance().isValidString(utente)) {
+        if (Utils.getInstance().isValidString(utenteId)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non valido.");
         }
 
+
+	    ListaDAO listaDAO = new ListaDAO();
+	    Lista lista = listaDAO.doRetrieveById(nomeLista, utenteId,0,1);
 
         ContenutoListaDAO contenutoListaDAO = new ContenutoListaDAO();
 
         List<Contenuto> contenuti;
         try {
-            contenuti = contenutoListaDAO.allContenutiByLista(nomeLista, utente);
+            contenuti = contenutoListaDAO.allContenutiByLista(nomeLista, utenteId);
         } catch (Exception e) {
             e.printStackTrace();
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore recupero contenuti by lista.");
         }
+
+		request.setAttribute("lista", lista);
         request.setAttribute("contenuti", contenuti);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/lista.jsp");
