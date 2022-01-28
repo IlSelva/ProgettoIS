@@ -21,7 +21,7 @@
         <div class="creazionelista">
             <h2>Crea una nuova lista</h2>
             <h4>Inserisci i tuoi film e serie preferite</h4>
-            <a href="nuovaLista">
+            <a href="CreazioneNuovaLista">
                 <button class="confirmbutton"> crea la tua lista </button>
             </a>
         </div>
@@ -34,7 +34,7 @@
         <c:forEach items = "{contenuti}" var = "contenuto">
             <article class="contenutolista">
                 <a class="copertinalista" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
-                    <img class="copertinalista" src="img/contenuti/<c:out value="${contenuto.id}"/>.jpg" alt=""/>">
+                    <img class="copertinalista" src="img/contenuti/<c:out value="${contenuto.immagineDelContenuto}"/>" >
                 </a>
                 <h3 class="titolo">
                     <a class="titolo" href="Contenuto?id=<c:out value="${conetnuto.id}"/>">
@@ -43,11 +43,6 @@
                 </h3>
                 <h4 class="info">
                     <c:out value="${conetnuto.durata}"/> min
-                    <ul class="generi">
-                        <c:forEach items = "{generi}" var = "genere">
-                            <li class="genere"> <c:out value="${genere} "/> </li>
-                        </c:forEach>
-                    </ul>
                 </h4>
                 <h5 class="descrizione">
                     <c:out value="${contenuto.descrizione}"/>
