@@ -1,8 +1,8 @@
 package unisa.is.guardatv.controller.servlet;
 
-import unisa.is.guardatv.StorageLayer.ContenutoDAO;
 import unisa.is.guardatv.StorageLayer.Lista;
 import unisa.is.guardatv.StorageLayer.ListaDAO;
+import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.controller.Utils;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import static unisa.is.guardatv.controller.Constants.*;
 
@@ -42,8 +40,12 @@ public class CreazioneListaServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    Utente utente = (Utente) request.getSession().getAttribute("utente");
+		if(utente == null){
+			throw new MyServletException("Utente loggato.");
+		}
 
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("nomelista");
         // controllo il nome in input che rispetti la lunghezza definita
         if (!Utils.getInstance().checkStringLength(nome, MIN_NAME_LENGTH, MAX_NAME_LENGTH)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome non valido.");
@@ -55,9 +57,8 @@ public class CreazioneListaServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Descrizione non valida.");
         }
 
-        String utente = request.getParameter("utente");
         // controllo che l'utente sia una stringa valida
-        if (Utils.getInstance().isValidString(utente)) {
+        if (!Utils.getInstance().isValidString(utente.getEmail())) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non valido.");
         }
 
@@ -65,7 +66,7 @@ public class CreazioneListaServlet extends HttpServlet {
         Lista lista = new Lista();
         lista.setNome(nome);
         lista.setDescrizione(descrizione);
-        lista.setUtente(utente);
+        lista.setUtente(utente.getEmail());
 
         try {
             listaDAO.DoSave(lista);
@@ -76,7 +77,7 @@ public class CreazioneListaServlet extends HttpServlet {
 
         request.setAttribute("notifica", "Lista creata con successo");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/lista.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/profilo.jsp");
         requestDispatcher.forward(request, response);
     }
 }
