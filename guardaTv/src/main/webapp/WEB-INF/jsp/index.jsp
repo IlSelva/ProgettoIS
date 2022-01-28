@@ -8,11 +8,11 @@
 <style><%@include file="../css/generalStyle.css"%></style>
 
 
-<section class="banner">
-
-</section>
-
 <div class="container">
+
+    <section class="banner">
+
+    </section>
 
     <h2 class="section-title"> Ultime aggiunte</h2>
     <section class="griglia">
@@ -20,7 +20,7 @@
             <article class="cont">
 
                 <a class="copertina" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
-                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.png" alt=""/>
+                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.immagineDelContenuto}"/>" alt=""/>
                 </a>
                 <h3 class="titolofilm">
                     <a class="titolofilm" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
@@ -38,13 +38,13 @@
             <article class="cont">
 
                 <a class="copertina" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
-                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.jpg" alt=""/>
+                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.immagineDelContenuto}"/>" alt=""/>
                 </a>
-                <h4>
-                    <a class="titolo" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
+                <h3 class="titolofilm">
+                    <a class="titolofilm" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
                         <c:out value="${contenuto.titolo}"/>
                     </a>
-                </h4>
+                </h3>
 
             </article>
         </c:forEach>
