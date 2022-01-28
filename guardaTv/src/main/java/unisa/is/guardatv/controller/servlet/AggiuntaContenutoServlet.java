@@ -44,6 +44,8 @@ public class AggiuntaContenutoServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//da fare controllo utente amministratore
+
 
         String id = request.getParameter("id");
         // controllo l'id in input che rispetti la regex definita in precedenza
@@ -181,9 +183,9 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         }
 
 
-        request.setAttribute("notifica", "Contenuto aggiuntocon successo");
+        request.setAttribute("notifica", "Contenuto aggiunto con successo");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/Contenuto.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/profilo.jsp");
         requestDispatcher.forward(request, response);
     }
 }
