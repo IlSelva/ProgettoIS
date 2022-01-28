@@ -4,13 +4,16 @@
 <jsp:include page="/WEB-INF/jsp/header.jsp">
     <jsp:param name="pageTitle" value="Liste"/>
 </jsp:include>
-<!-- style -->
+
+<style><%@include file="../css/generalStyle.css"%></style>
+<style><%@include file="../css/listeStyle.css"%></style>
+
 <div class="container">
 
     <div class="creazionelista">
         <h1>Crea una nuova lista</h1>
         <h3>Inserisci i tuoi film e serie preferite</h3>
-        <a href="nuovaLista">
+        <a href="/CreazioneNuovaLista">
             <button class="confirmbutton"> crea la tua lista </button>
         </a>
     </div>
@@ -21,7 +24,7 @@
 
     <div class="containercontenuti">
         <ul class="liste">
-            <c:forEach items = "{liste}" var = "lista">
+            <c:forEach items = "${liste}" var = "lista">
                 <li class="lista">
                     <h2>
                         <a href="visualizza-lista?nomeLista=<c:out value="${lista.nome}"/>">
