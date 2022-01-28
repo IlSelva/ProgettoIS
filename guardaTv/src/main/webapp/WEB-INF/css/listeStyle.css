@@ -22,7 +22,7 @@
 
 .containercontenuti{
     margin-top: 5vh;
-    width: 100%;
+    width: 65vw;
     display: block;
     position: relative;
     margin-bottom: 5vh;
@@ -68,4 +68,13 @@
 
 .descrizione{
     margin: 0;
+}
+
+.titololiste input{
+    display: block;
+    margin-bottom: 2vh;
+}
+
+.titololiste label{
+    display: block;
 }
