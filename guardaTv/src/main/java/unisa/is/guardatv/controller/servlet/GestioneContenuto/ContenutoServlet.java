@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe è una Servlet che gestisce la visualizzazione di un Contenuto e delle informazioni relative ad esso
+ */
 @WebServlet("/Contenuto")
 public class ContenutoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -22,10 +23,22 @@ public class ContenutoServlet extends HttpServlet {
     private final TipologiaDAO tipologiaDAO = new TipologiaDAO();
     private final ListaDAO listaDAO = new ListaDAO();
 
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta POST non può essere gestita
+     * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
+    /**
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta POST non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getSession().getAttribute("utente"); // prendo l'utente dalla sessione
 
