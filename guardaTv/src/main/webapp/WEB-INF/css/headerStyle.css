@@ -23,7 +23,7 @@ img{
 
 a.logo, a.logo:link, a.logo:visited, a.logo:hover, a.logo:active {
     position: absolute;
-    top: 1vh;
+    top: 0;
     left: 1vw;
     color: #454f54;
     text-decoration-line: none;
@@ -34,7 +34,7 @@ a.logo, a.logo:link, a.logo:visited, a.logo:hover, a.logo:active {
 
 .logo > img{
     width: auto;
-    height: 6vh;
+    height: 10vh;
 }
 
 #ricerca{
