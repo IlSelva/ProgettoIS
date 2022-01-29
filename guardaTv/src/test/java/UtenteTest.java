@@ -1,19 +1,16 @@
-
-
-import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.StorageLayer.UtenteDAO;
 
 import java.sql.Date;
 import java.util.Collection;
 
+import static org.junit.Assert.*;
+
 public class UtenteTest {
 
 
-    private UtenteDAO utenteDAO = new UtenteDAO();
+    private final UtenteDAO utenteDAO = new UtenteDAO();
 
     @Test
     public void testSaveRetrieveByEmail() throws Exception {
@@ -32,7 +29,7 @@ public class UtenteTest {
         utenteDAO.doUpdate(x);
         assertNull(utenteDAO.doRetrieveByEmail(email1));
         assertNotNull(utenteDAO.doRetrieveByEmail(email2));
-        utenteDAO.doDelete(email2);
+        UtenteDAO.doDelete(email2);
     }
 
     @Test
@@ -46,34 +43,30 @@ public class UtenteTest {
         utenteDAO.doSave(x);
         utenteDAO.doSave(y);
         utenteDAO.doSave(z);
-
         Collection<Utente> coll = utenteDAO.doRetrieveAll(0, 100);
         assertNotNull(coll);
         assertTrue(coll.size() >= 3);
-        utenteDAO.doDelete(email1);
-        utenteDAO.doDelete(email2);
-        utenteDAO.doDelete(email3);
+        UtenteDAO.doDelete(email1);
+        UtenteDAO.doDelete(email2);
+        UtenteDAO.doDelete(email3);
     }
+
     @Test
     private Utente creaUtente(String key) {
         Utente x = new Utente();
         x.setEmail(key);
         x.setPasswordhash("password");
         x.setUsername("marcoRossi");
-        Date d = new Date(11,12,2001);
+        Date d = new Date(11, 12, 2001);
         x.setDataDiNascita(d);
         x.setAdministrator(false);
         x.setSalt("afngohhw31");
         return x;
     }
 
-
-
-
-
-    private String email1 = "marioRossi@gmail.com";
-    private String email2 = "lucabianci@email.it";
-    private String email3 = "luigibruno@hotmail.com";
+    private final String email1 = "marioRossi@gmail.com";
+    private final String email2 = "lucabianci@email.it";
+    private final String email3 = "luigibruno@hotmail.com";
 
 
 }

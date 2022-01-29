@@ -115,7 +115,7 @@ public class RegistrazioneTest{
         PrintWriter MyWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(MyWriter);
         servlet.doPost(request, response);
-        verify(MyWriter).write(SUCCESS_MESS);
+        verify(MyWriter).write(BADREQUEST_MESS);
     }
 
 
