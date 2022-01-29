@@ -1,4 +1,4 @@
-package unisa.is.guardatv.StorageLayer;
+package StorageLayer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,7 @@ public class GenereDAO {
      */
     public List<Genere> doRetrieveAll() {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT nomeGenere FROM Generi");
+            PreparedStatement ps = con.prepareStatement("SELECT nomeGenere FROM Genere");
             ArrayList<Genere> generi = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -45,7 +45,7 @@ public class GenereDAO {
      */
     public Genere doRetrieveByName(String genere){ /*per controllare se un genere è presente */
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT nomeGenere FROM Generi WHERE genere = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT nomeGenere FROM Genere WHERE nomeGenere = ?");
             ps.setString(1, genere);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

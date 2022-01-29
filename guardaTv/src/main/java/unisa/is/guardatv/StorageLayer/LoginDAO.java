@@ -1,4 +1,4 @@
-package unisa.is.guardatv.StorageLayer;
+package StorageLayer;
 
 import java.sql.*;
 import java.util.UUID;
