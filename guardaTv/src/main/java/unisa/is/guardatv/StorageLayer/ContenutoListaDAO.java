@@ -28,7 +28,7 @@ public class ContenutoListaDAO {
      */
     public List<Contenuto> allContenutiByLista(String lsNome,String lsUtente){
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT Contenuto FROM ContenutoLista WHERE lsNome = ? AND lsUtente = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT Contenuto FROM ContenutoLista WHERE ListaNome = ? AND ListaUtente = ?");
             ps.setString(1, lsNome);
             ps.setString(2, lsUtente);
             ArrayList<Contenuto> contenuti = new ArrayList<>();
@@ -76,7 +76,7 @@ public class ContenutoListaDAO {
      */
     public void RemoveContenuto(String lsNome,String lsUtente,String idContenuto) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM ContenutoLista WHERE lsNome=? AND lsUtente=? AND idContenuto=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM ContenutoLista WHERE ListaNome=? AND ListaUtente=? AND Contenuto=?");
             ps.setString(1, lsNome);
             ps.setString(2, lsUtente);
             ps.setString(3, idContenuto);
