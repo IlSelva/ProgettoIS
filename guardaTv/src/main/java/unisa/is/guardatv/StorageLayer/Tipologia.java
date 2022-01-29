@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 /**
  * Questa classe modella il concetto di "Tipologia" all'interno del sistema.

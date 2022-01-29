@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +27,7 @@ public class ListaDAO {
     public List<Lista> doRetrieveByUtente(String utente, int offset, int limit){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT  nome,Utente,descrizione FROM Lista WHERE Utente = ? LIMIT ?,?");
+                    "SELECT  nome,Utente,descrizione FROM Lista WHERE utente = ? LIMIT ?,?");
             ps.setString(1, utente);
             ps.setInt(2, offset);
             ps.setInt(3, limit);
@@ -58,7 +58,7 @@ public class ListaDAO {
     public Lista DoRetrievebyId (String nome,String utente,int offset,int limit){ // idlista = idutente+nomelista
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT  nome,Utente,descrizione FROM Lista WHERE nome = ? AND Utente = ? LIMIT ?, ?");
+                    "SELECT  nome,Utente,descrizione FROM Lista WHERE nome = ? AND utente = ? LIMIT ?, ?");
             ps.setString(1, nome);
             ps.setString(2, utente);
             ps.setInt(2, offset);
@@ -105,7 +105,7 @@ public class ListaDAO {
      */
     public void doDelete(String nome, String utente){
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM Lista WHERE nome=? AND Utente=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Lista WHERE nome=? AND utente=?");
             ps.setString(1, nome);
             ps.setString(2,utente);
             if (ps.executeUpdate() != 1) {

@@ -1,4 +1,4 @@
-package StorageLayer;
+package unisa.is.guardatv.StorageLayer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class RecensioneDAO {
     public List<Recensione> doRetrieveByContenuto(String idContenuto, int offset,int limit){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT  Utente,Contenuto,punteggio,descrizione FROM Recensione WHERE Contenuto = ? LIMIT ?, ?");
+                    "SELECT  Utente,Contenuto,punteggio,descrizione FROM Recensione WHERE idContenuto = ? LIMIT ?, ?");
             ps.setString(1, idContenuto);
             ps.setInt(2, offset);
             ps.setInt(3, limit);
@@ -52,7 +52,7 @@ public class RecensioneDAO {
     public List<Recensione> doRetrieveByUtente(String idUtente, int offset,int limit){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT Utente,Contenuto,punteggio,descrizione FROM Recensione WHERE Utente = ? LIMIT ?, ?");
+                    "SELECT Utente,Contenuto,punteggio,descrizione FROM Recensione WHERE idUtente = ? LIMIT ?, ?");
             ps.setString(1, idUtente);
             ps.setInt(2, offset);
             ps.setInt(3, limit);
@@ -81,7 +81,7 @@ public class RecensioneDAO {
     public Recensione doRetrieveById(String idUtente,String idContenuto){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT Utente,Contenuto,punteggio,descrizione FROM Recensione WHERE Utente = ? AND Contenuto = ?");
+                    "SELECT Utente,Contenuto,punteggio,descrizione FROM Recensione WHERE idUtente = ? AND idContenuto = ?");
             ps.setString(1, idUtente);
             ps.setString(2, idContenuto);
             ResultSet rs = ps.executeQuery();
@@ -149,7 +149,7 @@ public class RecensioneDAO {
      */
     public void doDelete(String idUtente,String idContenuto){
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM Recensione WHERE Utente=? AND Contenuto=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Recensione WHERE idUtente=? AND idContenuto=?");
             ps.setString(1, idUtente);
             ps.setString(2,idContenuto);
             if (ps.executeUpdate() != 1) {
