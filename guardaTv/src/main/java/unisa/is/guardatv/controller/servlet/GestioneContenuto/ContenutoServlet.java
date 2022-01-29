@@ -41,7 +41,7 @@ public class ContenutoServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getSession().getAttribute("utente"); // prendo l'utente dalla sessione
-
+        List<Lista> listaDelleListe = null;
 
         String id = request.getParameter("id");
         Contenuto contenuto = contenutoDAO.doRetrieveById(id);
@@ -50,8 +50,9 @@ public class ContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Contenuto non trovato.");
         }
         List<Genere> generi = tipologiaDAO.allGeneriByContenuto(id); // generi del contenuto
-
-        List<Lista> listaDelleListe = listaDAO.doRetrieveByUtente(utente.getEmail(), 0, 1); // lista delle liste
+        if (utente != null) {
+            listaDelleListe = listaDAO.doRetrieveByUtente(utente.getEmail(), 0, 1); // lista delle liste
+        }
 
         List<Recensione> recensioni = recensioneDAO.doRetrieveByContenuto(id, 0,100); // recensioni contenuto
 
