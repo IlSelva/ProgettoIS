@@ -1,4 +1,4 @@
-package unisa.is.guardatv.StorageLayer;
+package StorageLayer;
 
 /**
  * Questa classe modella il concetto di "Recensione" all'interno del sistema.

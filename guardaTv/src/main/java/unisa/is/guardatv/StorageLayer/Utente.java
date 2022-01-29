@@ -1,4 +1,4 @@
-package unisa.is.guardatv.StorageLayer;
+package StorageLayer;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
