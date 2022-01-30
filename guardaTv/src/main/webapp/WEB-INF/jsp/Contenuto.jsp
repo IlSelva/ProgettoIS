@@ -23,7 +23,7 @@
         <c:choose>
             <c:when test="${utente != null}">
                 <form name="addList" action="aggiunta-contenuto-lista" method="post">
-                    <input type="text" name="contenuto" value="<c:out value="${contenuto.id}"/>" hidden>
+                    <input type="text" name="id" value="<c:out value="${contenuto.id}"/>" hidden>
                     <label for="selectList"></label>
                     <select class="listselector" name="nomeLista" id="selectList">
                         <option value="" label="" selected> liste </option>
@@ -50,7 +50,7 @@
                                     aggiungi una nuova recensione
                                 </label>
                             </h3>
-                            <form name="recensione" id="nuovaRecensione" action="/AggiuntaRecensione" method="post">
+                            <form name="recensione" id="nuovaRecensione" action="AggiuntaRecensione" method="post">
                                 <input type="text" name="contenuto" value="<c:out value="${contenuto.id}"/>" hidden>
                                 <div class="riga1">
                                     <h3 class="nomeutente"> <c:out value="${utente.email}"/> </h3>
