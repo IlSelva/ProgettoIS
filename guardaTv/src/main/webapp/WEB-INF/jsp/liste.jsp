@@ -13,7 +13,7 @@
     <div class="creazionelista">
         <h1>Crea una nuova lista</h1>
         <h3>Inserisci i tuoi film e serie preferite</h3>
-        <a href="/CreazioneNuovaLista">
+        <a href="CreazioneNuovaLista">
             <button class="confirmbutton"> crea la tua lista </button>
         </a>
     </div>
