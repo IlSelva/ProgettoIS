@@ -1,0 +1,759 @@
+{
+  "id": "ed11c4c7-699d-461b-b9e8-48b9894bd578",
+  "version": "2.0",
+  "name": "Guarda",
+  "url": "http://localhost:8080/guardaTv_war_exploded",
+  "tests": [{
+    "id": "ea53cdba-653b-4748-ae20-8283fb18326f",
+    "name": "TC_NF_4_01",
+    "commands": [{
+      "id": "a9ff3daa-af7a-4225-a8af-9c82d27b4b21",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/guardaTv_war_exploded/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2bed3896-10e5-4e78-9809-6ceabb17d45b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "628x776",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab56db96-2ada-47fe-96f9-eb5835fd2c96",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//a[@id='profile']/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba710126-c6c1-4851-a51f-ad0f256268d0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Le mie Liste",
+      "targets": [
+        ["linkText=Le mie Liste", "linkText"],
+        ["css=.confirmbutton:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Le mie Liste')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'ElencoListe')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7e194a3-8efa-4971-a6b4-8acc4674c324",
+      "comment": "",
+      "command": "click",
+      "target": "css=.confirmbutton",
+      "targets": [
+        ["css=.confirmbutton", "css:finder"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'crea la tua lista')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6a89567-b3b9-4fe8-b4ed-12b14253db49",
+      "comment": "",
+      "command": "click",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3425c210-48e9-4efc-90a0-4f7eecabece8",
+      "comment": "",
+      "command": "type",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "1e200b65-708e-4ae6-a382-e222df6c94ca",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermacreazione",
+      "targets": [
+        ["id=confermacreazione", "id"],
+        ["css=#confermacreazione", "css:finder"],
+        ["xpath=//input[@id='confermacreazione']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b4bab402-050c-449d-8ba7-67059ca0aa5f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Nome non valido.')]", "xpath:innerText"]
+      ],
+      "value": "Nome non valido."
+    }]
+  }, {
+    "id": "33f24aef-2dc8-48f8-bf14-37c3f396c6fc",
+    "name": "TC_NF_4_03",
+    "commands": [{
+      "id": "8cbf6864-101b-4e6a-89b4-4c2b07b1fb0f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/guardaTv_war_exploded/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "edb2e07e-987e-4e4e-9650-a09e412756ff",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "628x775",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2a1289e4-df41-4c38-8cb7-bff99ead8ef7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//a[@id='profile']/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20e6158d-1397-4695-a426-2099213023de",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Le mie Liste",
+      "targets": [
+        ["linkText=Le mie Liste", "linkText"],
+        ["css=.confirmbutton:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Le mie Liste')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'ElencoListe')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "84536da2-d802-4766-9cd6-eb285f8c6f39",
+      "comment": "",
+      "command": "click",
+      "target": "css=.confirmbutton",
+      "targets": [
+        ["css=.confirmbutton", "css:finder"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'crea la tua lista')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d61b8378-f00c-428f-bde0-1fa864f45d90",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5c62c55-40a7-4415-8447-772acbc67c55",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": "a-"
+    }, {
+      "id": "dcb9c027-8221-461a-aaf7-faf74a3177ed",
+      "comment": "",
+      "command": "click",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a14c30f-0a8e-446e-aa42-cc7fc45c12e2",
+      "comment": "",
+      "command": "type",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "aa"
+    }, {
+      "id": "08646ca0-7e60-464a-90fa-8a442c8ac497",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermacreazione",
+      "targets": [
+        ["id=confermacreazione", "id"],
+        ["css=#confermacreazione", "css:finder"],
+        ["xpath=//input[@id='confermacreazione']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8acc9797-2e94-4efd-87a5-d1e196d36518",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [],
+      "value": "Nome non valido."
+    }]
+  }, {
+    "id": "01692846-651e-4d51-b5a0-e8da0af35080",
+    "name": "TC_NF_4_04",
+    "commands": [{
+      "id": "4b12d398-e703-431b-b925-34f41edc4d3f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/guardaTv_war_exploded/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f79768f6-bc15-43ce-a67a-b4dca94c663d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "628x775",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7f5726e1-fb2e-41f6-a685-1a5344e5f013",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//a[@id='profile']/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "366d8cae-27e3-4b33-8391-07a95567697b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Le mie Liste",
+      "targets": [
+        ["linkText=Le mie Liste", "linkText"],
+        ["css=.confirmbutton:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Le mie Liste')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'ElencoListe')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f21d9696-e67b-4a2a-b52d-bf4d002c6dc5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.confirmbutton",
+      "targets": [
+        ["css=.confirmbutton", "css:finder"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'crea la tua lista')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2cf76a77-7ad8-42d1-a750-a1130c231de6",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04ff5fc4-ee95-4af8-a3a6-638f006f97fb",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "5dbf8984-f3af-40af-903c-d491774a8884",
+      "comment": "",
+      "command": "click",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd504983-385f-4c8b-a5a2-7c371adb7977",
+      "comment": "",
+      "command": "type",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }, {
+      "id": "912a2b3d-c32c-460e-877e-8c488c9befd5",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermacreazione",
+      "targets": [
+        ["id=confermacreazione", "id"],
+        ["css=#confermacreazione", "css:finder"],
+        ["xpath=//input[@id='confermacreazione']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34eb17a9-bf4c-4056-9f7f-9c43969d1138",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [],
+      "value": "Descrizione non valida."
+    }]
+  }, {
+    "id": "fcb6f403-f721-45e7-b0e8-be2d34a9046c",
+    "name": "TC_NF_4_02",
+    "commands": [{
+      "id": "893f98c4-7c6d-4bb5-819e-d2ad189f9760",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/guardaTv_war_exploded/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "abe2890c-2f78-461b-a42d-464fbd2b7682",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "628x776",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a9ab862f-11ac-499d-9c01-1b1fefa8b4f8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//a[@id='profile']/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6235ad4-038e-4dba-b994-961874d6fef5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Le mie Liste",
+      "targets": [
+        ["linkText=Le mie Liste", "linkText"],
+        ["css=.confirmbutton:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Le mie Liste')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'ElencoListe')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de5e7888-6e14-4431-82a8-511d700f4bcb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.confirmbutton",
+      "targets": [
+        ["css=.confirmbutton", "css:finder"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'crea la tua lista')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc8edf50-0ff5-45b4-97db-fc6f203b94f6",
+      "comment": "",
+      "command": "click",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4166e790-fbfd-41f9-88b0-99bf5c6ce820",
+      "comment": "",
+      "command": "type",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "a048a042-f3b0-4593-991b-d1e0087d6d8e",
+      "comment": "",
+      "command": "",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e653c6f4-88fd-440c-aac1-665f6e6411ef",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "56efd506-0ef5-44d8-8a32-7a158e53b54d",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }, {
+      "id": "bf1605bc-f7b4-40a6-9876-dc36464d3f1c",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermacreazione",
+      "targets": [
+        ["id=confermacreazione", "id"],
+        ["css=#confermacreazione", "css:finder"],
+        ["xpath=//input[@id='confermacreazione']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "90a34d54-ee20-4f3f-9db6-b41bb61574f7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [],
+      "value": "Nome non valido."
+    }]
+  }, {
+    "id": "a82d3ea9-fd70-430c-b3c9-0533cde5b673",
+    "name": "TC_NF_4_05",
+    "commands": [{
+      "id": "7b4ee82f-4533-481a-ad0b-3b599edd9f11",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/guardaTv_war_exploded/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "770b222c-58bc-4c14-a020-14a6e5f0650d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "628x775",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b11a53c4-e579-408d-9fae-a199289d3111",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//a[@id='profile']/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0841d43-18f1-4df5-948f-ce4901af1997",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Le mie Liste",
+      "targets": [
+        ["linkText=Le mie Liste", "linkText"],
+        ["css=.confirmbutton:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Le mie Liste')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'ElencoListe')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3c9767d-4fe9-4efb-b206-4b44ec666659",
+      "comment": "",
+      "command": "click",
+      "target": "css=.confirmbutton",
+      "targets": [
+        ["css=.confirmbutton", "css:finder"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'crea la tua lista')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1c8d74e-5051-412c-b2de-1d659e306d9b",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0af2efd8-26b1-444e-b466-030059fdf989",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "f6905db6-0627-42a7-aaf3-094eda69a4cf",
+      "comment": "",
+      "command": "click",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8473a676-4e6f-4a8a-ba37-82a00d81a31c",
+      "comment": "",
+      "command": "type",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "a-"
+    }, {
+      "id": "4cbd3faf-4080-4331-abf6-77e30748bef2",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermacreazione",
+      "targets": [
+        ["id=confermacreazione", "id"],
+        ["css=#confermacreazione", "css:finder"],
+        ["xpath=//input[@id='confermacreazione']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9db60b3b-4bfa-423d-96e5-1d00b830ab4f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [],
+      "value": "Descrizione non valida."
+    }]
+  }, {
+    "id": "46273509-0727-4ae4-a3eb-5b74bcdbbd7c",
+    "name": "TC_NF_4_06",
+    "commands": [{
+      "id": "048afdfb-7ec9-4dbb-91f3-de9b5c8a0a13",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/guardaTv_war_exploded/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3cbff46d-40b6-42cd-ad30-781f08a4d998",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "628x775",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "416f755d-c970-404a-bc16-4a932f05d952",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//a[@id='profile']/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b8ff7561-0252-4e7e-be84-bcb326654ee0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Le mie Liste",
+      "targets": [
+        ["linkText=Le mie Liste", "linkText"],
+        ["css=.confirmbutton:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Le mie Liste')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'ElencoListe')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bbb07f6f-09e5-4cb0-935d-532920dc4b53",
+      "comment": "",
+      "command": "click",
+      "target": "css=.confirmbutton",
+      "targets": [
+        ["css=.confirmbutton", "css:finder"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'crea la tua lista')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f46d8c51-93ea-4aad-abba-b0ef9a1bdd46",
+      "comment": "",
+      "command": "click",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8a1b529-2101-4672-826f-421653960ef4",
+      "comment": "",
+      "command": "type",
+      "target": "id=nomelista",
+      "targets": [
+        ["id=nomelista", "id"],
+        ["name=nomelista", "name"],
+        ["css=#nomelista", "css:finder"],
+        ["xpath=//input[@id='nomelista']", "xpath:attributes"],
+        ["xpath=//div/form/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "f79fa1ff-0484-4ca6-aeb1-945aba061f70",
+      "comment": "",
+      "command": "click",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a41aa11-7edb-43dd-9a31-b2a4c279fc2e",
+      "comment": "",
+      "command": "type",
+      "target": "id=descrizione",
+      "targets": [
+        ["id=descrizione", "id"],
+        ["name=descrizione", "name"],
+        ["css=#descrizione", "css:finder"],
+        ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "38befb0b-b7ec-4a4f-b6bf-4fe422b427e4",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermacreazione",
+      "targets": [
+        ["id=confermacreazione", "id"],
+        ["css=#confermacreazione", "css:finder"],
+        ["xpath=//input[@id='confermacreazione']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "10c753aa-c495-4a02-84f0-658e61145b85",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=notifica",
+      "targets": [
+        ["id=notifica", "id"],
+        ["css=#notifica", "css:finder"],
+        ["xpath=//h5[@id='notifica']", "xpath:attributes"],
+        ["xpath=//h5", "xpath:position"],
+        ["xpath=//h5[contains(.,'Lista creata con successo')]", "xpath:innerText"]
+      ],
+      "value": "Lista creata con successo"
+    }]
+  }],
+  "suites": [{
+    "id": "6b197675-e931-4e35-83e9-2de30825c4b4",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }, {
+    "id": "fbe9f382-9848-4060-a36f-feb6d6d1b911",
+    "name": "TC_NF_4",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ea53cdba-653b-4748-ae20-8283fb18326f", "fcb6f403-f721-45e7-b0e8-be2d34a9046c", "33f24aef-2dc8-48f8-bf14-37c3f396c6fc", "01692846-651e-4d51-b5a0-e8da0af35080", "a82d3ea9-fd70-430c-b3c9-0533cde5b673", "46273509-0727-4ae4-a3eb-5b74bcdbbd7c"]
+  }],
+  "urls": ["http://localhost:8080/", "http://localhost:8080/guardaTv_war_exploded"],
+  "plugins": []
+}
