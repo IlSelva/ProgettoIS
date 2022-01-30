@@ -55,7 +55,7 @@ public class ListaDAO {
      * @param  nome    il nome della lista
      * @return      la specifica Lista appartenente allo specifico utente
      */
-    public Lista DoRetrievebyId (String nome,String utente,int offset,int limit){ // idlista = idutente+nomelista
+    public Lista doRetrieveById (String nome,String utente,int offset,int limit){ // idlista = idutente+nomelista
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "SELECT  nome,Utente,descrizione FROM Lista WHERE nome = ? AND Utente = ? LIMIT ?, ?");
