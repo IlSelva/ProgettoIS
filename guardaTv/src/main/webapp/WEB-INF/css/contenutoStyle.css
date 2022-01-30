@@ -159,6 +159,7 @@
 .punteggio{
     position: absolute;
     right: 15vw;
+   align-self: center;
 }
 
 .punteggio .fa{
@@ -172,4 +173,11 @@
 
 .eliminarecensione .confirmbutton{
     font-family: fontAwesome;
+}
+
+.inviarecensione{
+    margin-left: 32vw;
+    padding: 1vh 1.5vw;
+    margin-top: .5vh;
+    margin-bottom: .5vh;
 }
