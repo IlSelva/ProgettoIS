@@ -134,10 +134,10 @@ insert into Tipologia(Contenuto,Genere) values
 ("0000-0002-6509-0000-0-0000-0008-O","Horror");
 
 insert into Utente(email,passwordhash,salt,dataDiNascita,username,administrator) values
-("niccolocacace@gmail.com",SHA1("NiccoloCacace1"),"E1F53135E559C553","1999-12-24","Niccolò",1),
-("spastore@gmail.com",SHA1("SilvioPastore2"),"E1F53135E559C253","1999-04-23","Silvio",1),
-("achilleprezioso@gmail.com",SHA1("AchillePrezioso3"),"S1F13135E509C523","1999-03-04","Achille",0),
-("alessandroricchetti@gmail.com",SHA1("AlessandroRicchetti4"),"W1F43135F559C553","1999-12-12","Alessandro",0);
+("niccolocacace@gmail.com",SHA1("NiccoloCacace1E1F53135E559C553"),"E1F53135E559C553","1999-12-24","Niccolò",1),
+("spastore@gmail.com",SHA1("SilvioPastore2E1F53135E559C253"),"E1F53135E559C253","1999-04-23","Silvio",1),
+("achilleprezioso@gmail.com",SHA1("AchillePrezioso3S1F13135E509C523"),"S1F13135E509C523","1999-03-04","Achille",0),
+("alessandroricchetti@gmail.com",SHA1("AlessandroRicchetti4W1F43135F559C553"),"W1F43135F559C553","1999-12-12","Alessandro",0);
 
 insert into Recensione(Utente,Contenuto,punteggio,descrizione) values
 ("spastore@gmail.com","0000-0006-13A9-001F-3-0000-0000-S",4,"Difficilmente ho visto serie televisive così ben fatte sotto ogni punto di vista. Regia, sceneggiatura, montaggio, sonoro e recitazione toccano l'apice. Per non parlare della storia.
