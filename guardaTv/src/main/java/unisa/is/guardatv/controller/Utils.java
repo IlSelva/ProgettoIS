@@ -5,12 +5,14 @@ import org.apache.commons.io.FilenameUtils;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
 
-import static unisa.is.guardatv.controller.Constants.BAD_REQUEST_MESS;
-import static unisa.is.guardatv.controller.Constants.INVALID_INT_VALUE;
+import static unisa.is.guardatv.controller.Constants.*;
 
 public class Utils {
 
@@ -76,7 +78,9 @@ public class Utils {
     public Date getDate(String date, String format) {
         Date dateRet;
         try {
-            dateRet = new SimpleDateFormat(format).parse(date);
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, Locale.ITALIAN);
+	        LocalDate data = LocalDate.parse(date, formatter);
+	        dateRet = java.sql.Date.valueOf(data);
         } catch (Exception e) {
             return null;
         }

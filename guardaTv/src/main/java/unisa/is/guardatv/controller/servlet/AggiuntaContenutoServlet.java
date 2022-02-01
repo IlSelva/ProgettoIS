@@ -5,14 +5,17 @@ import unisa.is.guardatv.controller.Utils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -24,6 +27,7 @@ import static unisa.is.guardatv.controller.Constants.*;
  * Servlet implementation class AggiuntaContenuto
  */
 @WebServlet(name = "AggiuntaContenuto", urlPatterns = "/aggiunto-contenuto")
+@MultipartConfig
 public class AggiuntaContenutoServlet extends HttpServlet {
 
     /**
@@ -45,9 +49,13 @@ public class AggiuntaContenutoServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//da fare controllo utente amministratore
+		Utente utente = (Utente) request.getSession().getAttribute("utente");
+		if (utente == null)
+			throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato.");
+		if(!utente.getAdministrator())
+			throw new unisa.is.guardatv.controller.servlet.MyServletException("Non hai i permessi necessari");
 
-
-        String id = request.getParameter("id");
+        String id = request.getParameter("contenutoId");
         // controllo l'id in input che rispetti la regex definita in precedenza
         if (!Pattern.compile(ID_REGEX).matcher(id).find()) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("ID non valido.");
@@ -100,7 +108,9 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Data di uscita non valida.");
         }
 
-        String pathImmagine = request.getParameter("immagine");
+	    Part filePart = request.getPart("immagine");
+	    String pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+
         // Controllo che il path dell'immagine sia valido
         if (!Utils.getInstance().isValidPath(pathImmagine) || !Utils.getInstance().isValidExtension(pathImmagine, IMAGE_EXTENSIONS)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Immagine non valida.");
@@ -108,26 +118,30 @@ public class AggiuntaContenutoServlet extends HttpServlet {
 
         String pathTrailer = request.getParameter("trailer");
         // Se il path del trailer è presente (!= null) controllo che sia un path valido
-        if (Utils.getInstance().isValidString(pathTrailer) && (!Utils.getInstance().isValidPath(pathTrailer) || !Utils.getInstance().isValidExtension(pathImmagine, VIDEO_EXTENSIONS))) {
+ /*     Trailer è un link non un file, il controllo del formato è sbagliato
+        if (Utils.getInstance().isValidString(pathTrailer) && (!Utils.getInstance().isValidPath(pathTrailer) || !Utils.getInstance().isValidExtension(pathTrailer, VIDEO_EXTENSIONS))) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Trailer non valido.");
         }
-
+*/
 
         // Recupero il parametro film
-        boolean film = Boolean.parseBoolean(request.getParameter("puntate"));
+        boolean film;
+		if(request.getParameter("categoria").compareTo("film") == 0)
+			film = true;
+		else
+			film = false;
 
-        int puntate = Utils.getInstance().getInt(request.getParameter("puntate"));
-        // Controllo che il parametro puntate abbia un valore corretto
-        if (puntate == INVALID_INT_VALUE) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero puntate non valido.");
-        }
+		int puntate = Utils.getInstance().getInt(request.getParameter("puntate"));
+		// Controllo che il parametro puntate abbia un valore corretto
+		if ((!film)&&(puntate == INVALID_INT_VALUE)) {
+			throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero puntate non valido.");
+		}
 
-        int stagioni = Utils.getInstance().getInt(request.getParameter("stagioni"));
-        // Controllo che il parametro puntate abbia un valore corretto
-        if (stagioni == INVALID_INT_VALUE) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero stagioni non valido.");
-        }
-
+		int stagioni = Utils.getInstance().getInt(request.getParameter("stagioni"));
+		// Controllo che il parametro puntate abbia un valore corretto
+		if ((!film)&&(stagioni == INVALID_INT_VALUE)) {
+			throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero stagioni non valido.");
+		}
 
 
         // Creo il contenuto se non esistente
@@ -140,10 +154,9 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         contenuto.setRegista(regista);
         contenuto.setDataDiUscita(dataDiUscita);
         contenuto.setImmagineDelContenuto(pathImmagine);
-        contenuto.setFilm(film);
-        contenuto.setPuntate(puntate);
-        contenuto.setStagioni(stagioni);
-
+	    contenuto.setFilm(film);
+		contenuto.setPuntate(puntate);
+		contenuto.setStagioni(stagioni);
         if (Utils.getInstance().isValidString(pathTrailer)) {
             contenuto.setVideoTrailer(pathTrailer);
         }
@@ -154,6 +167,16 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             e.printStackTrace();
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salataggio del contenuto.");
         }
+
+	    String destinazione = CARTELLA_UPLOAD + File.separator + pathImmagine;
+	    Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
+
+	    InputStream fileInputStream = filePart.getInputStream();
+	    // crea CARTELLA_UPLOAD, se non esiste
+	    Files.createDirectories(pathDestinazione.getParent());
+	    // scrive il file
+	    Files.copy(fileInputStream, pathDestinazione);
+
 
         // Creo la tipologia ovvero contenuto -> genere
 
