@@ -34,5 +34,6 @@ public class Constants {
 
     public static final int INVALID_INT_VALUE = -1;
     public static final Date INVALID_DATE_VALUE = null;
-    public static final String DATE_FORMAT = "dd/MM/yyyy";
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+	public static final String CARTELLA_UPLOAD = "src/main/webapp/img/contenuti";
 }
