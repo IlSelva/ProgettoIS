@@ -1,7 +1,7 @@
 html{
     min-height: 100vh;
     position: relative;
-    font-family: "Trebuchet MS";  /* font Trebuchet sans serif, consigliato da british dyslexia association */
+    font-family: "Trebuchet MS", Tahoma, sans-serif;  /* font Trebuchet sans serif, consigliato da british dyslexia association */
 }
 
 body{
@@ -64,14 +64,13 @@ body{
 }
 
 /* login e register page*/
-.signform{
+.signform, .uploadform{
     border: 2px solid #454f54;
     width: 70vw;
     margin: 1vh 1vw;
     padding-left: 2vw;
     border-radius: 10px;
 }
-
 
 .returnmessage{
     display: block;
@@ -80,11 +79,29 @@ body{
     margin-bottom: 2vh;
 }
 
-.signform input{
+.signform input, .uploadform input, .uploadform textarea{
     border: 2px solid #364A58;
     border-radius: 5px;
     margin-bottom: 1vh;
     margin-right: .5vh;
+}
+
+.uploadform label{
+    display: block;
+}
+
+.uploadform textarea{
+    width: 40vw;
+    height: 10vh;
+}
+
+.categoriaselect{
+    border: 1px solid #364A58;
+    background: #364A58;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    padding: .5vh 1vw;
 }
 
 .confirmbutton{
