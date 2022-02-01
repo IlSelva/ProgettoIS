@@ -35,6 +35,8 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
      * @throws IOException se la richiesta per il GET non può essere gestita
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Utente utente = (Utente) request.getSession().getAttribute("utente");
+
         Recensione recensione;
         // devo prendere il contenuto
         String id = request.getParameter("id");
@@ -49,7 +51,8 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
             recensione.setPunteggio(punteggio);
             if (descrizione != null)
                 recensione.setDescrizione(descrizione);
-
+            recensione.setUtente(utente.getEmail());
+            recensione.setContenuto(id);
             recensioneDAO.doSave(recensione);
             recensione.setContenuto(contenuto.getId());
             contenutoDAO.doUpdate(contenuto);
