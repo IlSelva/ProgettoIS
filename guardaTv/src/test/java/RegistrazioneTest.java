@@ -1,18 +1,13 @@
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import unisa.is.guardatv.controller.servlet.GestioneUtente.RegistrazioneServlet;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,7 +51,6 @@ public class RegistrazioneTest{
         PrintWriter MyWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(MyWriter);
         servlet.doPost(request, response);
-
     }
 
     @Test
@@ -91,14 +85,13 @@ public class RegistrazioneTest{
         PrintWriter MyWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(MyWriter);
         servlet.doPost(request, response);
-
     }
 
     @Test
     public void testUsername() throws Exception {
         exceptionRule.expect(MyServletException.class);
         exceptionRule.expectMessage("Username non valido");
-        when(request.getParameter("registrazione")).thenReturn("registrazione");
+        //when(request.getParameter("registrazione")).thenReturn("registrazione");
         when(request.getParameter("email")).thenReturn("marioRossi@gmail.com");
         when(request.getParameter("password")).thenReturn("MarioRossi2000");
         when(request.getParameter("passwordConferma")).thenReturn("MarioRossi2000");
@@ -109,6 +102,5 @@ public class RegistrazioneTest{
         PrintWriter MyWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(MyWriter);
         servlet.doPost(request, response);
-
     }
 }
