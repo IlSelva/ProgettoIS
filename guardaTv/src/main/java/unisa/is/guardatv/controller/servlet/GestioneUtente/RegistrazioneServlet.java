@@ -29,7 +29,7 @@ public class RegistrazioneServlet extends HttpServlet {
      * @throws ServletException se la richiesta POST non può essere gestita
      * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
     /**
@@ -86,8 +86,12 @@ public class RegistrazioneServlet extends HttpServlet {
         utente.setUsername(username);
         utente.setEmail(email);
         utente.setDataDiNascita(dataDiNascita);
-
-        utenteDAO.doSave(utente);
+        try {
+            utenteDAO.doSave(utente);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore durante la registrazione.");
+        }
         request.getSession().setAttribute("utente", utente);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/profilo.jsp");

@@ -65,8 +65,12 @@ public class LoginServlet extends HttpServlet {
         login.setIdUtente(utente.getEmail());
         login.setToken(UUID.randomUUID().toString());
         login.setTime(Timestamp.from(Instant.now()));
-
-        loginDAO.doSave(login);
+        try {
+            loginDAO.doSave(login);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel login.");
+        }
 
         Cookie cookie = new Cookie("login", login.getId() + "_" + login.getToken());
         cookie.setMaxAge(30 * 24 * 60 * 60); // 30 giorni
