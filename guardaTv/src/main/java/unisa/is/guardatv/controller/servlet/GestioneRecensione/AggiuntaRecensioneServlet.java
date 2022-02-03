@@ -46,17 +46,29 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
         int punteggio = Integer.parseInt(request.getParameter("punteggio"));
         String descrizione = request.getParameter("descrizione"); // il testo è opzionale
 
-        if (punteggio > 0 && punteggio <= 5) {
+        if (punteggio == 0)
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Il punteggio non può essere 0");
+        if (punteggio >= 5)
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Il punteggio non può essere maggiore di 5");
+        if (descrizione.length() > 500)
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("La descrizione supera la lunghezza massima");
+        if (punteggio > 0) {
             recensione = new Recensione();
             recensione.setPunteggio(punteggio);
             if (descrizione != null)
                 recensione.setDescrizione(descrizione);
             recensione.setUtente(utente.getEmail());
             recensione.setContenuto(id);
-            recensioneDAO.doSave(recensione);
+            try {
+                recensioneDAO.doSave(recensione);
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore creazione recensione");
+            }
             recensione.setContenuto(contenuto.getId());
             contenutoDAO.doUpdate(contenuto);
         }
+
         request.setAttribute("notifica", "Recensione salvata con successo");
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/Contenuto.jsp");
