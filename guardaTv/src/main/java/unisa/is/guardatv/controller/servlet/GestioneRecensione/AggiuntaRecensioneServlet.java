@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Questa classe è una Servlet che gestisce l'aggiunta di una Recensione ad un Contenuto
@@ -58,20 +59,26 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
             if (descrizione != null)
                 recensione.setDescrizione(descrizione);
             recensione.setUtente(utente.getEmail());
-            recensione.setContenuto(id);
+            recensione.setContenuto(contenuto.getId());
+            recensione.setContenuto(contenuto.getId());
+            request.setAttribute("contenuto", contenuto);
+            // devo prendere tutte le recensioni del contenuto
+            List<Recensione> listaRecensioni = recensioneDAO.doRetrieveByContenuto(contenuto.getId(), 0,100);
+            // devo fare il setAttribute con la lista delle recensioni
+            request.setAttribute("listaRecensioni", listaRecensioni);
             try {
                 recensioneDAO.doSave(recensione);
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore creazione recensione");
             }
-            recensione.setContenuto(contenuto.getId());
-            contenutoDAO.doUpdate(contenuto);
+
+
         }
 
         request.setAttribute("notifica", "Recensione salvata con successo");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/Contenuto.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/index.jsp");
         requestDispatcher.forward(request, response);
     }
 }
