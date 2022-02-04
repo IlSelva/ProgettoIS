@@ -59,7 +59,7 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Il punteggio non può essere 0");
         if (punteggio > 5)
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Il punteggio non può essere maggiore di 5");
-        if (descrizione.length() > 500)
+        if (descrizione.length() > 255)
             throw new unisa.is.guardatv.controller.servlet.MyServletException("La descrizione supera la lunghezza massima");
         if (punteggio > 0) {
             recensione = new Recensione();
