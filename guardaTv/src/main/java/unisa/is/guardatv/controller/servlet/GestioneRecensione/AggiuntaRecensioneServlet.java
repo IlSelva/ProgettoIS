@@ -37,11 +37,19 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getSession().getAttribute("utente");
+        Contenuto contenuto;
+        if (utente == null)
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato");
 
         Recensione recensione;
         // devo prendere il contenuto
         String id = request.getParameter("id");
-        Contenuto contenuto = contenutoDAO.doRetrieveById(id);
+        try {
+            contenuto = contenutoDAO.doRetrieveById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore");
+        }
 
         // prendo i dati della recensione
         int punteggio = Integer.parseInt(request.getParameter("punteggio"));
@@ -49,7 +57,7 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
 
         if (punteggio == 0)
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Il punteggio non può essere 0");
-        if (punteggio >= 5)
+        if (punteggio > 5)
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Il punteggio non può essere maggiore di 5");
         if (descrizione.length() > 500)
             throw new unisa.is.guardatv.controller.servlet.MyServletException("La descrizione supera la lunghezza massima");
