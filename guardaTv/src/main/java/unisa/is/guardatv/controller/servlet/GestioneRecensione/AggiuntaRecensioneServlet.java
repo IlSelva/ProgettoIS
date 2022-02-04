@@ -60,7 +60,6 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
                 recensione.setDescrizione(descrizione);
             recensione.setUtente(utente.getEmail());
             recensione.setContenuto(contenuto.getId());
-            recensione.setContenuto(contenuto.getId());
             request.setAttribute("contenuto", contenuto);
             // devo prendere tutte le recensioni del contenuto
             List<Recensione> listaRecensioni = recensioneDAO.doRetrieveByContenuto(contenuto.getId(), 0,100);
