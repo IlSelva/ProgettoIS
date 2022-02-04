@@ -21,6 +21,7 @@ import unisa.is.guardatv.controller.servlet.GestioneRecensione.AggiuntaRecension
 import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import java.io.PrintWriter;
+import java.util.stream.IntStream;
 
 
 public class RecensioneTest {
@@ -68,6 +69,25 @@ public class RecensioneTest {
         exceptionRule.expectMessage("Il punteggio non può essere maggiore di 5");
         when(request.getParameter("punteggio")).thenReturn(String.valueOf(6));
         when(request.getParameter("descrizione")).thenReturn("Bel film");
+        PrintWriter printWriter = mock(PrintWriter.class);
+        when(response.getWriter()).thenReturn(printWriter);
+        servlet.doPost(request, response);
+    }
+
+    @Test
+    public void testDescrizioneTroppoLunga() throws Exception {
+        Utente utente = new Utente();
+        utente.setEmail("email@gmail.com");
+        utente.setUsername("Username");
+        when(request.getSession()).thenReturn(session);
+        when(request.getSession().getAttribute("utente")).thenReturn(utente);
+        exceptionRule.expect(MyServletException.class);
+        StringBuilder stringBuilder = new StringBuilder();
+        IntStream.range(0, 256).forEach((num) -> stringBuilder.append("A"));
+        String descrizione = stringBuilder.toString();
+        exceptionRule.expectMessage("La descrizione supera la lunghezza massima");
+        when(request.getParameter("punteggio")).thenReturn(String.valueOf(5));
+        when(request.getParameter("descrizione")).thenReturn(descrizione);
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         servlet.doPost(request, response);
