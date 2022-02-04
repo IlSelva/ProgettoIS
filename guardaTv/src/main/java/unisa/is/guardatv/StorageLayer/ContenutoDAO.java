@@ -426,6 +426,7 @@ public class ContenutoDAO {
             ps.setBoolean(9,contenuto.isFilm());
             ps.setInt(10,contenuto.getStagioni());
             ps.setInt(11,contenuto.getPuntate());
+            ps.setString(12, contenuto.getId());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("UPDATE error.");
             }
