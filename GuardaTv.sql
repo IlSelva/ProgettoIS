@@ -14,13 +14,15 @@ videoTrailer varchar(255) ,
 film boolean not null default true,
 stagioni int default null,
 puntate int default null,
-primary key (id)
+primary key (id),
+FULLTEXT KEY(titolo),
+FULLTEXT KEY(titolo, descrizione)
 );
 
 
 
 Create Table Genere(
-nomeGenere varchar(30) not null,
+nomeGenere varchar(50) not null,
 primary key(nomeGenere)
 );
 
@@ -48,7 +50,7 @@ Create Table Recensione(
 Utente varchar(256) not null,
 Contenuto varchar(33) not null,
 punteggio int not null,
-descrizione varchar(500),
+descrizione varchar(256),
 primary key(Utente,Contenuto),
 foreign key (Utente) references Utente(email),
 foreign key (Contenuto) references Contenuto(id)
