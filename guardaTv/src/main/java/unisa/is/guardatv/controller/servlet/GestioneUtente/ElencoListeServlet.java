@@ -36,6 +36,9 @@ public class ElencoListeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Utente utente = (Utente) request.getSession().getAttribute("utente");
+        if(request.getSession().getAttribute("utente") == null)
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato.");
+
         if (utente != null) {
             String id = utente.getEmail();
             List<Lista> lista = listaDAO.doRetrieveByUtente(id, 0, 10);

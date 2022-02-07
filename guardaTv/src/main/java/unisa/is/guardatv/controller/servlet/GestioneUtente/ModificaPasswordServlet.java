@@ -22,7 +22,7 @@ public class ModificaPasswordServlet extends HttpServlet {
      * @throws ServletException se la richiesta POST non può essere gestita
      * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
     private final UtenteDAO utenteDAO = new UtenteDAO();
@@ -34,7 +34,8 @@ public class ModificaPasswordServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getSession().getAttribute("utente"); // prendo l'utente dalla sessione
-
+        if(request.getSession().getAttribute("utente") == null)
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato.");
         String nuovaPassword;
         String confermaPassword;
         String saltedPassword = "";
@@ -66,8 +67,6 @@ public class ModificaPasswordServlet extends HttpServlet {
                 utenteDAO.doUpdate(utente);
             }
         }
-
-
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/profilo.jsp");
         requestDispatcher.forward(request, response);
