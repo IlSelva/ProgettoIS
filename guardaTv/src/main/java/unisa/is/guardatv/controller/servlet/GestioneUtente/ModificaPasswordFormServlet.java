@@ -20,7 +20,7 @@ public class ModificaPasswordFormServlet extends HttpServlet {
      * @throws ServletException se la richiesta POST non può essere gestita
      * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
     /**
@@ -30,8 +30,8 @@ public class ModificaPasswordFormServlet extends HttpServlet {
      * @throws IOException se la richiesta per il GET non può essere gestita
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("utente") != null) {
-            throw new MyServletException("Utente loggato.");
+        if (request.getSession().getAttribute("utente") == null) {
+            throw new MyServletException("Utente non loggato.");
         }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/modificaPassword.jsp");
         requestDispatcher.forward(request, response);
