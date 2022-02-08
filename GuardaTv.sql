@@ -151,19 +151,19 @@ in questo caso.....si poteva fare di meglio."),
 ("niccolocacace@gmail.com","0000-0004-5D0D-0000-S-0000-R",4,"Bellissima serie coninvolgente con bravissimi attori ed effetti speciali pazzeschi. Sono rimasto un poco deluso dalla quarta stagione ma nel complesso veramente un bel lavoro.");
 
 insert into Lista(nome,Utente,descrizione) values
-("Miei Thriller","niccolocacace@gmail.com","Una lista con tutti i miei film genere Thriller preferiti."),
-("Film da vedere","spastore@gmail.com","La lista di tutti i film che mi voglio vedere quando avrò tempo."),
+("MieiThriller","niccolocacace@gmail.com","Una lista con tutti i miei film genere Thriller preferiti."),
+("Filmdavedere","spastore@gmail.com","La lista di tutti i film che mi voglio vedere quando avrò tempo."),
 ("Divertenti","achilleprezioso@gmail.com","La lista dei film per quando mi voglio dare due risate."),
-("Film di fantasia","alessandroricchetti@gmail.com","La lista dei miei film fantasy preferiti");
+("Filmdifantasia","alessandroricchetti@gmail.com","La lista dei miei film fantasy preferiti");
 
 
 insert into ContenutoLista(ListaNome,ListaUtente, Contenuto) values 
-("Miei Thriller","niccolocacace@gmail.com","0000-0002-6509-0000-0-0000-0008-O"),
-("Miei Thriller","niccolocacace@gmail.com","0000-0006-13A9-001F-3-0000-0000-S"),
-("Film da vedere","spastore@gmail.com","0000-0002-6509-0000-0-0000-0008-O"),
-("Film da vedere","spastore@gmail.com","0000-0002-1641-0012-T-0000-0000-O"),
+("MieiThriller","niccolocacace@gmail.com","0000-0002-6509-0000-0-0000-0008-O"),
+("MieiThriller","niccolocacace@gmail.com","0000-0006-13A9-001F-3-0000-0000-S"),
+("Filmdavedere","spastore@gmail.com","0000-0002-6509-0000-0-0000-0008-O"),
+("Filmdavedere","spastore@gmail.com","0000-0002-1641-0012-T-0000-0000-O"),
 ("Divertenti","achilleprezioso@gmail.com","0000-0000-D5F8-0012-M-0000-0000-8"),
 ("Divertenti","achilleprezioso@gmail.com","0000-0004-0137-011E-4-0000-0000-P"),
-("Film di fantasia","alessandroricchetti@gmail.com","0000-0004-5D0D-0000-S-0000-R"),
-("Film di fantasia","alessandroricchetti@gmail.com","0000-0002-1641-0012-T-0000-0000-O");
+("Filmdifantasia","alessandroricchetti@gmail.com","0000-0004-5D0D-0000-S-0000-R"),
+("Filmdifantasia","alessandroricchetti@gmail.com","0000-0002-1641-0012-T-0000-0000-O");
 
