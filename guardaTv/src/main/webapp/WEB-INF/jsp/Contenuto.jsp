@@ -51,7 +51,7 @@
                                 </label>
                             </h3>
                             <form name="recensione" id="nuovaRecensione" action="AggiuntaRecensione" method="post">
-                                <input type="text" name="contenuto" value="<c:out value="${contenuto.id}"/>" hidden>
+                                <input type="text" name="id" value="<c:out value="${contenuto.id}"/>" hidden>
                                 <div class="riga1">
                                     <h3 class="nomeutente"> <c:out value="${utente.email}"/> </h3>
                                     <div class="rating">
