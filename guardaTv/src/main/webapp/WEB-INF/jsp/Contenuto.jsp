@@ -27,8 +27,8 @@
                     <label for="selectList"></label>
                     <select class="listselector" name="nomeLista" id="selectList">
                         <option value="" label="" selected> liste </option>
-                        <c:forEach items="${liste}" var="lista">
-                            <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/>. </option>
+                        <c:forEach items="${listaDelleListe}" var="lista">
+                            <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/> </option>
                         </c:forEach>
                     </select>
                     <input class="listselector" id="addList" type="submit" value="Aggiungi ">
