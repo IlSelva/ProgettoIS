@@ -14,7 +14,7 @@
             <article class="cont">
 
                 <a class="copertina" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
-                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.immagineDelContenuto}"/>.png" alt=""/>
+                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.immagineDelContenuto}"/>" alt=""/>
                 </a>
                 <h3>
                     <a class="titolo" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
