@@ -4,15 +4,15 @@ import org.apache.commons.io.FilenameUtils;
 
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.sql.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
-import static unisa.is.guardatv.controller.Constants.*;
+import static unisa.is.guardatv.controller.Constants.INVALID_INT_VALUE;
 
 public class Utils {
 
@@ -72,23 +72,33 @@ public class Utils {
     }
 
     public boolean checkStringLength(String str, int min, int max) {
-        return str.length() >= min && str.length() <= max;
+        return isValidString(str) && str.length() >= min && str.length() <= max;
+    }
+
+
+    public boolean checkStringLength(String str, int min, int max, String regex) {
+        return isValidString(str, regex) && str.length() >= min && str.length() <= max;
     }
 
     public Date getDate(String date, String format) {
         Date dateRet;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         try {
-	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format, Locale.ITALIAN);
-	        LocalDate data = LocalDate.parse(date, formatter);
-	        dateRet = java.sql.Date.valueOf(data);
+            dateRet = Date.valueOf(date);
+            simpleDateFormat.format(dateRet);
         } catch (Exception e) {
             return null;
         }
         return dateRet;
     }
 
+    public boolean isValidString(String str, String regex) {
+        return str != null && !str.equals("") && Pattern.compile(regex).matcher(str).find();
+    }
+
     public boolean isValidString(String str) {
         return str != null && !str.equals("");
     }
 }
+
 

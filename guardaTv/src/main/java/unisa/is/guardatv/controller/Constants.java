@@ -19,6 +19,10 @@ public class Constants {
 
     public static final String ID_REGEX = "^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$|^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{1}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{1}$";
 
+    public static final String REGEX_AZaz09 = "^[A-Za-z0-9\\s]+$";
+    public static final String REGEX_AZazCOMMA = "^[A-Za-z,\\s]+$";
+    public static final String REGEX_DEFAULT = "";
+
     public static final int MIN_TITLE_LENGTH = 1;
     public static final int MAX_TITLE_LENGTH = 50;
     public static final int MIN_DESCRIPTION_LENGTH = 1;
@@ -35,5 +39,5 @@ public class Constants {
     public static final int INVALID_INT_VALUE = -1;
     public static final Date INVALID_DATE_VALUE = null;
     public static final String DATE_FORMAT = "yyyy-MM-dd";
-	public static final String CARTELLA_UPLOAD = "src/main/webapp/img/contenuti";
+    public static final String CARTELLA_UPLOAD = "src/main/webapp/img/contenuti";
 }

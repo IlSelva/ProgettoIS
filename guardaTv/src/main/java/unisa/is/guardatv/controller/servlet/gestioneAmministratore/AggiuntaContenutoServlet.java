@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.gestioneAmministratore;
 
 import unisa.is.guardatv.StorageLayer.*;
 import unisa.is.guardatv.controller.Utils;
@@ -47,13 +47,16 @@ public class AggiuntaContenutoServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//da fare controllo utente amministratore
-		Utente utente = (Utente) request.getSession().getAttribute("utente");
-		if (utente == null)
-			throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato.");
-		if(!utente.getAdministrator())
-			throw new unisa.is.guardatv.controller.servlet.MyServletException("Non hai i permessi necessari");
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //controllo utente amministratore
+        Utente utente = (Utente) request.getSession().getAttribute("utente");
+        if (utente == null) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato.");
+        }
+
+        if (!utente.getAdministrator()) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Non hai i permessi necessari");
+        }
 
         String id = request.getParameter("contenutoId");
         // controllo l'id in input che rispetti la regex definita in precedenza
@@ -77,7 +80,7 @@ public class AggiuntaContenutoServlet extends HttpServlet {
 
         String genere = request.getParameter("genere");
         // controllo il genere in input che rispetti lunghezza prefissata
-        if (!Utils.getInstance().checkStringLength(genere, MIN_GENRE_LENGTH, MAX_GENRE_LENGTH)) {
+        if (!Utils.getInstance().checkStringLength(genere, MIN_GENRE_LENGTH, MAX_GENRE_LENGTH, REGEX_AZazCOMMA)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Genere non valido.");
         }
 
@@ -108,8 +111,8 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Data di uscita non valida.");
         }
 
-	    Part filePart = request.getPart("immagine");
-	    String pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        Part filePart = request.getPart("immagine");
+        String pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
         // Controllo che il path dell'immagine sia valido
         if (!Utils.getInstance().isValidPath(pathImmagine) || !Utils.getInstance().isValidExtension(pathImmagine, IMAGE_EXTENSIONS)) {
@@ -117,31 +120,21 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         }
 
         String pathTrailer = request.getParameter("trailer");
-        // Se il path del trailer è presente (!= null) controllo che sia un path valido
- /*     Trailer è un link non un file, il controllo del formato è sbagliato
-        if (Utils.getInstance().isValidString(pathTrailer) && (!Utils.getInstance().isValidPath(pathTrailer) || !Utils.getInstance().isValidExtension(pathTrailer, VIDEO_EXTENSIONS))) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Trailer non valido.");
-        }
-*/
 
         // Recupero il parametro film
-        boolean film;
-		if(request.getParameter("categoria").compareTo("film") == 0)
-			film = true;
-		else
-			film = false;
+        boolean film = request.getParameter("categoria").compareTo("film") == 0;
 
-		int puntate = Utils.getInstance().getInt(request.getParameter("puntate"));
-		// Controllo che il parametro puntate abbia un valore corretto
-		if ((!film)&&(puntate == INVALID_INT_VALUE)) {
-			throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero puntate non valido.");
-		}
+        int puntate = Utils.getInstance().getInt(request.getParameter("puntate"));
+        // Controllo che il parametro puntate abbia un valore corretto
+        if ((!film) && (puntate == INVALID_INT_VALUE)) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero puntate non valido.");
+        }
 
-		int stagioni = Utils.getInstance().getInt(request.getParameter("stagioni"));
-		// Controllo che il parametro puntate abbia un valore corretto
-		if ((!film)&&(stagioni == INVALID_INT_VALUE)) {
-			throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero stagioni non valido.");
-		}
+        int stagioni = Utils.getInstance().getInt(request.getParameter("stagioni"));
+        // Controllo che il parametro puntate abbia un valore corretto
+        if ((!film) && (stagioni == INVALID_INT_VALUE)) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero stagioni non valido.");
+        }
 
 
         // Creo il contenuto se non esistente
@@ -154,9 +147,9 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         contenuto.setRegista(regista);
         contenuto.setDataDiUscita(dataDiUscita);
         contenuto.setImmagineDelContenuto(pathImmagine);
-	    contenuto.setFilm(film);
-		contenuto.setPuntate(puntate);
-		contenuto.setStagioni(stagioni);
+        contenuto.setFilm(film);
+        contenuto.setPuntate(puntate);
+        contenuto.setStagioni(stagioni);
         if (Utils.getInstance().isValidString(pathTrailer)) {
             contenuto.setVideoTrailer(pathTrailer);
         }
@@ -168,14 +161,14 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salataggio del contenuto.");
         }
 
-	    String destinazione = CARTELLA_UPLOAD + File.separator + pathImmagine;
-	    Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
+        String destinazione = CARTELLA_UPLOAD + File.separator + pathImmagine;
+        Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
 
-	    InputStream fileInputStream = filePart.getInputStream();
-	    // crea CARTELLA_UPLOAD, se non esiste
-	    Files.createDirectories(pathDestinazione.getParent());
-	    // scrive il file
-	    Files.copy(fileInputStream, pathDestinazione);
+        InputStream fileInputStream = filePart.getInputStream();
+        // crea CARTELLA_UPLOAD, se non esiste
+        Files.createDirectories(pathDestinazione.getParent());
+        // scrive il file
+        Files.copy(fileInputStream, pathDestinazione);
 
 
         // Creo la tipologia ovvero contenuto -> genere

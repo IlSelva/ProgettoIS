@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.gestioneAmministratore;
 
 import unisa.is.guardatv.StorageLayer.*;
 import unisa.is.guardatv.controller.Utils;
@@ -6,11 +6,13 @@ import unisa.is.guardatv.controller.Utils;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -23,31 +25,44 @@ import static unisa.is.guardatv.controller.Constants.*;
 
 
 /**
- * Servlet implementation class ModificaContenuto
+ * Questa classe é una Servlet che gestisce la modifica di un contenuto da parte dell'amministratore
  */
 @WebServlet(name = "ModificaContenuto", urlPatterns = "/modifica-contenuto")
 public class ModificaContenutoServlet extends HttpServlet {
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ModificaContenutoServlet() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     * @param request  un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException      se la richiesta per il GET non può essere gestita
      */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     * @param request  un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException      se la richiesta per il GET non può essere gestita
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //controllo utente amministratore
+        Utente utente = (Utente) request.getSession().getAttribute("utente");
+        if (utente == null) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato.");
+        }
 
-        String id = request.getParameter("id");
+        if (!utente.getAdministrator()) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Non hai i permessi necessari");
+        }
+
+        String id = request.getParameter("contenutoId");
         // controllo l'id in input che rispetti la regex definita in precedenza
         if (!Pattern.compile(ID_REGEX).matcher(id).find()) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("ID non valido.");
@@ -100,30 +115,28 @@ public class ModificaContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Data di uscita non valido.");
         }
 
-        String pathImmagine = request.getParameter("immagine");
+        Part filePart = request.getPart("immagine");
+        String pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+
         // Controllo che il path dell'immagine sia valido
         if (!Utils.getInstance().isValidPath(pathImmagine) || !Utils.getInstance().isValidExtension(pathImmagine, IMAGE_EXTENSIONS)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Immagine non valida.");
         }
 
         String pathTrailer = request.getParameter("trailer");
-        // Se il path del trailer è presente (!= null) controllo che sia un path valido
-        if (Utils.getInstance().isValidString(pathTrailer) && (!Utils.getInstance().isValidPath(pathTrailer) || !Utils.getInstance().isValidExtension(pathImmagine, VIDEO_EXTENSIONS))) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Trailer non valido.");
-        }
 
         // Recupero il parametro film
-        boolean film = Boolean.parseBoolean(request.getParameter("puntate"));
+        boolean film = request.getParameter("categoria").compareTo("film") == 0;
 
         int puntate = Utils.getInstance().getInt(request.getParameter("puntate"));
         // Controllo che il parametro puntate abbia un valore corretto
-        if (puntate == INVALID_INT_VALUE) {
+        if ((!film) && (puntate == INVALID_INT_VALUE)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero puntate non valido.");
         }
 
         int stagioni = Utils.getInstance().getInt(request.getParameter("stagioni"));
         // Controllo che il parametro puntate abbia un valore corretto
-        if (stagioni == INVALID_INT_VALUE) {
+        if ((!film) && (stagioni == INVALID_INT_VALUE)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Numero stagioni non valido.");
         }
 
@@ -152,6 +165,15 @@ public class ModificaContenutoServlet extends HttpServlet {
             e.printStackTrace();
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore modifica contenuto.");
         }
+
+        String destinazione = CARTELLA_UPLOAD + File.separator + pathImmagine;
+        Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
+
+        InputStream fileInputStream = filePart.getInputStream();
+        // crea CARTELLA_UPLOAD, se non esiste
+        Files.createDirectories(pathDestinazione.getParent());
+        // scrive il file
+        Files.copy(fileInputStream, pathDestinazione);
 
         // Creo la tipologia ovvero contenuto -> genere
 

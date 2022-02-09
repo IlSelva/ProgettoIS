@@ -1,4 +1,4 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.gestioneRicerca;
 
 import com.google.gson.Gson;
 import unisa.is.guardatv.StorageLayer.Contenuto;
@@ -19,27 +19,30 @@ import static unisa.is.guardatv.controller.Constants.*;
 
 
 /**
- * Servlet implementation class Ricerca
+ * Questa classe é una Servlet che gestice la ricerca
  */
 @WebServlet(name = "Ricerca", urlPatterns = "/ricerca")
 public class RicercaServlet extends HttpServlet {
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public RicercaServlet() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
 
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

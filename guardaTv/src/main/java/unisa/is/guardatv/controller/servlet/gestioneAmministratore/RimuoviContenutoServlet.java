@@ -1,6 +1,7 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.gestioneAmministratore;
 
 import unisa.is.guardatv.StorageLayer.ContenutoDAO;
+import unisa.is.guardatv.StorageLayer.Utente;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,31 +18,45 @@ import static unisa.is.guardatv.controller.Constants.ID_REGEX;
 
 
 /**
- * Servlet implementation class RimuoviContenuto
+ * Questa é una Servlet che gestisce la rimozione di un contenuto da parte dell'amministratore
  */
 @WebServlet(name = "RimuoviContenuto", urlPatterns = "/rimuovi-contenuto")
 public class RimuoviContenutoServlet extends HttpServlet {
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public RimuoviContenutoServlet() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
      */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String id = request.getParameter("id");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //controllo utente amministratore
+        Utente utente = (Utente) request.getSession().getAttribute("utente");
+        if (utente == null) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non loggato.");
+        }
+
+        if (!utente.getAdministrator()) {
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Non hai i permessi necessari");
+        }
+
+        String id = request.getParameter("contenutoId");
         // controllo l'id in input che rispetti la regex definita in precedenza
         if (!Pattern.compile(ID_REGEX).matcher(id).find()) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("ID non valido.");

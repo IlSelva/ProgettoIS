@@ -1,9 +1,10 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.gestioneLista;
 
 import unisa.is.guardatv.StorageLayer.Lista;
 import unisa.is.guardatv.StorageLayer.ListaDAO;
 import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.controller.Utils;
+import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,43 +18,48 @@ import static unisa.is.guardatv.controller.Constants.*;
 
 
 /**
- * Servlet implementation class RimuoviContenuto
+ * Questa classe é una servlet che gestisce la creazione di una lista da parte dell'utente
  */
 @WebServlet(name = "CreazioneLista", urlPatterns = "/creazione-lista")
 public class CreazioneListaServlet extends HttpServlet {
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public CreazioneListaServlet() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
      */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     * @param request un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException se la richiesta per il GET non può essere gestita
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    Utente utente = (Utente) request.getSession().getAttribute("utente");
 		if(utente == null){
-			throw new MyServletException("Utente loggato.");
+			throw new MyServletException("Utente non loggato.");
 		}
 
         String nome = request.getParameter("nomelista");
         // controllo il nome in input che rispetti la lunghezza definita
-        if (!Utils.getInstance().checkStringLength(nome, MIN_NAME_LENGTH, MAX_NAME_LENGTH)) {
+        if (!Utils.getInstance().checkStringLength(nome, MIN_NAME_LENGTH, MAX_NAME_LENGTH, REGEX_AZaz09)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome non valido.");
         }
 
         String descrizione = request.getParameter("descrizione");
         // controllo se la descrizione è presente
-        if (Utils.getInstance().isValidString(descrizione) && !Utils.getInstance().checkStringLength(descrizione, 0, MAX_DESCRIPTION_LENGTH)) {
+        if (!Utils.getInstance().checkStringLength(descrizione, 0, MAX_DESCRIPTION_LENGTH, REGEX_AZaz09)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Descrizione non valida.");
         }
 

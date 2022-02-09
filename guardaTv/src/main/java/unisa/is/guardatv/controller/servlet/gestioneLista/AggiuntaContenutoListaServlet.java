@@ -1,7 +1,9 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.gestioneLista;
 
 import unisa.is.guardatv.StorageLayer.ContenutoListaDAO;
+import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.controller.Utils;
+import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,29 +17,36 @@ import static unisa.is.guardatv.controller.Constants.BAD_REQUEST_MESS;
 
 
 /**
- * Servlet implementation class AggiuntaContenutoLista
+ * Questa classe é una Servlet che gestisce l'aggiunta di un contenuto da parte dell'utente ad una lista
  */
 @WebServlet(name = "AggiuntaContenutoLista", urlPatterns = "/aggiunta-contenuto-lista")
 public class AggiuntaContenutoListaServlet extends HttpServlet {
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public AggiuntaContenutoListaServlet() {
         super();
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     * @param request  un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException      se la richiesta per il GET non può essere gestita
      */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     * @param request  un oggetto HttpServletRequest che contiene la richiesta che il client invia alla servlet
+     * @param response un oggetto HttpServletRequest che contiene la risposta che la servlet invia al client
+     * @throws ServletException se la richiesta GET non può essere gestita
+     * @throws IOException      se la richiesta per il GET non può essere gestita
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Utente utente = (Utente) request.getSession().getAttribute("utente");
+        if (utente == null) {
+            throw new MyServletException("Utente non loggato.");
+        }
 
         String nomeLista = request.getParameter("nomeLista");
         // controllo che nomeLista sia una stringa valida
@@ -45,22 +54,16 @@ public class AggiuntaContenutoListaServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome lista non valido.");
         }
 
-        String utente = request.getParameter("utente");
-        // controllo che utente sia una stringa valida
-        if (Utils.getInstance().isValidString(utente)) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Utente non valido.");
-        }
-
-        String contenuto = request.getParameter("contenuto");
+        String contenuto = request.getParameter("contenutoId");
         // controllo che il contenuto sia una stringa valida
-        if (Utils.getInstance().isValidString(utente)) {
+        if (Utils.getInstance().isValidString(contenuto)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome contenuto non valido.");
         }
 
         ContenutoListaDAO contenutoListaDAO = new ContenutoListaDAO();
 
         try {
-            contenutoListaDAO.AddContenuto(nomeLista, utente, contenuto);
+            contenutoListaDAO.AddContenuto(nomeLista, utente.getEmail(), contenuto);
         } catch (Exception e) {
             e.printStackTrace();
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nell'aggiunta del contenuto alla lista.");
