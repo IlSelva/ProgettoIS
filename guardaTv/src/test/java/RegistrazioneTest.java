@@ -1,4 +1,5 @@
 
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -9,6 +10,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -101,6 +103,42 @@ public class RegistrazioneTest{
         when(request.getSession()).thenReturn(session);
         PrintWriter MyWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(MyWriter);
-        servlet.doPost(request, response);
+        servlet.doGet(request, response);
     }
+
+    @Test
+    public void testRegistrazione() throws Exception {
+        //exceptionRule.expect(MyServletException.class);
+        //exceptionRule.expectMessage("Devi essere maggiorenne");
+        when(request.getParameter("email")).thenReturn("mariodese4@gmail.com");
+        when(request.getParameter("password")).thenReturn("MarioRossi2000");
+        when(request.getParameter("passwordConferma")).thenReturn("MarioRossi2000");
+        when(request.getParameter("nome")).thenReturn("MarioRossi");
+        Date d = new Date(12,12,2007);
+        when(request.getParameter("datadinascita")).thenReturn(String.valueOf(d));
+        when(request.getSession()).thenReturn(session);
+        PrintWriter MyWriter = mock(PrintWriter.class);
+        when(response.getWriter()).thenReturn(MyWriter);
+        RequestDispatcher rd = mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher(eq("WEB-INF/jsp/profilo.jsp"))).thenReturn(rd);
+        servlet.doGet(request, response);
+    }
+
+    /*@Test
+    public void testDataDue() throws Exception {
+        exceptionRule.expect(MyServletException.class);
+        exceptionRule.expectMessage("Devi essere maggiorenne");
+        when(request.getParameter("email")).thenReturn("marioo2o@gmail.com");
+        when(request.getParameter("password")).thenReturn("MarioRossi2000");
+        when(request.getParameter("passwordConferma")).thenReturn("MarioRossi2000");
+        when(request.getParameter("nome")).thenReturn("MarioRossi");
+        Date d = new Date(12,12,2007);
+        when(request.getParameter("datadinascita")).thenReturn(String.valueOf(d));
+        when(request.getSession()).thenReturn(session);
+        PrintWriter MyWriter = mock(PrintWriter.class);
+        when(response.getWriter()).thenReturn(MyWriter);
+        /*RequestDispatcher rd = mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher(eq("WEB-INF/jsp/profilo.jsp"))).thenReturn(rd);
+        servlet.doGet(request, response);
+    }*/
 }
