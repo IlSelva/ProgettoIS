@@ -8,6 +8,7 @@
 <style><%@include file="../css/generalStyle.css"%></style>
 <style><%@include file="../css/contenutoStyle.css"%></style>
 
+<h5 id="notifica">${notifica}</h5>
 <div class="container">
         <div class="contenuto">
             <img src="img/contenuti/${contenuto.immagineDelContenuto}" alt=""/>
@@ -113,5 +114,6 @@
 
     </div>
 </div>
+<br>
 
 <%@include file="footer.html"%>
