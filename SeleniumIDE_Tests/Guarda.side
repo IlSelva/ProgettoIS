@@ -4496,7 +4496,7 @@
       "command": "assertText",
       "target": "css=h1",
       "targets": [],
-      "value": "Contenuto creato con successo."
+      "value": "Contenuto aggiunto con successo"
     }]
   }, {
     "id": "85887a8c-e2b3-41a4-baaf-4038926c207f",
