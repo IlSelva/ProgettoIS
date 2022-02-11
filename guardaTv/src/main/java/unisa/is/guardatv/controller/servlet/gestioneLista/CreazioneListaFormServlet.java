@@ -1,4 +1,6 @@
-package unisa.is.guardatv.controller.servlet;
+package unisa.is.guardatv.controller.servlet.gestioneLista;
+
+import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
