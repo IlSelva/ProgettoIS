@@ -112,12 +112,17 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         }
 
         Part filePart = request.getPart("immagine");
-        String pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        String pathImmagine = "";
+        if(filePart!= null){
+            pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
-        // Controllo che il path dell'immagine sia valido
-        if (!Utils.getInstance().isValidPath(pathImmagine) || !Utils.getInstance().isValidExtension(pathImmagine, IMAGE_EXTENSIONS)) {
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Immagine non valida.");
+            // Controllo che il path dell'immagine sia valido
+            if (!Utils.getInstance().isValidPath(pathImmagine) || !Utils.getInstance().isValidExtension(pathImmagine, IMAGE_EXTENSIONS)) {
+                throw new unisa.is.guardatv.controller.servlet.MyServletException("Immagine non valida.");
+            }
+
         }
+
 
         String pathTrailer = request.getParameter("trailer");
 
@@ -161,14 +166,17 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salataggio del contenuto.");
         }
 
-        String destinazione = CARTELLA_UPLOAD + File.separator + pathImmagine;
-        Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
+        if(!pathImmagine.isEmpty()){
+            String destinazione = CARTELLA_UPLOAD + File.separator + pathImmagine;
+            Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
 
-        InputStream fileInputStream = filePart.getInputStream();
-        // crea CARTELLA_UPLOAD, se non esiste
-        Files.createDirectories(pathDestinazione.getParent());
-        // scrive il file
-        Files.copy(fileInputStream, pathDestinazione);
+            InputStream fileInputStream = filePart.getInputStream();
+            // crea CARTELLA_UPLOAD, se non esiste
+            Files.createDirectories(pathDestinazione.getParent());
+            // scrive il file
+            Files.copy(fileInputStream, pathDestinazione);
+        }
+
 
 
         // Creo la tipologia ovvero contenuto -> genere

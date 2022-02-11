@@ -48,7 +48,7 @@ public class VisualizzaListaServlet extends HttpServlet {
 
         String nomeLista = request.getParameter("nomeLista");
         // controllo che nomeLista sia una stringa valida
-        if (Utils.getInstance().isValidString(nomeLista)) {
+        if (!Utils.getInstance().isValidString(nomeLista)) {
             throw new MyServletException("Nome lista non valido.");
         }
 

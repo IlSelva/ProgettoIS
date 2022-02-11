@@ -50,13 +50,13 @@ public class AggiuntaContenutoListaServlet extends HttpServlet {
 
         String nomeLista = request.getParameter("nomeLista");
         // controllo che nomeLista sia una stringa valida
-        if (Utils.getInstance().isValidString(nomeLista)) {
+        if (!Utils.getInstance().isValidString(nomeLista)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome lista non valido.");
         }
 
         String contenuto = request.getParameter("contenutoId");
         // controllo che il contenuto sia una stringa valida
-        if (Utils.getInstance().isValidString(contenuto)) {
+        if (!Utils.getInstance().isValidString(contenuto)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome contenuto non valido.");
         }
 

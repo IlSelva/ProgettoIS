@@ -303,19 +303,18 @@ public class AggiuntaContenutoTest {
         when(request.getSession()).thenReturn(session);
         when(request.getSession().getAttribute("utente")).thenReturn(utente);
         when(request.getSession()).thenReturn(session);
-        when(request.getParameter("contenutoId")).thenReturn("0000-1023-1347");
+        when(request.getParameter("contenutoId")).thenReturn("0000-1023-1345");
         when(request.getParameter("titolo")).thenReturn("La vita é bella");
         when(request.getParameter("descrizione")).thenReturn("Film bello ambientato negli anni 30");
         when(request.getParameter("genere")).thenReturn("Romantico");
         when(request.getParameter("regista")).thenReturn("Roberto Benigni");
         when(request.getParameter("durata")).thenReturn("124");
         when(request.getParameter("dataDiUscita")).thenReturn("1996-12-18");
-//        Part immagine = mock(Part.class);
-//        when(request.getSession().getAttribute("immagine")).thenReturn(immagine);
+        when(request.getParameter("categoria")).thenReturn("film");
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         RequestDispatcher rd = mock(RequestDispatcher.class);
-        when(request.getRequestDispatcher(eq("WEB-INF/jsp/Contenuto.jsp"))).thenReturn(rd);
+        when(request.getRequestDispatcher(eq("WEB-INF/jsp/profilo.jsp"))).thenReturn(rd);
         aggiuntaContenutoServlet.doPost(request, response);
     }
 
