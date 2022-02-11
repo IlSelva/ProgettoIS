@@ -1,4 +1,4 @@
-
+package DAO;
 
 import static org.junit.Assert.*;
 
@@ -30,6 +30,6 @@ public class GenereTest {
 
     }
 
-    private String g1 = "Sku1";
-    private String g2 = "SkuSku2";
+    private String g1 = "Sku123";
+    private String g2 = "Sku2";
 }

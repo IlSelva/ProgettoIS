@@ -1,3 +1,4 @@
+package GestioneUtente;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -14,16 +15,20 @@ import org.junit.Test;
 
 
 import org.junit.rules.ExpectedException;
+import unisa.is.guardatv.StorageLayer.Login;
 import unisa.is.guardatv.StorageLayer.Utente;
-import unisa.is.guardatv.controller.servlet.GestioneUtente.LoginFormServlet;
+import unisa.is.guardatv.controller.servlet.GestioneUtente.LoginServlet;
 import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.UUID;
 
-public class LoginFormTest {
+public class LoginTest {
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
-    private LoginFormServlet servlet = new LoginFormServlet();
+    private LoginServlet servlet = new LoginServlet();
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
@@ -37,31 +42,25 @@ public class LoginFormTest {
 
 
     @Test
-    public void testUtenteLoggato() throws Exception {
-        Utente utente = new Utente();
-        utente.setEmail("email@gmail.com");
-        utente.setUsername("Username");
-        when(request.getSession()).thenReturn(session);
-        when(request.getSession().getAttribute("utente")).thenReturn(utente);
+    public void testPasswordNull() throws Exception {
         exceptionRule.expect(MyServletException.class);
-        exceptionRule.expectMessage("Utente loggato.");
+        exceptionRule.expectMessage("email e/o password non validi.");
+        when(request.getParameter("email")).thenReturn("ciao@gmail.com");
+        when(request.getParameter("password")).thenReturn(null);
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         servlet.doPost(request, response);
-    }
+		}
 
     @Test
-    public void testUtenteNonLoggato() throws Exception {
-        Utente utente = null;
-        when(request.getSession()).thenReturn(session);
-        when(request.getSession().getAttribute("utente")).thenReturn(utente);
+    public void testEmailNull() throws Exception {
+        exceptionRule.expect(MyServletException.class);
+        exceptionRule.expectMessage("email e/o password non validi.");
+        when(request.getParameter("email")).thenReturn(null);
+        when(request.getParameter("password")).thenReturn("abcde3443FD");
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
-        RequestDispatcher rd = mock(RequestDispatcher.class);
-        when(request.getRequestDispatcher(eq("WEB-INF/jsp/loginForm.jsp"))).thenReturn(rd);
         servlet.doPost(request, response);
     }
-
-
 
 }

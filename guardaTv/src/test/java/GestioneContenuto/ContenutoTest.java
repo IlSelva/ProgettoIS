@@ -1,3 +1,4 @@
+package GestioneContenuto;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -14,16 +15,18 @@ import org.junit.Test;
 
 
 import org.junit.rules.ExpectedException;
+import unisa.is.guardatv.StorageLayer.Contenuto;
 import unisa.is.guardatv.StorageLayer.Utente;
-import unisa.is.guardatv.controller.servlet.GestioneUtente.ModificaPasswordFormServlet;
+import unisa.is.guardatv.controller.servlet.GestioneContenuto.ContenutoServlet;
 import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import java.io.PrintWriter;
+import java.sql.Date;
 
-public class ModificaPasswordFormTest {
+public class ContenutoTest {
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
-    private ModificaPasswordFormServlet servlet = new ModificaPasswordFormServlet();
+    private ContenutoServlet servlet = new ContenutoServlet();
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
@@ -37,31 +40,15 @@ public class ModificaPasswordFormTest {
 
 
     @Test
-    public void testUtenteNonLoggato() throws Exception {
-        Utente utente = null;
+    public void testContenutoNull() throws Exception {
+        Contenuto contenuto = null;
         when(request.getSession()).thenReturn(session);
-        when(request.getSession().getAttribute("utente")).thenReturn(utente);
+        when(request.getSession().getAttribute("contenuto")).thenReturn(contenuto);
         exceptionRule.expect(MyServletException.class);
-        exceptionRule.expectMessage("Utente non loggato.");
+        exceptionRule.expectMessage("Contenuto non trovato.");
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         servlet.doPost(request, response);
     }
-
-    @Test
-    public void testUtenteLoggato() throws Exception {
-        Utente utente = new Utente();
-        utente.setEmail("email@gmail.com");
-        utente.setUsername("Username");
-        when(request.getSession()).thenReturn(session);
-        when(request.getSession().getAttribute("utente")).thenReturn(utente);
-        PrintWriter printWriter = mock(PrintWriter.class);
-        when(response.getWriter()).thenReturn(printWriter);
-        RequestDispatcher rd = mock(RequestDispatcher.class);
-        when(request.getRequestDispatcher(eq("WEB-INF/jsp/modificaPassword.jsp"))).thenReturn(rd);
-        servlet.doPost(request, response);
-    }
-
-
-
+    
 }

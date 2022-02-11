@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.SyncFailedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -112,7 +113,7 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         }
 
         Part filePart = request.getPart("immagine");
-        String pathImmagine = "";
+        String pathImmagine = id+".jpeg";
         if(filePart!= null){
             pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
@@ -166,7 +167,7 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salataggio del contenuto.");
         }
 
-        if(!pathImmagine.isEmpty()){
+        try{
             String destinazione = CARTELLA_UPLOAD + File.separator + pathImmagine;
             Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
 
@@ -176,7 +177,9 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             // scrive il file
             Files.copy(fileInputStream, pathDestinazione);
         }
-
+        catch (Exception e){
+            System.err.println("ERRORE CARICAMENTO IMMAGINE");
+        }
 
 
         // Creo la tipologia ovvero contenuto -> genere

@@ -1,3 +1,5 @@
+package DAO;
+
 import org.junit.Test;
 import unisa.is.guardatv.StorageLayer.Utente;
 import unisa.is.guardatv.StorageLayer.UtenteDAO;
@@ -46,7 +48,7 @@ public class UtenteDAOTest {
     }
 
 
-    private final String email1 = "marioReds1@gmail.com";
+    private final String email1 = "mariene@gmail.com";
     private final String email2 = "lucabianci@email.it";
     private final String email3 = "luigibruno@hotmail.com";
 

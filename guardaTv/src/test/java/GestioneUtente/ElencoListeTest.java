@@ -1,3 +1,4 @@
+package GestioneUtente;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -15,16 +16,15 @@ import org.junit.Test;
 
 import org.junit.rules.ExpectedException;
 import unisa.is.guardatv.StorageLayer.Utente;
-import unisa.is.guardatv.controller.servlet.GestioneUtente.LoginFormServlet;
-import unisa.is.guardatv.controller.servlet.GestioneUtente.RegistrazioneFormServlet;
+import unisa.is.guardatv.controller.servlet.GestioneUtente.UtenteServlet;
 import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import java.io.PrintWriter;
 
-public class RegistrazioneFormTest {
+public class ElencoListeTest {
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
-    private RegistrazioneFormServlet servlet = new RegistrazioneFormServlet();
+    private UtenteServlet servlet = new UtenteServlet();
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
@@ -38,28 +38,28 @@ public class RegistrazioneFormTest {
 
 
     @Test
-    public void testUtenteLoggato() throws Exception {
-        Utente utente = new Utente();
-        utente.setEmail("email@gmail.com");
-        utente.setUsername("Username");
+    public void testUtenteNull() throws Exception {
+        Utente utente = null;
         when(request.getSession()).thenReturn(session);
         when(request.getSession().getAttribute("utente")).thenReturn(utente);
         exceptionRule.expect(MyServletException.class);
-        exceptionRule.expectMessage("Utente loggato.");
+        exceptionRule.expectMessage("Utente non loggato.");
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         servlet.doPost(request, response);
     }
 
     @Test
-    public void testUtenteNonLoggato() throws Exception {
-        Utente utente = null;
+    public void testListe() throws Exception {
+        Utente utente = new Utente();
+        utente.setEmail("email@gmail.com");
+        utente.setUsername("Username");
         when(request.getSession()).thenReturn(session);
         when(request.getSession().getAttribute("utente")).thenReturn(utente);
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         RequestDispatcher rd = mock(RequestDispatcher.class);
-        when(request.getRequestDispatcher(eq("WEB-INF/jsp/registrazioneForm.jsp"))).thenReturn(rd);
+        when(request.getRequestDispatcher(eq("WEB-INF/jsp/profilojsp"))).thenReturn(rd);
         servlet.doPost(request, response);
     }
 

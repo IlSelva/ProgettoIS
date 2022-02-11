@@ -1,3 +1,4 @@
+package GestioneUtente;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -108,9 +109,7 @@ public class RegistrazioneTest{
 
     @Test
     public void testRegistrazione() throws Exception {
-        //exceptionRule.expect(MyServletException.class);
-        //exceptionRule.expectMessage("Devi essere maggiorenne");
-        when(request.getParameter("email")).thenReturn("mariodese4@gmail.com");
+        when(request.getParameter("email")).thenReturn("maronBel@gmail.com");
         when(request.getParameter("password")).thenReturn("MarioRossi2000");
         when(request.getParameter("passwordConferma")).thenReturn("MarioRossi2000");
         when(request.getParameter("nome")).thenReturn("MarioRossi");
