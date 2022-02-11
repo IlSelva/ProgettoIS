@@ -38,7 +38,7 @@ public class RegistrazioneServlet extends HttpServlet {
      * @throws ServletException se la richiesta GET non può essere gestita
      * @throws IOException se la richiesta per il GET non può essere gestita
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String email = request.getParameter("email");
         if (!(email != null && email.matches("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w+)+$"))) {

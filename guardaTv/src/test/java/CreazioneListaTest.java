@@ -13,8 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.stream.IntStream;
 
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
+
 import static org.mockito.Mockito.*;
 
 public class CreazioneListaTest {
@@ -124,7 +123,7 @@ public class CreazioneListaTest {
     public void testCreazioneLista() throws Exception {
         when(request.getSession()).thenReturn(session);
         when(request.getSession().getAttribute("utente")).thenReturn(utente);
-        when(request.getParameter("nomelista")).thenReturn("preferiti9");
+        when(request.getParameter("nomelista")).thenReturn("preferiti10");
         when(request.getParameter("descrizione")).thenReturn("I miei preferiti");
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
