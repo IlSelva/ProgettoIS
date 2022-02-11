@@ -21,6 +21,13 @@
                     </li>
                 </c:forEach>
             </ul>
+            <h3>Regista: <c:out value="${contenuto.regista}"/></h3>
+            <h3><c:out value="${contenuto.durata}"/>min</h3>
+            <h3>data di rilascio: <c:out value="${contenuto.dataDiUscita}"/></h3>
+            <iframe width="560" height="315" src="<c:out value="${contenuto.videoTrailer}"/>"
+                    title="YouTube video player" frameborder="0" allow="accelerometer;
+                    clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
         <c:choose>
             <c:when test="${utente != null}">
                 <form name="addList" action="aggiunta-contenuto-lista" method="post">
@@ -99,7 +106,8 @@
                                 </p>
                                 <c:if test="${utente.administrator == true}">
                                     <form class="eliminarecensione">
-                                        <input type="hidden" name="idutente" value=${recensione.utente} />
+                                        <input type="hidden" name="idutente" value=${recensione.utente}/>
+                                        <input type="hidden" name="idContenuto" value="${contenuto.id}"/>
                                         <input class="confirmbutton" type="submit" value="f1f8" name="rimozioneRecensione" id="eliminarecensione">
                                     </form>
                                 </c:if>
