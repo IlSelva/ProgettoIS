@@ -51,7 +51,7 @@ public class RimozioneRecensioneServlet extends HttpServlet {
 
         request.setAttribute("notifica", "Recensione rimossa con successo");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/Contenuto.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Contenuto");
         requestDispatcher.forward(request, response);
     }
 }
