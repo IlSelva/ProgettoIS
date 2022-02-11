@@ -171,13 +171,20 @@
     padding-left: 1vw;
 }
 
-.eliminarecensione .confirmbutton{
+#eliminarecensione{
     font-family: fontAwesome;
+    align-self: end;
+    width: fit-content;
+    height: auto;
+    margin-left: 10px;
 }
-
+.eliminarecensioneform{
+    display: flex;
+}
 .inviarecensione{
     margin-left: 32vw;
     padding: 1vh 1.5vw;
     margin-top: .5vh;
     margin-bottom: .5vh;
 }
+

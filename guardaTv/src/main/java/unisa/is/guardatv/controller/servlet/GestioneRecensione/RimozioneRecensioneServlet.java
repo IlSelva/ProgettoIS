@@ -38,7 +38,7 @@ public class RimozioneRecensioneServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getSession().getAttribute("utente"); // prendo l'utente dalla sessione
         if (utente == null || !utente.getAdministrator()) //controllo che l'utente sia amministratore
-            throw new MyServletException();
+            throw new MyServletException("L'utente non è amministratore o non è loggato");
 
 
         // devo prendere il contenuto
