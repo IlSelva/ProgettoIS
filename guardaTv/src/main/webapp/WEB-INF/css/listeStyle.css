@@ -41,7 +41,7 @@
 
 .copertinalista{
     height: auto;
-    width: 16vw;
+    width: 10vw;
     margin-right: 2vw;
 }
 
@@ -76,5 +76,9 @@
 }
 
 .titololiste label{
+    display: block;
+}
+
+.infoContenuto{
     display: block;
 }
