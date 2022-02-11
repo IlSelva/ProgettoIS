@@ -304,7 +304,7 @@ public class AggiuntaContenutoTest {
         when(request.getSession()).thenReturn(session);
         when(request.getSession().getAttribute("utente")).thenReturn(utente);
         when(request.getSession()).thenReturn(session);
-        when(request.getParameter("contenutoId")).thenReturn("0000-1023-1345");
+        when(request.getParameter("contenutoId")).thenReturn("0000-1023-1341");
         when(request.getParameter("titolo")).thenReturn("La vita é bella");
         when(request.getParameter("descrizione")).thenReturn("Film bello ambientato negli anni 30");
         when(request.getParameter("genere")).thenReturn("Romantico");
