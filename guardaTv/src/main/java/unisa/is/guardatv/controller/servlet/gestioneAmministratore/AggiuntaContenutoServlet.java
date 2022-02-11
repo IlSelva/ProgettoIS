@@ -113,10 +113,11 @@ public class AggiuntaContenutoServlet extends HttpServlet {
         }
 
         Part filePart = request.getPart("immagine");
-        String pathImmagine = id+".jpeg";
-        if(filePart!= null){
+        String pathImmagine=null;
+        if(filePart != null){
             pathImmagine = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-
+        if((pathImmagine.compareTo("")==0) || (pathImmagine==null))
+	        pathImmagine = id+".jpeg";
             // Controllo che il path dell'immagine sia valido
             if (!Utils.getInstance().isValidPath(pathImmagine) || !Utils.getInstance().isValidExtension(pathImmagine, IMAGE_EXTENSIONS)) {
                 throw new unisa.is.guardatv.controller.servlet.MyServletException("Immagine non valida.");
