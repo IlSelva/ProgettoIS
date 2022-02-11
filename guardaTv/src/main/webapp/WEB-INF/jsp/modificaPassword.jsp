@@ -5,6 +5,7 @@
     <jsp:param name="pageTitle" value="${contenuto.titolo}"/>
 </jsp:include>
 
+<style><%@include file="/WEB-INF/css/generalStyle.css"%></style>
 <style><%@include file="/WEB-INF/css/listeStyle.css"%></style>
 
 <section class="formModifica">
