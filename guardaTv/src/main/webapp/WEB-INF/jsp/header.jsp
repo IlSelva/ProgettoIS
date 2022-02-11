@@ -8,7 +8,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="/WEB-INF/css/generalStyle.css">
-        <script src="https://use.fontawesome.com/ca2b672bf9.js"></script>
+        <!--script src="https://use.fontawesome.com/ca2b672bf9.js"></script-->
+        <script src="https://kit.fontawesome.com/4367acb6a6.js" crossorigin="anonymous"></script>
+
     </head>
 
     <body>
