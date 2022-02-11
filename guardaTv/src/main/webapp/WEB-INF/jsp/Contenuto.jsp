@@ -21,9 +21,9 @@
                     </li>
                 </c:forEach>
             </ul>
-            <h3>Regista: <c:out value="${contenuto.regista}"/></h3>
-            <h3><c:out value="${contenuto.durata}"/>min</h3>
-            <h3>data di rilascio: <c:out value="${contenuto.dataDiUscita}"/></h3>
+            <h4>Regista: <c:out value="${contenuto.regista}"/></h4>
+            <h4><c:out value="${contenuto.durata}"/>min</h4>
+            <h4>data di rilascio: <c:out value="${contenuto.dataDiUscita}"/></h4>
             <iframe width="560" height="315" src="<c:out value="${contenuto.videoTrailer}"/>"
                     title="YouTube video player" frameborder="0" allow="accelerometer;
                     clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
