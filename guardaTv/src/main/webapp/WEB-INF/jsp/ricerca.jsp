@@ -5,6 +5,8 @@
     <jsp:param name="pageTitle" value="Ricerca"/>
 </jsp:include>
 
+<style><%@include file="../css/generalStyle.css"%></style>
+
 <div class="container">
 
     <section class="griglia">
@@ -12,7 +14,7 @@
             <article class="cont">
 
                 <a class="copertina" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
-                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.id}"/>.png" alt=""/>
+                    <img class="copertina" src="img/contenuti/<c:out value="${contenuto.immagineDelContenuto}"/>" alt=""/>
                 </a>
                 <h3>
                     <a class="titolo" href="Contenuto?id=<c:out value="${contenuto.id}"/>">
@@ -26,7 +28,7 @@
 
 </div>
 
-<c:if test="${empty prodotti}">
+<c:if test="${empty contenuti}">
     <h2 class="sottotitolo">Nessun prodotto trovato.</h2>
 </c:if>
 

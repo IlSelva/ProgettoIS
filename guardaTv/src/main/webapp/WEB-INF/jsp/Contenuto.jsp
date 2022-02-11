@@ -8,6 +8,7 @@
 <style><%@include file="../css/generalStyle.css"%></style>
 <style><%@include file="../css/contenutoStyle.css"%></style>
 
+<h5 id="notifica">${notifica}</h5>
 <div class="container">
         <div class="contenuto">
             <img src="img/contenuti/${contenuto.immagineDelContenuto}" alt=""/>
@@ -27,8 +28,8 @@
                     <label for="selectList"></label>
                     <select class="listselector" name="nomeLista" id="selectList">
                         <option value="" label="" selected> liste </option>
-                        <c:forEach items="${liste}" var="lista">
-                            <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/>. </option>
+                        <c:forEach items="${listaDelleListe}" var="lista">
+                            <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/> </option>
                         </c:forEach>
                     </select>
                     <input class="listselector" id="addList" type="submit" value="Aggiungi ">
@@ -51,7 +52,7 @@
                                 </label>
                             </h3>
                             <form name="recensione" id="nuovaRecensione" action="AggiuntaRecensione" method="post">
-                                <input type="text" name="contenuto" value="<c:out value="${contenuto.id}"/>" hidden>
+                                <input type="text" name="id" value="<c:out value="${contenuto.id}"/>" hidden>
                                 <div class="riga1">
                                     <h3 class="nomeutente"> <c:out value="${utente.email}"/> </h3>
                                     <div class="rating">
@@ -113,5 +114,6 @@
 
     </div>
 </div>
+<br>
 
 <%@include file="footer.html"%>

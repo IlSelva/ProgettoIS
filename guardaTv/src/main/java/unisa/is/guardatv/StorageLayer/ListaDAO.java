@@ -61,8 +61,8 @@ public class ListaDAO {
                     "SELECT  nome,Utente,descrizione FROM Lista WHERE nome = ? AND Utente = ? LIMIT ?, ?");
             ps.setString(1, nome);
             ps.setString(2, utente);
-            ps.setInt(2, offset);
-            ps.setInt(3, limit);
+            ps.setInt(3, offset);
+            ps.setInt(4, limit);
             ResultSet rs = ps.executeQuery();
             Lista p = new Lista();
             while (rs.next()) {

@@ -85,7 +85,7 @@ public class AggiuntaRecensioneServlet extends HttpServlet {
 
         request.setAttribute("notifica", "Recensione salvata con successo");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Contenuto");
         requestDispatcher.forward(request, response);
     }
 }

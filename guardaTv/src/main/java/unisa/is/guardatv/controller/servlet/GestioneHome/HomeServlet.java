@@ -33,7 +33,7 @@ public class HomeServlet extends HttpServlet {
 	 * @throws ServletException se la richiesta POST non può essere gestita
 	 * @throws IOException se un errore di input o output viene rilevato quando la servlet gestisce la richiesta
 	 */
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 	/**

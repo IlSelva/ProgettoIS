@@ -51,7 +51,7 @@ public class ContenutoServlet extends HttpServlet {
         }
         List<Genere> generi = tipologiaDAO.allGeneriByContenuto(id); // generi del contenuto
         if (utente != null) {
-            listaDelleListe = listaDAO.doRetrieveByUtente(utente.getEmail(), 0, 1); // lista delle liste
+            listaDelleListe = listaDAO.doRetrieveByUtente(utente.getEmail(), 0, 100); // lista delle liste
         }
 
         List<Recensione> recensioni = recensioneDAO.doRetrieveByContenuto(id, 0,100); // recensioni contenuto
