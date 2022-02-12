@@ -43,12 +43,13 @@ public class RimozioneRecensioneServlet extends HttpServlet {
 
         // devo prendere il contenuto
         String idContenuto = request.getParameter("id");
+        if (idContenuto == null)
+            throw new MyServletException("Contenuto null");
         // id dell'utente che ha scritto la recensione
         String idUtente = request.getParameter("idutente");
 
         Recensione r = recensioneDAO.doRetrieveById(utente.getEmail(), idContenuto);
         recensioneDAO.doDelete(idUtente, idContenuto);
-
         request.setAttribute("notifica", "Recensione rimossa con successo");
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Contenuto");
