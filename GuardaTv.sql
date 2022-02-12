@@ -92,17 +92,17 @@ from Genere;
 insert into Contenuto(id,titolo,descrizione,regista,durata,dataDiUscita,immagineDelContenuto,videoTrailer,
 film,stagioni,puntate) values 
 ("0000-0002-6509-0000-0-0000-0008-O","Shutter Island","Rachel Salado, paziente del manicomio criminale sull'isola di Shutter, scompare all'improvviso. L'agente federale Teddy Daniels, affiancato dall'ufficiale Chuck Aule, deve indagare per risolvere il mistero",
-"Martin Scorsese",138,"2010-03-05","CopertinaShutterIsland.jpg",https://www.youtube.com/embed/mzkVNB3FpSQ",true,null,null),
+"Martin Scorsese",138,"2010-03-05","CopertinaShutterIsland.jpg","https://www.youtube.com/embed/mzkVNB3FpSQ",true,null,null),
 ("0000-0006-13A9-001F-3-0000-0000-S","Breaking Bad","Walter White, sottopagato insegnante di chimica alla soglia dei cinquanta anni, scopre di avere un cancro terminale ai polmoni. Incapace di accettare questa terribile realtà decide di sfruttare le sue conoscenze di chimica per produrre metamfetamina",
-"Vince Gilligan",60,"2008-01-20","CopertinaBreakingBad.jpg","https://www.youtube.com/watch?v=HhesaQXLuRY",false,5,62),
+"Vince Gilligan",60,"2008-01-20","CopertinaBreakingBad.jpg","https://www.youtube.com/embed/b8TeqLnXqoA",false,5,62),
 ("0000-0000-D5F8-0012-M-0000-0000-8","Due uomini e mezzo","Alan e suo figlio Jake si trasferiscono nella casa sulla spiaggia di Charlie in seguito alla separazione del primo dalla moglie. Crescere il figlio in casa del fratello, un irrefrenabile Don Giovanni, si rivela tuttavia un'impresa ardua",
-"Lee Aronsohn",20,"2003-07-22","CopertinaDueuominiemezzo.jpg","https://www.youtube.com/watch?v=yfNv98nxjsY",false,12,262),
+"Lee Aronsohn",20,"2003-07-22","CopertinaDueuominiemezzo.jpg","https://www.youtube.com/embed/NZg_DTQvuiY",false,12,262),
 ("0000-0004-0137-011E-4-0000-0000-P","A cena con un cretino","Tim sta per ottenere tutto quello che ha sempre desiderato. L'unico ostacolo che deve superare per poter raggiungere il pieno successo sul lavoro è trovare l'ospite perfetto da portare alla cena annuale dedicata alle Persone Straordinarie",
-"Jay Roach",114,"2010-05-12","CopertinaAcenaconuncretino.jpg","https://www.youtube.com/watch?v=rInrjMki198",true,null,null),
+"Jay Roach",114,"2010-05-12","CopertinaAcenaconuncretino.jpg","https://www.youtube.com/embed/rInrjMki198",true,null,null),
 ("0000-0002-1641-0012-T-0000-0000-O","Eternals","Dopo gli eventi accaduti in Avengers: Endgame, una tragedia inaspettata obbliga gli Eterni a uscire dall'ombra e riunire le forze contro il più antico dei nemici dell'umanità, i Devianti.",
-"Dane Whitman",147,"2021-11-03","CopertinaEternals.jpg","https://www.youtube.com/watch?v=dKyIbkZlV40",true,null,null),
+"Dane Whitman",147,"2021-11-03","CopertinaEternals.jpg","https://www.youtube.com/embed/dKyIbkZlV40",true,null,null),
 ("0000-0004-5D0D-0000-S-0000-R","Game of Thrones","La lotta per il potere tra sette casate nobiliari provoca massacri e disastri, mentre il mondo è minacciato dall'avvento di un'era glaciale che risveglia forze oscure e creature leggendarie.",
-"Alan Taylor",80,"2011-05-17","CopertinaIltronodispade.jpg","https://www.youtube.com/watch?v=Go63zt4yx4U",false,8,73);
+"Alan Taylor",80,"2011-05-17","CopertinaIltronodispade.jpg","https://www.youtube.com/embed/Go63zt4yx4U",false,8,73);
 
 insert into Genere(nomeGenere) values
 ("Azione"),
