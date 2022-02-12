@@ -38,21 +38,21 @@ public class RimozioneRecensioneServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getSession().getAttribute("utente"); // prendo l'utente dalla sessione
         if (utente == null || !utente.getAdministrator()) //controllo che l'utente sia amministratore
-            throw new MyServletException();
+            throw new MyServletException("L'utente non è amministratore o non è loggato");
 
 
         // devo prendere il contenuto
         String idContenuto = request.getParameter("id");
+        if (idContenuto == null)
+            throw new MyServletException("Contenuto null");
+        // id dell'utente che ha scritto la recensione
+        String idUtente = request.getParameter("idutente");
 
-        List<Recensione> recensione = recensioneDAO.doRetrieveByContenuto(idContenuto, 0, 1);
-
-        Recensione recensione1 = recensione.get(0);
-        String idUtente = recensione1.getUtente();
+        Recensione r = recensioneDAO.doRetrieveById(utente.getEmail(), idContenuto);
         recensioneDAO.doDelete(idUtente, idContenuto);
-
         request.setAttribute("notifica", "Recensione rimossa con successo");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/Contenuto.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Contenuto");
         requestDispatcher.forward(request, response);
     }
 }

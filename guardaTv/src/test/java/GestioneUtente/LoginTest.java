@@ -1,3 +1,4 @@
+package GestioneUtente;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -14,18 +15,20 @@ import org.junit.Test;
 
 
 import org.junit.rules.ExpectedException;
-import unisa.is.guardatv.StorageLayer.Contenuto;
+import unisa.is.guardatv.StorageLayer.Login;
 import unisa.is.guardatv.StorageLayer.Utente;
-import unisa.is.guardatv.controller.servlet.GestioneContenuto.ContenutoServlet;
+import unisa.is.guardatv.controller.servlet.GestioneUtente.LoginServlet;
 import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.UUID;
 
-public class ContenutoTest {
+public class LoginTest {
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
-    private ContenutoServlet servlet = new ContenutoServlet();
+    private LoginServlet servlet = new LoginServlet();
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
@@ -39,15 +42,25 @@ public class ContenutoTest {
 
 
     @Test
-    public void testContenutoNull() throws Exception {
-        Contenuto contenuto = null;
-        when(request.getSession()).thenReturn(session);
-        when(request.getSession().getAttribute("contenuto")).thenReturn(contenuto);
+    public void testPasswordNull() throws Exception {
         exceptionRule.expect(MyServletException.class);
-        exceptionRule.expectMessage("Contenuto non trovato.");
+        exceptionRule.expectMessage("email e/o password non validi.");
+        when(request.getParameter("email")).thenReturn("ciao@gmail.com");
+        when(request.getParameter("password")).thenReturn(null);
+        PrintWriter printWriter = mock(PrintWriter.class);
+        when(response.getWriter()).thenReturn(printWriter);
+        servlet.doPost(request, response);
+		}
+
+    @Test
+    public void testEmailNull() throws Exception {
+        exceptionRule.expect(MyServletException.class);
+        exceptionRule.expectMessage("email e/o password non validi.");
+        when(request.getParameter("email")).thenReturn(null);
+        when(request.getParameter("password")).thenReturn("abcde3443FD");
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         servlet.doPost(request, response);
     }
-    
+
 }

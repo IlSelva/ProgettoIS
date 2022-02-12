@@ -29,7 +29,7 @@
                         <select class="listselector" name="nomeLista" id="selectList">
                             <option value="" label="" selected> liste </option>
                             <c:forEach items="${listaDelleListe}" var="lista">
-                                <option value ="<c:out value="${lista.nome}"/>"> <c:out value="${lista.nome}"/> </option>
+                                <option value ="<c:out value="${lista.nome}"/>"><c:out value="${lista.nome}"/></option>
                             </c:forEach>
                         </select>
                         <input class="listselector" id="addList" type="submit" value="Aggiungi ">
@@ -105,8 +105,8 @@
                                     </c:forEach>
                                 </p>
                                 <c:if test="${utente.administrator == true}">
-                                    <form class="eliminarecensioneform">
-                                        <input type="hidden" name="idutente" value=${recensione.utente}/>
+                                    <form class="eliminarecensioneform" action="RimozioneRecensione" method="get">
+                                        <input type="hidden" name="idutente" value="${recensione.utente}"/>
                                         <input type="hidden" name="id" value="${contenuto.id}"/>
                                         <button type="submit" class="confirmbutton" id="eliminarecensione" name="rimozioneRecensione">
                                             <i class="fa-solid fa-trash"></i>

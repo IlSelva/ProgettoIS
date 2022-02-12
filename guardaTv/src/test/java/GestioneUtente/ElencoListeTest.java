@@ -1,3 +1,4 @@
+package GestioneUtente;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -15,15 +16,15 @@ import org.junit.Test;
 
 import org.junit.rules.ExpectedException;
 import unisa.is.guardatv.StorageLayer.Utente;
-import unisa.is.guardatv.controller.servlet.GestioneUtente.ModificaPasswordFormServlet;
+import unisa.is.guardatv.controller.servlet.GestioneUtente.UtenteServlet;
 import unisa.is.guardatv.controller.servlet.MyServletException;
 
 import java.io.PrintWriter;
 
-public class ModificaPasswordFormTest {
+public class ElencoListeTest {
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
-    private ModificaPasswordFormServlet servlet = new ModificaPasswordFormServlet();
+    private UtenteServlet servlet = new UtenteServlet();
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
@@ -37,7 +38,7 @@ public class ModificaPasswordFormTest {
 
 
     @Test
-    public void testUtenteNonLoggato() throws Exception {
+    public void testUtenteNull() throws Exception {
         Utente utente = null;
         when(request.getSession()).thenReturn(session);
         when(request.getSession().getAttribute("utente")).thenReturn(utente);
@@ -49,7 +50,7 @@ public class ModificaPasswordFormTest {
     }
 
     @Test
-    public void testUtenteLoggato() throws Exception {
+    public void testListe() throws Exception {
         Utente utente = new Utente();
         utente.setEmail("email@gmail.com");
         utente.setUsername("Username");
@@ -58,7 +59,7 @@ public class ModificaPasswordFormTest {
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         RequestDispatcher rd = mock(RequestDispatcher.class);
-        when(request.getRequestDispatcher(eq("WEB-INF/jsp/modificaPassword.jsp"))).thenReturn(rd);
+        when(request.getRequestDispatcher(eq("WEB-INF/jsp/profilojsp"))).thenReturn(rd);
         servlet.doPost(request, response);
     }
 
