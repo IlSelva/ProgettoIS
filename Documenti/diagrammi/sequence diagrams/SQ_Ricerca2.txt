@@ -1,0 +1,29 @@
+title SQ_Ricerca_3
+
+actor Utente
+boundary SearchForm
+control SearchControl
+boundary SearchResult
+entity Contenuto
+
+Utente->SearchForm: FillContents()
+activate Utente
+activate SearchForm
+
+deactivateafter SearchForm
+Utente->SearchForm: submit()
+activate SearchForm
+SearchForm->*SearchControl: <<create>>
+SearchForm->SearchControl: submitResearch()
+activate SearchControl
+SearchControl->Contenuto: doRetrieveByFilters()
+activate Contenuto
+deactivateafter Contenuto
+
+deactivate SearchForm
+SearchControl->*SearchResult: <<create>>
+SearchControl->SearchResult: showResults()
+activate SearchResult
+deactivate SearchControl
+SearchResult->Utente: showUtente()
+

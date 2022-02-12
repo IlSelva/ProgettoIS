@@ -1,0 +1,33 @@
+title SQ_NuovaLista_4
+
+actor Utente
+boundary NewListButton
+control NewListControl
+boundary ListForm
+entity Lista
+boundary NewListConfirmNotice
+
+
+activate Utente
+Utente->NewListButton:press()
+activate NewListButton
+NewListButton-->*NewListControl:<<create>>
+activate NewListControl
+NewListControl-->*ListForm:<<create>>
+deactivate NewListButton
+deactivate NewListControl
+Utente->ListForm:fillContents()
+activate ListForm
+deactivateafter ListForm
+Utente->ListForm:submit()
+activate ListForm
+ListForm->NewListControl:submitLista()
+activate NewListControl
+NewListControl-->*Lista:<<create>>
+NewListControl-->*NewListConfirmNotice:<<create>>
+NewListControl->ListForm :destroy()
+deactivate ListForm 
+destroy ListForm
+deactivate NewListControl
+activate NewListConfirmNotice
+NewListConfirmNotice->Utente: notifyUtente()
