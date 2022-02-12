@@ -92,7 +92,7 @@ from Genere;
 insert into Contenuto(id,titolo,descrizione,regista,durata,dataDiUscita,immagineDelContenuto,videoTrailer,
 film,stagioni,puntate) values 
 ("0000-0002-6509-0000-0-0000-0008-O","Shutter Island","Rachel Salado, paziente del manicomio criminale sull'isola di Shutter, scompare all'improvviso. L'agente federale Teddy Daniels, affiancato dall'ufficiale Chuck Aule, deve indagare per risolvere il mistero",
-"Martin Scorsese",138,"2010-03-05","CopertinaShutterIsland.jpg","https://www.youtube.com/embed/mzkVNB3FpSQ",true,null,null),
+"Martin Scorsese",138,"2010-03-05","CopertinaShutterIsland.jpg",https://www.youtube.com/embed/mzkVNB3FpSQ",true,null,null),
 ("0000-0006-13A9-001F-3-0000-0000-S","Breaking Bad","Walter White, sottopagato insegnante di chimica alla soglia dei cinquanta anni, scopre di avere un cancro terminale ai polmoni. Incapace di accettare questa terribile realtà decide di sfruttare le sue conoscenze di chimica per produrre metamfetamina",
 "Vince Gilligan",60,"2008-01-20","CopertinaBreakingBad.jpg","https://www.youtube.com/watch?v=HhesaQXLuRY",false,5,62),
 ("0000-0000-D5F8-0012-M-0000-0000-8","Due uomini e mezzo","Alan e suo figlio Jake si trasferiscono nella casa sulla spiaggia di Charlie in seguito alla separazione del primo dalla moglie. Crescere il figlio in casa del fratello, un irrefrenabile Don Giovanni, si rivela tuttavia un'impresa ardua",
