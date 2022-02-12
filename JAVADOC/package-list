@@ -1,0 +1,16 @@
+
+DAO
+GestioneContenuto
+GestioneHome
+GestioneRecensione
+GestioneUtente
+unisa.is.guardatv.StorageLayer
+unisa.is.guardatv.controller
+unisa.is.guardatv.controller.servlet
+unisa.is.guardatv.controller.servlet.GestioneContenuto
+unisa.is.guardatv.controller.servlet.GestioneHome
+unisa.is.guardatv.controller.servlet.GestioneRecensione
+unisa.is.guardatv.controller.servlet.GestioneUtente
+unisa.is.guardatv.controller.servlet.gestioneAmministratore
+unisa.is.guardatv.controller.servlet.gestioneLista
+unisa.is.guardatv.controller.servlet.gestioneRicerca
