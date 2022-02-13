@@ -165,7 +165,7 @@ public class AggiuntaContenutoServlet extends HttpServlet {
             contenutoDAO.doSave(contenuto);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salataggio del contenuto.");
+            throw new unisa.is.guardatv.controller.servlet.MyServletException("Errore nel salvataggio del contenuto.");
         }
 
         try{
