@@ -3,6 +3,7 @@ title SQ_Recensione_10
 actor Utente
 boundary ContentList
 control ContentControl
+entity Content
 boundary ContentReviewForm
 control ReviewControl
 entity Recensione
@@ -12,12 +13,19 @@ activate Utente
 Utente->ContentList: press()
 activate ContentList
 ContentList-->*ContentControl:<<create>>
+
+ContentControl->Content:getById()
+activate Content
 activate ContentControl
+Content->ContentControl:getInfo()
+deactivate Content
 ContentControl-->*ContentReviewForm:<<create>>
+ContentControl->ContentReviewForm:sendInfo()
+activate ContentReviewForm
+
 deactivateafter ContentControl
 deactivate ContentList
 Utente->ContentReviewForm: fillContent()
-activate ContentReviewForm
 deactivateafter ContentReviewForm
 Utente->ContentReviewForm: submit()
 activate ContentReviewForm

@@ -59,7 +59,7 @@ public class ElencoListeTest {
         PrintWriter printWriter = mock(PrintWriter.class);
         when(response.getWriter()).thenReturn(printWriter);
         RequestDispatcher rd = mock(RequestDispatcher.class);
-        when(request.getRequestDispatcher(eq("WEB-INF/jsp/profilojsp"))).thenReturn(rd);
+        when(request.getRequestDispatcher(eq("WEB-INF/jsp/profilo.jsp"))).thenReturn(rd);
         servlet.doPost(request, response);
     }
 

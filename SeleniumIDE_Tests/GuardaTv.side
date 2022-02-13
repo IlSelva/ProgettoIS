@@ -1,7 +1,7 @@
 {
   "id": "ed11c4c7-699d-461b-b9e8-48b9894bd578",
   "version": "2.0",
-  "name": "Guarda",
+  "name": "GuardaTv",
   "url": "http://localhost:8080/guardaTv_war_exploded",
   "tests": [{
     "id": "ea53cdba-653b-4748-ae20-8283fb18326f",
@@ -4483,11 +4483,11 @@
       "id": "ee9c525a-c0df-48ad-adaf-9175cfe72676",
       "comment": "",
       "command": "assertElementPresent",
-      "target": "id=notifica",
+      "target": "css=h1",
       "targets": [
         ["css=h1", "css:finder"],
         ["xpath=//h1", "xpath:position"],
-        ["xpath=//h1[contains(.,'ID non valido.')]", "xpath:innerText"]
+        ["xpath=//h1[contains(.,'Durata non valida.')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
@@ -4496,7 +4496,7 @@
       "command": "assertText",
       "target": "css=h1",
       "targets": [],
-      "value": "Contenuto aggiunto con successo"
+      "value": "Durata non valida."
     }]
   }, {
     "id": "85887a8c-e2b3-41a4-baaf-4038926c207f",
@@ -5190,7 +5190,7 @@
         ["xpath=//input[@id='datauscita']", "xpath:attributes"],
         ["xpath=//input[7]", "xpath:position"]
       ],
-      "value": "11-11-2020"
+      "value": "AAAA-BB_CC"
     }, {
       "id": "6a957744-450b-4244-8352-15e5fb71ec23",
       "comment": "",
@@ -5233,20 +5233,24 @@
       "id": "2e23b543-8e63-424e-b00d-d0b53bab7b7a",
       "comment": "",
       "command": "assertElementPresent",
-      "target": "id=notifica",
+      "target": "css=.titolo",
       "targets": [
-        ["css=h1", "css:finder"],
+        ["css=.titolo", "css:finder"],
         ["xpath=//h1", "xpath:position"],
-        ["xpath=//h1[contains(.,'ID non valido.')]", "xpath:innerText"]
+        ["xpath=//h1[contains(.,'Contenuto')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
       "id": "dfb16dfa-3de7-426a-9b2e-a57762df3ea1",
       "comment": "",
       "command": "assertText",
-      "target": "css=h1",
-      "targets": [],
-      "value": "Contenuto aggiunto con successo"
+      "target": "css=.titolo",
+      "targets": [
+        ["css=.titolo", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Contenuto')]", "xpath:innerText"]
+      ],
+      "value": "Contenuto"
     }]
   }, {
     "id": "a8f7e871-2267-460a-8946-30b6dbca5d44",
@@ -5510,7 +5514,7 @@
       "id": "eb8d8cb2-b9cf-4566-bad8-d510cec011de",
       "comment": "",
       "command": "assertText",
-      "target": "css=h1",
+      "target": "id=notifica",
       "targets": [],
       "value": "Contenuto aggiunto con successo"
     }]
