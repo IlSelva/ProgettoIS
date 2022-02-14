@@ -65,6 +65,7 @@ a.logo, a.logo:link, a.logo:visited, a.logo:hover, a.logo:active {
     padding: 10px;
     outline: none;
     color: #f5d0ab;
+    border-radius: 5px 0px 0px 5px;
 }
 
 .searchTerm:focus{
