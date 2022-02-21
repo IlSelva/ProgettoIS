@@ -24,7 +24,7 @@
             <c:choose>
                 <c:when test="${utente != null}">
                     <form name="addList" action="aggiunta-contenuto-lista" method="post">
-                        <input type="text" name="id" value="<c:out value="${contenuto.id}"/>" hidden>
+                        <input type="text" name="contenutoId" value="<c:out value="${contenuto.id}"/>" hidden>
                         <label for="selectList"></label>
                         <select class="listselector" name="nomeLista" id="selectList">
                             <option value="" label="" selected> liste </option>
@@ -40,10 +40,14 @@
             <h4>Regista: <c:out value="${contenuto.regista}"/></h4>
             <h4><c:out value="${contenuto.durata}"/>min</h4>
             <h4>data di rilascio: <c:out value="${contenuto.dataDiUscita}"/></h4>
-            <iframe width="560" height="315" src="<c:out value="${contenuto.videoTrailer}"/>"
-                    title="YouTube video player" frameborder="0" allow="accelerometer;
-                    clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
+            <c:choose>
+                <c:when test="${contenuto.videoTrailer != null}">
+                    <iframe width="560" height="315" src="<c:out value="${contenuto.videoTrailer}"/>"
+                            title="YouTube video player" frameborder="0" allow="accelerometer;
+                            clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </c:when>
+            </c:choose>
         </div>
 
 
