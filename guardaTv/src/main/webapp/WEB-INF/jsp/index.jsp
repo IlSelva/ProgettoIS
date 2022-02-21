@@ -14,7 +14,7 @@
 
     </section>
 
-    <h2 class="section-title"> Ultime aggiunte</h2>
+    <h2 class="section-title"> Ultime uscite</h2>
     <section class="griglia">
         <c:forEach items = "${ultimi}" var = "contenuto">
             <article class="cont">
