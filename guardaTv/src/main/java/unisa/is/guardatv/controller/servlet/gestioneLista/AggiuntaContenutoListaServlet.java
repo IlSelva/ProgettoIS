@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static unisa.is.guardatv.controller.Constants.BAD_REQUEST_MESS;
+import static unisa.is.guardatv.controller.Constants.*;
 
 
 /**
@@ -50,13 +50,14 @@ public class AggiuntaContenutoListaServlet extends HttpServlet {
 
         String nomeLista = request.getParameter("nomeLista");
         // controllo che nomeLista sia una stringa valida
-        if (!Utils.getInstance().isValidString(nomeLista)) {
+        if (!Utils.getInstance().isValidString(nomeLista,REGEX_AZaz09)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome lista non valido.");
         }
 
         String contenuto = request.getParameter("contenutoId");
+
         // controllo che il contenuto sia una stringa valida
-        if (!Utils.getInstance().isValidString(contenuto)) {
+        if (!Utils.getInstance().isValidString(contenuto,ID_REGEX)) {
             throw new unisa.is.guardatv.controller.servlet.MyServletException("Nome contenuto non valido.");
         }
 
@@ -70,7 +71,7 @@ public class AggiuntaContenutoListaServlet extends HttpServlet {
         }
         request.setAttribute("notifica", "Contenuto aggiunto alla lista con successo");
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/lista.jsp");
+	    RequestDispatcher requestDispatcher = request.getRequestDispatcher("Utente");
         requestDispatcher.forward(request, response);
     }
 }
