@@ -60,7 +60,7 @@ public class ContenutoDAO {
     public List<Contenuto> doRetrieveLast(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT  id,titolo,descrizione,regista,durata,dataDiUscita,immagineDelContenuto,videoTrailer,film,stagioni,puntate FROM Contenuto ORDER BY titolo desc LIMIT ?, ?");
+                    .prepareStatement("SELECT  id,titolo,descrizione,regista,durata,dataDiUscita,immagineDelContenuto,videoTrailer,film,stagioni,puntate FROM Contenuto ORDER BY dataDiUscita desc LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Contenuto> contenuti = new ArrayList<>();
