@@ -847,7 +847,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023-4560"
+      "value": "0000-0004-4BE1-0000-N-0000"
     }, {
       "id": "78f2ffef-8b71-4c63-88be-00e0e7e50de3",
       "comment": "",
@@ -1113,7 +1113,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000000000023"
+      "value": "000000044BE10000N000000005"
     }, {
       "id": "8d8eca07-9b57-4059-bf1a-d8e5cc2decf3",
       "comment": "",
@@ -1379,7 +1379,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "cde3d26c-19a4-41b0-a0e6-df5e9678cf64",
       "comment": "",
@@ -1639,7 +1639,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "2bdd6e04-0738-4b58-832d-f75cf81ac8a5",
       "comment": "",
@@ -1652,7 +1652,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bellaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      "value": "Snowdennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
     }, {
       "id": "dab00daa-4585-49bb-b5fd-343c4fe2ee85",
       "comment": "",
@@ -1905,7 +1905,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "ee1f7576-ca72-423d-89b2-125d9b61faca",
       "comment": "",
@@ -1918,7 +1918,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "8e1b1f03-4127-4645-829a-145c127acf81",
       "comment": "",
@@ -2171,7 +2171,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "dbad67e4-3924-4323-980d-3fa733268191",
       "comment": "",
@@ -2184,7 +2184,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "cdcf45c0-a421-41fc-92d1-a85f2f74e636",
       "comment": "",
@@ -2210,7 +2210,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Durante la dittatura fascista, Guido Orefice, giovane ebreo trasferitosi nella campagna toscana, conosce una maestra elementare, Dora, e con lei costruisce una famiglia. L'aggravarsi delle Leggi Razziali e i rastrellamenti nazisti portano l'uomo ad essere deportato in campo di concentramento con il figlioletto Giosuè. Per proteggere il piccolo dagli orrori dello sterminio, Guido costruisce eroicamente un elaborato mondo di vertiginose fantasie"
+      "value": "Con protagonista Joseph Gordon-Levitt nei panni di Edward Snowden, tecnico informatico ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative su programmi di intelligence, la pellicola si basa sui libri The Snowden Files di Luke Harding e Time of the Octopus di Anatoly Kucherena."
     }, {
       "id": "579d0030-49fd-4e26-8160-d0f131e6adad",
       "comment": "",
@@ -2437,7 +2437,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "122e1f95-f074-49ee-b193-3117d1affc37",
       "comment": "",
@@ -2450,7 +2450,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "7698cf10-8d06-4dc8-a801-dbf033d77866",
       "comment": "",
@@ -2476,7 +2476,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30, parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "5f23f7d9-fa2e-4f3c-a23e-b75ab8c196d7",
       "comment": "",
@@ -2703,7 +2703,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "bd5c7031-ab45-4f16-94d7-105227a74d5c",
       "comment": "",
@@ -2716,7 +2716,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "2e602f0b-57ea-4fcd-b64e-90618d52bbfe",
       "comment": "",
@@ -2742,7 +2742,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "64c39668-4a5a-4c4a-a53b-f534c9e5e4c2",
       "comment": "",
@@ -2969,7 +2969,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "4a38c131-b08b-4aee-8eb2-6cc88143accf",
       "comment": "",
@@ -2982,7 +2982,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "76b092b6-4a73-4e0c-a1e0-dfee237b6fdd",
       "comment": "",
@@ -3008,7 +3008,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30, parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio"
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "f1d1a5dc-3548-4b23-90c2-e9f7c3e24f3a",
       "comment": "",
@@ -3032,7 +3032,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "ROM4NTIC0"
+      "value": "DR4MMAT1C0"
     }, {
       "id": "8ec13013-f0cf-4808-9f2e-15fbb90c9838",
       "comment": "",
@@ -3235,7 +3235,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "ecb26438-c32f-4021-bc43-4e753d850164",
       "comment": "",
@@ -3248,7 +3248,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "7ac4407b-af30-4453-a224-933b609d16a9",
       "comment": "",
@@ -3274,7 +3274,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "8dfb05fc-b654-45b1-a236-295f81952e64",
       "comment": "",
@@ -3298,7 +3298,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "Romantico"
+      "value": "Drammatico"
     }, {
       "id": "43b2b514-e261-48cf-ba4d-c137ae65b0f9",
       "comment": "",
@@ -3501,7 +3501,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "4da14fa2-5003-4454-8169-13e9f5cda0b3",
       "comment": "",
@@ -3514,7 +3514,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "7a820ac1-fdf2-46b2-b678-a6081d4254a7",
       "comment": "",
@@ -3540,7 +3540,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "8ba5f396-1bbb-4c43-a249-69f977e2381c",
       "comment": "",
@@ -3564,7 +3564,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "Romantico"
+      "value": "Drammatico"
     }, {
       "id": "aa9b77cd-45a8-4c26-83f9-2033375b0899",
       "comment": "",
@@ -3590,7 +3590,7 @@
         ["xpath=//input[@id='regista']", "xpath:attributes"],
         ["xpath=//input[5]", "xpath:position"]
       ],
-      "value": "Roberto Benigniiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+      "value": "Oliver Stoneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
     }, {
       "id": "b7bf0ac2-187f-4c72-8818-db6bfc148bc0",
       "comment": "",
@@ -3767,7 +3767,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "291e0a46-72bc-442f-96f2-670a82ac40e0",
       "comment": "",
@@ -3780,7 +3780,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "fce82fcd-d3cc-4d1e-bc06-63ccd3aa9439",
       "comment": "",
@@ -3806,7 +3806,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "26ae8e7b-0458-43b6-af2b-92d14936f331",
       "comment": "",
@@ -3830,7 +3830,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "Romantico"
+      "value": "Drammatico"
     }, {
       "id": "202231bd-e955-4ed7-ab27-1b0d68855e82",
       "comment": "",
@@ -3856,7 +3856,7 @@
         ["xpath=//input[@id='regista']", "xpath:attributes"],
         ["xpath=//input[5]", "xpath:position"]
       ],
-      "value": "Roberto Benigni"
+      "value": "Oliver Stone"
     }, {
       "id": "c22e8172-8fad-40ef-b6db-4e3d576e62b5",
       "comment": "",
@@ -3882,7 +3882,7 @@
         ["xpath=//input[@id='durata']", "xpath:attributes"],
         ["xpath=//input[6]", "xpath:position"]
       ],
-      "value": "centoventiquattro"
+      "value": "centotrentaquattro"
     }, {
       "id": "6dd7f010-420c-4f4d-bd98-af27ba2da5c6",
       "comment": "",
@@ -4033,7 +4033,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "3e246171-c9f4-4ffe-a1c1-d88242d2cffb",
       "comment": "",
@@ -4046,7 +4046,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "08a36733-59d4-4d97-a106-d9bc11f26828",
       "comment": "",
@@ -4072,7 +4072,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "a7923ed5-1c43-4268-a712-16221d3a7aa8",
       "comment": "",
@@ -4096,7 +4096,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "Romantico"
+      "value": "Drammatico"
     }, {
       "id": "a37948fc-1983-4cd8-9b3d-46984cd07170",
       "comment": "",
@@ -4122,7 +4122,7 @@
         ["xpath=//input[@id='regista']", "xpath:attributes"],
         ["xpath=//input[5]", "xpath:position"]
       ],
-      "value": "Roberto Benigni"
+      "value": "Oliver Stone"
     }, {
       "id": "97c2dee0-d569-4903-8d96-cee2b55d2647",
       "comment": "",
@@ -4299,7 +4299,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "94790b19-768f-45ff-966b-15835676a7ab",
       "comment": "",
@@ -4312,7 +4312,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "6d3082a0-dc01-41ca-9b39-78c3f1d4e16a",
       "comment": "",
@@ -4338,7 +4338,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "d890fbeb-8863-4bb2-96f2-982399373191",
       "comment": "",
@@ -4362,7 +4362,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "Romantico"
+      "value": "Drammatico"
     }, {
       "id": "2c678f8e-f061-487e-8494-1831b243d89e",
       "comment": "",
@@ -4388,7 +4388,7 @@
         ["xpath=//input[@id='regista']", "xpath:attributes"],
         ["xpath=//input[5]", "xpath:position"]
       ],
-      "value": "Roberto Benigni"
+      "value": "Oliver Stone"
     }, {
       "id": "1d63ef59-4c36-4075-8a34-956513d09eed",
       "comment": "",
@@ -5049,7 +5049,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "f9a19e38-2dd4-4def-8795-c0e56f9b4314",
       "comment": "",
@@ -5062,7 +5062,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "7e25193c-24c0-4ea5-9a35-edd7555f45f3",
       "comment": "",
@@ -5088,7 +5088,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "0442a0b5-08c6-4e67-b6bb-6fc960f492f9",
       "comment": "",
@@ -5112,7 +5112,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "Romantico"
+      "value": "Drammatico"
     }, {
       "id": "201b2d21-aa7e-449f-a090-e15a436ea9c1",
       "comment": "",
@@ -5138,7 +5138,7 @@
         ["xpath=//input[@id='regista']", "xpath:attributes"],
         ["xpath=//input[5]", "xpath:position"]
       ],
-      "value": "Roberto Benigni"
+      "value": "Oliver Stone"
     }, {
       "id": "8916deb3-dded-43b5-a775-74037e38f9ec",
       "comment": "",
@@ -5164,7 +5164,7 @@
         ["xpath=//input[@id='durata']", "xpath:attributes"],
         ["xpath=//input[6]", "xpath:position"]
       ],
-      "value": "124"
+      "value": "134"
     }, {
       "id": "8b71e6e3-2eba-42f6-9f1a-16de95a92771",
       "comment": "",
@@ -5319,7 +5319,7 @@
         ["xpath=//input[@id='id']", "xpath:attributes"],
         ["xpath=//div/form/input", "xpath:position"]
       ],
-      "value": "0000-0000-0023"
+      "value": "0000-0004-4BE1-0000-N-0000-0000-5"
     }, {
       "id": "b597db94-46a9-4941-8a97-67d9c49cdfd9",
       "comment": "",
@@ -5332,7 +5332,7 @@
         ["xpath=//input[@id='titolo']", "xpath:attributes"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "La vita è bella"
+      "value": "Snowden"
     }, {
       "id": "35b3559e-a69d-49b5-996e-d37325e103c1",
       "comment": "",
@@ -5358,7 +5358,7 @@
         ["xpath=//textarea[@id='descrizione']", "xpath:attributes"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Film ambientato negli anni 30 , parla della storia d’amore tra Giudo e Dora e dell’amico Ferruccio."
+      "value": "Edward Snowden, ex dipendente della CIA responsabile della rivelazione di informazioni segrete governative"
     }, {
       "id": "6bb60ab5-5434-41b1-a174-357a8d62a12f",
       "comment": "",
@@ -5382,7 +5382,7 @@
         ["xpath=//input[@id='genere']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "Romantico"
+      "value": "Drammatico"
     }, {
       "id": "75226287-02a9-4360-b470-7e380b45d582",
       "comment": "",
@@ -5408,7 +5408,7 @@
         ["xpath=//input[@id='regista']", "xpath:attributes"],
         ["xpath=//input[5]", "xpath:position"]
       ],
-      "value": "Roberto Benigni"
+      "value": "Oliver Stone"
     }, {
       "id": "b320c8c1-f82c-4761-814e-fcedcf16640f",
       "comment": "",
@@ -5434,7 +5434,7 @@
         ["xpath=//input[@id='durata']", "xpath:attributes"],
         ["xpath=//input[6]", "xpath:position"]
       ],
-      "value": "1"
+      "value": "134"
     }, {
       "id": "4411ca38-3024-46a1-9dab-67c6ee528421",
       "comment": "",
@@ -5460,7 +5460,7 @@
         ["xpath=//input[@id='datauscita']", "xpath:attributes"],
         ["xpath=//input[7]", "xpath:position"]
       ],
-      "value": "1997-12-18"
+      "value": "2016-04-27"
     }, {
       "id": "097724ef-c18b-4e19-99bc-05ddecb08db2",
       "comment": "",
@@ -5486,7 +5486,7 @@
         ["xpath=//input[@id='trailer']", "xpath:attributes"],
         ["xpath=//input[8]", "xpath:position"]
       ],
-      "value": "https://www.youtube.com/"
+      "value": "https://www.youtube-nocookie.com/embed/QlSAiI3xMh4"
     }, {
       "id": "c627eb5d-e578-493f-a4c7-8b4a0d139cc2",
       "comment": "",
